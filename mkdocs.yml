@@ -1,0 +1,4 @@
+site_name: C3 User Docs
+site_url: https://c3-uc3m.github.io/c3-web/
+theme:
+    name: material
