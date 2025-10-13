@@ -1,17 +1,18 @@
-# Welcome to MkDocs
+# C3 User Docs
+User documentation for UC3M C3 HPC Cluster.
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
 
-## Commands
+## Resources
+PLACEHOLDER
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+### Hardware
+PLACEHOLDER
 
-## Project layout
+### Lustre Distributed Filesystem
+PLACEHOLDER
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+### Slurm
+partitions, reservation, QoS, whatever else we set up
+
+### Software
+PLACEHOLDER

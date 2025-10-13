@@ -1,4 +1,24 @@
 site_name: C3 User Docs
 site_url: https://c3-uc3m.github.io/c3-web/
+
 theme:
     name: material
+    logo: assets/images/c3-logo.png
+    features:
+        # - navigation.instant
+        - navigation.path
+        # - navigation.sections
+
+extra:
+  generator: false
+
+nav:
+  - Home: index.md
+  - Docs:
+    - Cluster Access: user_docs/cluster_access.md
+    - Slurm: user_docs/slurm.md
+    - JupyterHub: user_docs/jupyter.md
+    - MATLAB: user_docs/matlab.md
+    - Installed Software: user_docs/installed_sw.md
+    - Install Custom Software with Spack: user_docs/install_custom_sw_spack.md
+  - HPC Courses: courses.md
