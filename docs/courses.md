@@ -18,3 +18,4 @@ A collection of recommended HPC courses.
 ## [PRACE Training Course: Directive-based GPU programming with OpenACC](https://juser.fz-juelich.de/record/902543/files/)
 
 ## Parallelization in Jupyter Notebooks
+PLACEHOLDER
