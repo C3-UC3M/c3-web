@@ -13,9 +13,9 @@ A collection of recommended HPC courses.
 
 ## [High-Performance Computing with Python](https://tbetcke.github.io/hpc_lecture_notes/what_is_hpc.html)
 
+## [Using IPyhton for Parallel Computing](https://ipyparallel.readthedocs.io/en/latest/)
+
 ## [High-performance scientific computing in C++](https://gitlab.jsc.fz-juelich.de/sdlbio-courses/hpcxx)
 
 ## [PRACE Training Course: Directive-based GPU programming with OpenACC](https://juser.fz-juelich.de/record/902543/files/)
 
-## Parallelization in Jupyter Notebooks
-PLACEHOLDER
