@@ -6,6 +6,6 @@ The C3 supercomputing equipment has the following technical specifications:
 
     - 42 NVIDIA A40 GPUs with 336 Tensor Cores, 84 RT Cores, and 48GB of GDDR6 ECC memory. 
 
-### High-availability storage system featuring: Lustre FS, with 540TB of capacity and high redundancy; NFS with DRAM access, with 64TB of capacity.
+    - High-availability storage system featuring: Lustre FS, with 540TB of capacity and high redundancy; NFS with DRAM access, with 64TB of capacity.
 
     - 100Gbps HDR Infiniband netowrk for compute and data.
