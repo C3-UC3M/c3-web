@@ -1,24 +1,36 @@
-site_name: C3 User Docs
+site_name: C3 Docs
 site_url: https://c3-uc3m.github.io/c3-web/
 
 theme:
     name: material
-    logo: assets/images/c3-logo.png
+    logo: assets/images/combined_logo_v6.png
     features:
         # - navigation.instant
         - navigation.path
         # - navigation.sections
+        - toc.follow
+        - toc.integrate 
 
 extra:
   generator: false
 
 nav:
   - Home: index.md
-  - Docs:
+  - Resources:
+    - System Description: resources/system.md
+    - Lustre Distributed Filesystem: resources/lustre.md
+    - Slurm: resources/slurm.md
+    - Installed Software: resources/installed_sw.md
+  - Usage:
     - Cluster Access: user_docs/cluster_access.md
     - Slurm: user_docs/slurm.md
     - JupyterHub: user_docs/jupyter.md
     - MATLAB: user_docs/matlab.md
-    - Installed Software: user_docs/installed_sw.md
+    - How to use Installed Software: user_docs/installed_sw.md
     - Install Custom Software with Spack: user_docs/install_custom_sw_spack.md
   - HPC Courses: courses.md
+
+extra_css:
+  - stylesheets/extra.css
+
+copyright: Impulsado por la Universidad Carlos III de Madrid, ha recibido financiación de la Agencia Estatal de Investigación (referencia EQC2021-007184- P)  y de la Comunidad de Madrid a través de sendos programas de investigación.
