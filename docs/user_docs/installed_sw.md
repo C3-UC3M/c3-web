@@ -1,7 +1,7 @@
 # Installed Software
 PLACEHOLDER
 
-## LMOD
+## Modules
 PLACEHOLDER
 
 ## Spack

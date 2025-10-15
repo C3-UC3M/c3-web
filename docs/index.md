@@ -7,4 +7,3 @@ El C3 proporciona capacidad de cálculo, almacenamiento y soporte técnico a sus
 Los computadores del C3 incluyen capacidad de cómputo y almacenamiento que exceden los recursos disponibles en sistemas habituales, siendo especialmente adecuados para las simulaciones numéricas, de biocomputación, y de inteligencia artificial, dado su volumen recursos, tanto en CPUs, como en CPUS y en capacidad de almacenamiento fiable.
 
 ![C3 Photo](assets/images/1371435134390.jpg)
-
