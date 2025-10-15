@@ -8,4 +8,4 @@ The C3 supercomputing equipment has the following technical specifications:
 
     - High-availability storage system featuring: Lustre FS, with 540TB of capacity and high redundancy; NFS with DRAM access, with 64TB of capacity.
 
-    - 100Gbps HDR Infiniband netowrk for compute and data.
+    - 100Gbps HDR Infiniband network for compute and data.
