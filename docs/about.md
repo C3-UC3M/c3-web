@@ -1,0 +1,4 @@
+Scientific Computing Center (C3) of [University Carlos III of Madrid](https://www.uc3m.es/Home) is part of the [Research Support Center (CAI)](https://www.uc3m.es/corefacilities/home).
+The CAI's mission is to provide researchers with a technological support center that develops and offers the methodologies and resources necessary for the execution of their research and development projects.
+
+The C3 has been created by University Carlos III of Madrid and has received funding from Programa Estatal para Impulsar la Investigación Científico-Técnica of the [Agencia Estatal de Investigación (AEI)](https://www.aei.gob.es/) through the project with reference EQC2021-007184-P and the [Regional Government of Madrid (CAM)](https://www.comunidad.madrid/servicios/educacion/ciencia-e-investigacion) through the REACT-EU project with reference ????
