@@ -70,7 +70,7 @@
   gap: 1rem;
 }
 .footer-images img {
-  height: 100px;
+  height: auto;
   width: auto;
   opacity: 0.9;
   transition: opacity .15s ease, transform .15s ease;
