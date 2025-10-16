@@ -19,3 +19,5 @@ A collection of recommended HPC courses.
 
 ## [PRACE Training Course: Directive-based GPU programming with OpenACC](https://juser.fz-juelich.de/record/902543/files/)
 
+## [Practical: High-Performance Computing System Administration](https://hps.vi4io.org/teaching/autumn_term_2022/hpcsa/)
+
