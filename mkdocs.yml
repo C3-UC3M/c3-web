@@ -3,20 +3,21 @@ site_url: https://c3-uc3m.github.io/c3-web/
 
 theme:
     name: material
-    logo: assets/images/combined_logo_v6.png
-    custom_dir: docs/overrides
+    language: en
+    logo: assets/images/C3_logo_white.png
+    custom_dir: overrides
     features:
-        # - navigation.instant
-        - navigation.path
-        # - navigation.sections
-        - navigation.footer
+        # - navigation.footer
         - toc.follow
         - toc.integrate 
 
 watch:
   - mkdocs.yml
   - docs/
-  - docs/overrides
+  - overrides/
+
+markdown_extensions:
+  - attr_list
 
 nav:
   - Home: index.md
@@ -27,10 +28,10 @@ nav:
     - Installed Software: resources/installed_sw.md
   - Usage:
     - Cluster Access: user_docs/cluster_access.md
+    - How to use Installed Software: user_docs/installed_sw.md
     - Slurm: user_docs/slurm.md
     - JupyterHub: user_docs/jupyter.md
     - MATLAB: user_docs/matlab.md
-    - How to use Installed Software: user_docs/installed_sw.md
     - Install Custom Software with Spack: user_docs/install_custom_sw_spack.md
   - HPC Courses: courses.md
 

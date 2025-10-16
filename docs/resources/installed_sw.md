@@ -1,0 +1,1 @@
+#meter excel de SW instalado (quitar lo que no esté instalado)
