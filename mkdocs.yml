@@ -9,7 +9,8 @@ theme:
     features:
         # - navigation.footer
         - toc.follow
-        - toc.integrate 
+        - toc.integrate
+        - content.code.copy
 
 watch:
   - mkdocs.yml
@@ -18,6 +19,9 @@ watch:
 
 markdown_extensions:
   - attr_list
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.snippets
 
 nav:
   - Home: index.md
@@ -28,14 +32,15 @@ nav:
     - Installed Software: resources/installed_sw.md
   - Usage:
     - Cluster Access: user_docs/cluster_access.md
-    - How to use Installed Software: user_docs/installed_sw.md
     - Slurm: user_docs/slurm.md
+    - How to use Installed Software: user_docs/installed_sw.md
     - JupyterHub: user_docs/jupyter.md
+    - Apptainer:
+      - User Guide: user_docs/apptainer.md
+      - Docker to Apptainer: user_docs/docker2apptainer.md
     - MATLAB: user_docs/matlab.md
     - Install Custom Software with Spack: user_docs/install_custom_sw_spack.md
   - HPC Courses: courses.md
 
 extra_css:
   - stylesheets/extra.css
-
-copyright: Impulsado por la Universidad Carlos III de Madrid, ha recibido financiación del Programa Estatal para Impulsar la Investigación Científico-Técnica y su Transferencia con la referencia EQC2021-007184-P y de la Comunidad de Madrid a través de sendos programas de investigación.

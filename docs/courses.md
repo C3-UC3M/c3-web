@@ -13,7 +13,7 @@ A collection of recommended HPC courses.
 
 ## [High-Performance Computing with Python](https://tbetcke.github.io/hpc_lecture_notes/what_is_hpc.html)
 
-## [Using IPyhton for Parallel Computing](https://ipyparallel.readthedocs.io/en/latest/)
+## [Using IPython for Parallel Computing](https://ipyparallel.readthedocs.io/en/latest/)
 
 ## [High-performance scientific computing in C++](https://gitlab.jsc.fz-juelich.de/sdlbio-courses/hpcxx)
 
