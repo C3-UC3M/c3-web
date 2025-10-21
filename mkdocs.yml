@@ -40,6 +40,7 @@ nav:
       - Docker to Apptainer: user_docs/docker2apptainer.md
     - MATLAB: user_docs/matlab.md
     - Install Custom Software with Spack: user_docs/install_custom_sw_spack.md
+    - Accounting: user_docs/accounting.md
   - HPC Courses: courses.md
 
 extra_css:
