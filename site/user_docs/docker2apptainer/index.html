@@ -1,0 +1,1202 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://c3-uc3m.github.io/c3-web/user_docs/docker2apptainer/">
+      
+      
+        <link rel="prev" href="../apptainer/">
+      
+      
+        <link rel="next" href="../matlab/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>Docker to Apptainer - C3 Supercomputer</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#from-docker-to-apptainer" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      <!--
+  Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine classes -->
+
+
+  
+
+
+<!-- Header -->
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav
+    class="md-header__inner md-grid"
+    aria-label="Header"
+  >
+
+    <!-- Link to home -->
+    <a
+      href="../.."
+      title="C3 Supercomputer"
+      class="md-header__button md-logo"
+      aria-label="C3 Supercomputer"
+      data-md-component="logo"
+    >
+      
+  <img src="../../assets/images/C3_logo_white.png" alt="logo">
+
+    </a>
+
+    <!-- Button to open drawer -->
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+
+    <!-- Header title -->
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            C3 Supercomputer
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Docker to Apptainer
+            
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Color palette toggle -->
+    
+
+    <!-- User preference: color palette -->
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+
+    <!-- Site language selector -->
+    
+
+    <!-- Button to open search modal -->
+    
+      
+
+      <!-- Check if search is actually enabled - see https://t.ly/DT_0V -->
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+
+        <!-- Search interface -->
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+
+    <!-- Custom right-side logo (UC3M) -->
+    <a href="https://www.uc3m.es" class="md-header__button custom-header__logo" title="UC3M Homepage">
+        <img src="../../assets/images/uc3m_logo_white.png" alt="UC3M" />
+    </a>
+
+    <!-- Repository information -->
+    
+  </nav>
+
+  <!-- Navigation tabs (sticky) -->
+  
+
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="C3 Supercomputer" class="md-nav__button md-logo" aria-label="C3 Supercomputer" data-md-component="logo">
+      
+  <img src="../../assets/images/C3_logo_white.png" alt="logo">
+
+    </a>
+    C3 Supercomputer
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Resources
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    System Description
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/lustre/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lustre Distributed Filesystem
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/slurm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slurm
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/installed_sw/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Installed Software
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Usage
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Usage
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cluster_access/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cluster Access
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../slurm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Slurm
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installed_sw/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to use Installed Software
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jupyter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JupyterHub
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Apptainer
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Apptainer
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apptainer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Docker to Apptainer
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Docker to Apptainer
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#convert-a-dockerfile-into-a-def-apptainer-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Convert a Dockerfile into a .def apptainer file
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Convert a Dockerfile into a .def apptainer file">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#differences-between-a-dockerfile-and-a-def-apptainer-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Differences between a Dockerfile and a .def Apptainer file
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-an-apptainer-image-sif" class="md-nav__link">
+    <span class="md-ellipsis">
+      Build an apptainer image (.sif)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-sif-image-to-build-containers-or-instances" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use .sif image to build containers or instances
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Use .sif image to build containers or instances">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diferences-between-run-exec-and-instance-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diferences between run, exec and instance commands
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Diferences between run, exec and instance commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker-vs-apptainer-commands-comparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker vs Apptainer: commands comparation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matlab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MATLAB
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../install_custom_sw_spack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Install Custom Software with Spack
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../courses/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HPC Courses
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<!-- From Docker to Apptainer Guide
+Author: Diana E. Carrizales-Espinoza
+Date: September 2025 -->
+
+<h1 id="from-docker-to-apptainer">From Docker to Apptainer</h1>
+<h2 id="convert-a-dockerfile-into-a-def-apptainer-file">Convert a Dockerfile into a .def apptainer file</h2>
+<p>Dockerfiles and Apptainer <code>.def</code> files are recipes for building container images. </p>
+<p>Dockerfile is used by Docker/Podman. Their images are layered—every instruction (RUN, COPY, etc.) creates a new layer. It needs a daemon (the Docker engine) to build and run. By default, containers run as root inside the container, though this can be restricted. Images are stored in Docker registries (docker.io and private registries).</p>
+<p>Meanwhile, a <code>.def</code> file (short for definition file) is the recipe used to build a portable and immutable Apptainer (Singularity) image (.sif). No root is needed to run it, which is safe for HPC systems. The <code>.def</code> file has a section-based structure (%post, %environment, %files, etc.). It is composed of: </p>
+<ul>
+<li>the base OS or container (e.g., ubuntu, alpine, fedora)--often bootstrapped from Docker images (you can reuse Dockerfiles indirectly)</li>
+<li>software to install (e.g., python, nano, wget);</li>
+<li>environment variables; </li>
+<li>files to copy inside; and </li>
+<li>metadata about the container.</li>
+</ul>
+<p>For example, if we have the next Dockerfile:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#CI base </span>
+FROM<span class="w"> </span>ubuntu:16.04<span class="w"> </span>
+<span class="c1">#Doftware dependecies installation</span>
+RUN<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>build-essential<span class="w"> </span>-y<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>nano<span class="w"> </span>-y<span class="w"> </span>
+<span class="c1">#Copy the app code to the container </span>
+COPY<span class="w"> </span>.<span class="w"> </span>/home/yourFolder/<span class="w"> </span>
+WORKDIR<span class="w"> </span>/home/yourFolder/<span class="w"> </span>
+RUN<span class="w"> </span>make<span class="w"> </span>clean<span class="w"> </span>
+RUN<span class="w"> </span>make
+</code></pre></div>
+<p><code>.def</code> file equivalent to the Dockerfile would be:</p>
+<div class="highlight"><pre><span></span><code>Bootstrap:<span class="w"> </span>docker
+From:<span class="w"> </span>ubuntu:16.04
+
+%post
+<span class="w">    </span><span class="c1"># Update and install dependencies</span>
+<span class="w">    </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>build-essential<span class="w"> </span>nano<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>rm<span class="w"> </span>-rf<span class="w"> </span>/var/lib/apt/lists/*
+
+<span class="w">    </span><span class="c1"># Go to working directory</span>
+<span class="w">    </span><span class="nb">cd</span><span class="w"> </span>/home/yorFolder
+
+<span class="w">    </span><span class="c1"># Compile the code</span>
+<span class="w">    </span>make<span class="w"> </span>clean
+<span class="w">    </span>make
+
+%files
+<span class="w">    </span>.<span class="w"> </span>/home/yourFolder
+
+%workdir
+<span class="w">    </span>/home/yourFolder
+
+%runscript
+<span class="w">    </span><span class="c1"># Default action when you run `apptainer run image.sif`</span>
+<span class="w">    </span><span class="nb">exec</span><span class="w"> </span>./main<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
+</code></pre></div>
+<p>Thus, a <code>.def</code> file is a recipe file for building containers and it specifies the following:</p>
+<ul>
+<li><code>Bootstrap / From</code>: specifies the container's base image, similar to using 'FROM' in a Dockerfile in Docker. It defines the starting environment for building the container.</li>
+<li><code>%labels</code>: specifie the metadata.</li>
+<li><code>%environment</code>: defines the sets environment variables.</li>
+<li><code>%post</code>: defines the commands run at build time (like RUN in Dockerfile).</li>
+<li><code>%files</code>: copy files from host into container.</li>
+<li><code>%runscript</code>: specifies the default command when you run the container.</li>
+<li><code>%help</code>: apptainer help image <code>.sif</code>.</li>
+</ul>
+<h3 id="differences-between-a-dockerfile-and-a-def-apptainer-file">Differences between a Dockerfile and a .def Apptainer file</h3>
+<p>Apptainer <code>.def</code>  files describe images that build into a single portable <code>.sif</code> file that can be run without root privileges, which is why HPC systems prefer Apptainer.</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Dockerfile</th>
+<th>Apptainer <code>.def</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Base image</strong></td>
+<td><code>FROM ubuntu:22.04</code></td>
+<td><code>Bootstrap: docker</code> + <code>From: ubuntu:22.04</code></td>
+</tr>
+<tr>
+<td><strong>Build system</strong></td>
+<td>Built with <code>docker build</code>, produces layered image</td>
+<td>Built with <code>apptainer build</code>, produces a single <code>.sif</code> file</td>
+</tr>
+<tr>
+<td><strong>File copies</strong></td>
+<td><code>COPY ./src /app</code></td>
+<td><code>%files</code> section</td>
+</tr>
+<tr>
+<td><strong>Environment</strong></td>
+<td><code>ENV VAR=value</code></td>
+<td><code>%environment</code> section</td>
+</tr>
+<tr>
+<td><strong>Run commands (build-time)</strong></td>
+<td><code>RUN apt-get install …</code></td>
+<td><code>%post</code> section</td>
+</tr>
+<tr>
+<td><strong>Default runtime command</strong></td>
+<td><code>CMD ["python","app.py"]</code></td>
+<td><code>%runscript</code> section</td>
+</tr>
+<tr>
+<td><strong>Execution model</strong></td>
+<td>Runs as root inside container unless restricted</td>
+<td>By default runs as <strong>the invoking user</strong>, so safer (no root in container)</td>
+</tr>
+<tr>
+<td><strong>Images</strong></td>
+<td>Layered, stored in Docker daemon</td>
+<td>Single compressed <code>.sif</code> file, portable (can copy with <code>scp</code>)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="build-an-apptainer-image-sif">Build an apptainer image (.sif)</h2>
+<p>To build a docker image we use the next command:</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>image:name<span class="w"> </span>./myfolder
+</code></pre></div>
+<p>The equivalent command to build an apptainer image would be:</p>
+<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>build<span class="w"> </span>myImage.sif<span class="w"> </span>myfile.def
+</code></pre></div>
+<p>In this command you must indicate the name of a <code>.sif</code> image that you want to build and the <code>.def</code> file used to build the <code>.sif</code> image. </p>
+<blockquote>
+<p>Note: always run the build from the directory containing your source code and Makefile. Otherwise, %files won’t copy anything, and you’ll see the “cannot stat” error.</p>
+</blockquote>
+<p>If you have a docker image, you can use this image and convert it into a <code>.sif</code> file with the next command:</p>
+<p><div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>build<span class="w"> </span>imageName.sif<span class="w"> </span>docker-daemon://docker:image
+</code></pre></div>
+Where:</p>
+<ul>
+<li><code>docker-daemon://&lt;image&gt;:&lt;tag&gt;</code> tells Apptainer to grab the image from your local Docker daemon (not from DockerHub).</li>
+<li><code>imageName.sif</code> is the Apptainer <code>.sif</code> output file you’ll be able to use with apptainer build, exec, instance or apptainer run.</li>
+</ul>
+<h2 id="use-sif-image-to-build-containers-or-instances">Use .sif image to build containers or instances</h2>
+<p>To run a container using a <code>.sif</code> image, you can use the next command:</p>
+<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>run<span class="w"> </span>myImage.sif
+</code></pre></div>
+<p>If you need to run a command inside of the container, you can use:</p>
+<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>myImage.sif<span class="w"> </span>./command<span class="w"> </span>arg1<span class="w"> </span>arg2
+</code></pre></div>
+<p>If you need to open a shell inside of the container, you can use:</p>
+<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>shell<span class="w"> </span>myImage.sif
+</code></pre></div>
+<blockquote>
+<p>Note: Unlike Docker, Apptainer does not support named background containers, so the --name and -d flags -- commonly used in the Docker commands -- don’t exist. Each apptainer exec runs the container fresh. </p>
+<p>Also, Apptainer containers are ephemeral by default — each exec runs a fresh environment, so no --name or long-running container concept like Docker. Thus, Apptainer images are immutable and ephemeral, so you cannot “name” a running instance. 
+However, you manage multiple instances either by different bind mounts, different PIDs, or passing an ID argument.</p>
+</blockquote>
+<p>To start an instance of the Apptainer image, and have that instance execute your program inside itself -- like to how Docker runs containers in detached mode -- follow the next steps:</p>
+<ol>
+<li><strong>Start an instance</strong> </li>
+</ol>
+<p>An instance is like a long-running container that you can exec commands into multiple times:</p>
+<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>instance<span class="w"> </span>start<span class="w"> </span>myImage.sif<span class="w"> </span>myInstanceName
+</code></pre></div>
+<p>Where:
+* <code>myImage.sif</code>  is the SIF image.
+* <code>myInstanceName</code> is the instance name (like a static container name in Docker).</p>
+<p>Once generated the Apptainer instance, you can check running instances:
+<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>instance<span class="w"> </span>list
+</code></pre></div></p>
+<ul>
+<li>
+<p>Also, you can create multiple instances of the same image, giving each a unique instance name:
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apptainer<span class="w"> </span>instance<span class="w"> </span>start<span class="w"> </span>myImage.sif<span class="w"> </span>myInstanceName0
+sudo<span class="w"> </span>apptainer<span class="w"> </span>instance<span class="w"> </span>start<span class="w"> </span>myImage.sif<span class="w"> </span>myInstanceName1
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Execute code inside the instance</strong></p>
+</li>
+</ul>
+<p>Once generated the Apptainer instance, you can run your program inside it. For example:</p>
+<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>instance://myInstanceName<span class="w"> </span>./command<span class="w"> </span>arg1<span class="w"> </span>arg2<span class="w"> </span>&gt;<span class="w"> </span>./myFolder/myfile.txt
+</code></pre></div>
+<p>Where:
+* <code>instance://myInstanceName</code> tells Apptainer to run the command inside the already running instance.
+* All relative paths (./myFolder/myfile.txt) are relative to the container’s filesystem.</p>
+<ol>
+<li><strong>Stop the instance when done</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apptainer<span class="w"> </span>instance<span class="w"> </span>stop<span class="w"> </span>myInstanceName
+</code></pre></div>
+<blockquote>
+<p>Note: There is no need to bind-mount files if everything your program needs is already present inside the <code>.sif</code> image.
+But, if you want to share files from the host (as a volume in Docker), you can use --bind:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>--bind<span class="w"> </span>/host/myfolder:/home/myFolder/sink<span class="w"> </span>instance://myInstanceName<span class="w"> </span>./main<span class="w"> </span>...
+</code></pre></div>
+</blockquote>
+<h3 id="diferences-between-run-exec-and-instance-commands">Diferences between run, exec and instance commands</h3>
+<ol>
+<li><strong>apptainer run</strong></li>
+<li>Runs the container’s default command (defined in %runscript in the <code>.def</code> file).</li>
+<li>It’s like docker run IMAGE.<ul>
+<li>Example:
+<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>run<span class="w"> </span>myImageName.sif
+</code></pre></div></li>
+</ul>
+</li>
+</ol>
+<p>If %runscript in the <code>.def</code> has:
+<div class="highlight"><pre><span></span><code>%runscript
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello from my container&quot;</span>
+</code></pre></div>
+- <em>You must use it when you want to define the default container behaviour.</em></p>
+<ol>
+<li><strong>apptainer exec</strong></li>
+<li>Runs a specific command inside the container.</li>
+<li>It’s like docker exec CONTAINER command.<ul>
+<li>Example:
+<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>myImageName.sif<span class="w"> </span>python3<span class="w"> </span>script.py
+</code></pre></div></li>
+</ul>
+</li>
+<li>
+<p><em>You must use it when you need to run custom commands or bypass the default %runscript.</em></p>
+</li>
+<li>
+<p><strong>apptainer instance</strong></p>
+</li>
+<li>
+<p>Apptainer supports long-lived containers, called instances (like Docker containers that keep running).</p>
+<ul>
+<li>
+<p>Start an instance:
+<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>instance<span class="w"> </span>start<span class="w"> </span>myImageName.sif<span class="w"> </span>myInstance
+</code></pre></div>
+<em>This launches a background container named myInstance.</em></p>
+</li>
+<li>
+<p>Run commands inside that instance:
+<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>instance://myinstance<span class="w"> </span>python3<span class="w"> </span>script.py
+</code></pre></div></p>
+</li>
+<li>
+<p>Stop it:
+<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>instance<span class="w"> </span>stop<span class="w"> </span>myInstance
+</code></pre></div></p>
+</li>
+<li><em>You must use instances when you want persistent state (e.g., web server, simulation workers) instead of one-off execution.</em></li>
+</ul>
+</li>
+</ol>
+<h4 id="docker-vs-apptainer-commands-comparation">Docker vs Apptainer: commands comparation</h4>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Docker</th>
+<th>Apptainer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Run default command</td>
+<td><code>docker run IMAGE</code></td>
+<td><code>apptainer run image.sif</code></td>
+</tr>
+<tr>
+<td>Run custom command</td>
+<td><code>docker run IMAGE command</code> OR <code>docker exec CONTAINER command</code></td>
+<td><code>apptainer exec image.sif command</code></td>
+</tr>
+<tr>
+<td>Start background container</td>
+<td><code>docker run -d --name NAME IMAGE</code></td>
+<td><code>apptainer instance start image.sif NAME</code></td>
+</tr>
+<tr>
+<td>Execute inside background container</td>
+<td><code>docker exec NAME command</code></td>
+<td><code>apptainer exec instance://NAME command</code></td>
+</tr>
+<tr>
+<td>Stop background container</td>
+<td><code>docker stop NAME</code></td>
+<td><code>apptainer instance stop NAME</code></td>
+</tr>
+</tbody>
+</table>
+<p>Where:
+- <code>run</code>: one-shot, default script.
+- <code>exec</code>: run any command inside.
+- <code>instance</code>: start/stop long-running containers (like daemons or workers).</p>
+<blockquote>
+<p><strong>Note</strong>: Apptainer does not have a direct equivalent of Docker Compose.
+Docker Compose is designed for orchestrating multiple long-running containers (such as services), while Apptainer is intended for HPC/scientific computing, where containers typically run single applications or batch jobs.</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer custom-footer" role="contentinfo" aria-label="Site footer">
+  <div class="md-footer__inner">
+    <div class="footer-top">
+      <div class="footer-branding">
+        <p class="site-title">
+             <a href="../..">C3 Supercomputer</a>
+        </p>
+        <p class="site-desc"></p>
+      </div>
+
+      <nav class="footer-links" aria-label="Footer links">
+        <a href="../../about/">About</a>
+        <a href="mailto:c3-uc3m@uc3m.es">Contact</a>
+        <a href="https://www.uc3m.es/home/legal-information/privacy-policy">Privacy</a>
+      </nav>
+
+      <div class="footer-images" aria-label="Partner logos">
+        <a href="https://www.aei.gob.es/" class="partner">
+          <img src="../../assets/images/publicidad-proyecto_v3.png" alt="AEI" loading="lazy">
+        </a>
+      </div>
+    </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["toc.follow", "toc.integrate", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -11,10 +11,10 @@
         <link rel="canonical" href="https://c3-uc3m.github.io/c3-web/user_docs/slurm/">
       
       
-        <link rel="prev" href="../installed_sw/">
+        <link rel="prev" href="../cluster_access/">
       
       
-        <link rel="next" href="../jupyter/">
+        <link rel="next" href="../installed_sw/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -479,29 +479,6 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../installed_sw/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    How to use Installed Software
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -555,11 +532,44 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#basic-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Commands
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#accounting" class="md-nav__link">
     <span class="md-ellipsis">
       Accounting
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Accounting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-pitfalls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common pitfalls
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ease-of-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ease of use
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -574,27 +584,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#srun" class="md-nav__link">
+  <a href="#interactive-jobs" class="md-nav__link">
     <span class="md-ellipsis">
-      srun
+      Interactive Jobs
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#sbatch" class="md-nav__link">
+  <a href="#batch-jobs" class="md-nav__link">
     <span class="md-ellipsis">
-      sbatch
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#salloc" class="md-nav__link">
-    <span class="md-ellipsis">
-      salloc
+      Batch Jobs
     </span>
   </a>
   
@@ -605,10 +606,51 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#monitor-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitor Jobs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Documentation
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installed_sw/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How to use Installed Software
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -632,6 +674,98 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Apptainer
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Apptainer
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apptainer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker2apptainer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Docker to Apptainer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -729,17 +863,104 @@
 
 
 <h1 id="slurm">Slurm</h1>
-<p>PLACEHOLDER</p>
+<p>SLURM (Simple Linux Utility for Resource Management) is a cluster management and job scheduling system used in high-performance computing (HPC) clusters. This manual covers the basic commands for submitting and managing jobs in our SLURM environment.</p>
+<h2 id="basic-commands">Basic Commands</h2>
+<ul>
+<li><strong>sinfo</strong>: Displays cluster nodes status</li>
+<li><strong>sbatch</strong>: Run a job in batch mode</li>
+<li><strong>srun</strong>: Executes an interactive job or a job step within a script/sbatch job</li>
+<li><strong>squeue</strong>: Shows active and queued jobs</li>
+<li><strong>scancel</strong>: Cancel a job</li>
+<li><strong>sacct</strong>: Shows job history</li>
+</ul>
 <h2 id="accounting">Accounting</h2>
-<p>PLACEHOLDER</p>
+<p>In order to launch jobs with Slurm (<em>sbatch</em>, <em>salloc</em>, <em>srun</em>) you must specify a billing account aka Slurm account with the <strong>-A</strong> or <strong>--account</strong> options. You can check which Slurm account your project is associated to like this:
+<div class="highlight"><pre><span></span><code>sacctmgr show user $USER withassoc format=User,Account%30
+</code></pre></div></p>
+<details class="example">
+<summary>Example output</summary>
+<div class="no-copy highlight"><pre><span></span><code><span class="o">[</span>pruebas@srvlogin02<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>sacctmgr<span class="w"> </span>show<span class="w"> </span>user<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span>withassoc<span class="w"> </span><span class="nv">format</span><span class="o">=</span>User,Account%30
+<span class="w">    </span>User<span class="w">                        </span>Account<span class="w">  </span>
+----------<span class="w"> </span>------------------------------<span class="w">  </span>
+<span class="w">  </span>pruebas<span class="w">                </span>cuentadepruebas
+</code></pre></div>
+</details>
+<h3 id="common-pitfalls">Common pitfalls</h3>
+<p>If the name of the Slurm account is too long it could be displayed with a + sign at the end, like this:
+<div class="no-copy highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="nv">pruebas@srvlogin02 ~</span><span class="p p-Indicator">]</span><span class="l l-Scalar l-Scalar-Plain">$ sacctmgr show user $USER withassoc format=User,Account</span>
+<span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">User    Account</span><span class="w">  </span>
+<span class="l l-Scalar l-Scalar-Plain">---------- ----------</span><span class="w">  </span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">pruebas cuentadep+</span>
+</code></pre></div>
+In this example, <strong>cuentadep+ is not a valid Slurm account!</strong> If you try to launch jobs with cuentadep+ you will get an error. The correct account is cuentadepruebas (the full name).</p>
+<p>To ensure that you get the full account name, specify a longer length for the account, e.g. 40 characters (<strong>Account%40</strong>) until you don’t see a + sign at the end:
+<div class="highlight"><pre><span></span><code>sacctmgr show user $USER withassoc format=User,Account%40
+sacctmgr show user $USER withassoc format=User,Account%&lt;number of characters&gt;
+</code></pre></div></p>
+<details class="warning">
+<summary>Multiple Slurm Accounts</summary>
+<p>If you are part of more than one project you will have one user login with access to multiple Slurm accounts. Let us take Bob for an example: he is a researcher working on 2 different projects, Project-Apples and Project-Oranges. Bob has a single user login (<strong>bob</strong>) with access to 2 Slurm accounts: <strong>project_apples</strong> and <strong>project_oranges</strong>. When Bob works on Project-Apples he should use the corresponding project_apples Slurm account, like this:
+<div class="highlight"><pre><span></span><code>srun -A project_apples --pty bash
+</code></pre></div></p>
+<p><strong>When you launch jobs please make sure to assign them to the correct Slurm account.</strong></p>
+</details>
+<h3 id="ease-of-use">Ease of use</h3>
+<p>If you only have one Slurm account we recommend that you add these lines at the end of your <strong>~/.bashrc</strong>. Every time you log in this will export an environment variable that contains your account name, so that you can reference it easily. Just replace <em>cuentadepruebas</em> with your full Slurm account name.
+<div class="highlight"><pre><span></span><code># set up Slurm Account
+export SLURM_BILLING_ACCOUNT=cuentadepruebas
+</code></pre></div></p>
+<p>Now you can launch jobs like this:
+<div class="highlight"><pre><span></span><code>srun -A $SLURM_BILLING_ACCOUNT --pty bash
+</code></pre></div></p>
 <h2 id="launch-jobs">Launch Jobs</h2>
-<p>PLACEHOLDER</p>
-<h3 id="srun">srun</h3>
-<p>PLACEHOLDER</p>
-<h3 id="sbatch">sbatch</h3>
-<p>PLACEHOLDER</p>
-<h3 id="salloc">salloc</h3>
-<p>PLACEHOLDER</p>
+<p>There are several ways to launch jobs in Slurm. Here we cover the two main approaches.</p>
+<h3 id="interactive-jobs">Interactive Jobs</h3>
+<p>Interactive mode is useful for tests, development or if you just need to work directly on a compute node.</p>
+<p>Example 1. Simple interactive session: Requests default resources and opens a bash shell in the allocated compute node
+<div class="highlight"><pre><span></span><code>srun -A &lt;slurm account&gt; --pty bash
+</code></pre></div></p>
+<p>Example 2. Specify resources: This requests 1 node, 4 processes (cores), 1 hour runtime and 4GB of RAM
+<div class="highlight"><pre><span></span><code>srun --account &lt;slurm account&gt; --pty --nodes=1 --ntasks=4 --time=01:00:00 --mem=4G bash
+</code></pre></div>
+For more advanced customization please check the <a href="https://slurm.schedmd.com/srun.html">official Slurm documentation for srun</a>.</p>
+<h3 id="batch-jobs">Batch Jobs</h3>
+<p>Ideal for production workloads or long jobs. We have a script that contains all job instructions.</p>
+<p>Example sbatch script (my_job.sbatch). Replace &lt;slurm account&gt; with your Slurm account
+<div class="highlight"><pre><span></span><code>#!/bin/bash
+
+#SBATCH --job-name=my_job
+#SBATCH --account=&lt;slurm account&gt;
+#SBATCH --output=output_%j.out
+#SBATCH --error=error_%j.err
+#SBATCH --ntasks=4
+#SBATCH --time=02:00:00
+#SBATCH --mem=8G
+
+# load modules (optional)
+module load python/3.10
+
+# run the program
+python my_script.py
+</code></pre></div></p>
+<p>For more advanced customization please check the <a href="https://slurm.schedmd.com/sbatch.html">official Slurm documentation for sbatch</a>.</p>
+<h2 id="monitor-jobs">Monitor Jobs</h2>
+<p>Display all running/queued jobs
+<div class="highlight"><pre><span></span><code>squeue
+</code></pre></div></p>
+<p>Display only your jobs
+<div class="highlight"><pre><span></span><code>squeue -u $USER
+</code></pre></div></p>
+<p>Check job details
+<div class="highlight"><pre><span></span><code>scontrol show job &lt;job_id&gt;
+</code></pre></div></p>
+<p>Cancel job
+<div class="highlight"><pre><span></span><code>scancel &lt;job_id&gt;
+</code></pre></div></p>
+<p>List job history
+<div class="highlight"><pre><span></span><code>sacct -u $USER
+</code></pre></div></p>
+<h2 id="additional-documentation">Additional Documentation</h2>
+<p>If you need help with something that is not covered in this guide please check the <a href="https://slurm.schedmd.com/documentation.html">official Slurm Documentation</a>.</p>
 
 
 
@@ -798,7 +1019,7 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["toc.follow", "toc.integrate"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["toc.follow", "toc.integrate", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>

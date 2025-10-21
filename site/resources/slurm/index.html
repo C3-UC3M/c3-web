@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#slurm-partitions" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -369,6 +374,21 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Slurm
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -381,6 +401,43 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#general-partions-cpu-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      General partions (CPU-only)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gpu-partitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPU partitions
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -485,12 +542,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../user_docs/installed_sw/" class="md-nav__link">
+      <a href="../../user_docs/slurm/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    How to use Installed Software
+    Slurm
     
   </span>
   
@@ -508,12 +565,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../user_docs/slurm/" class="md-nav__link">
+      <a href="../../user_docs/installed_sw/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Slurm
+    How to use Installed Software
     
   </span>
   
@@ -542,6 +599,98 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Apptainer
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Apptainer
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user_docs/apptainer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user_docs/docker2apptainer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Docker to Apptainer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -638,9 +787,46 @@
 
 
 
-  <h1>Slurm</h1>
-
-
+<h1 id="slurm-partitions">Slurm Partitions</h1>
+<h2 id="general-partions-cpu-only">General partions (CPU-only)</h2>
+<ul>
+<li><strong>cpu</strong>:<ul>
+<li>Nodes: 90 (srv[01-45,101-145])</li>
+<li>Time limit: 2 hours</li>
+</ul>
+</li>
+<li><strong>batch</strong>:<ul>
+<li>Nodes: 90 (srv[01-45,101-145])</li>
+<li>Time limit: 2 days</li>
+</ul>
+</li>
+<li><strong>large</strong>:<ul>
+<li>Nodes: 90 (srv[01-45,101-145])</li>
+<li>Time limit: 14 days</li>
+</ul>
+</li>
+</ul>
+<h2 id="gpu-partitions">GPU partitions</h2>
+<ul>
+<li><strong>gpu</strong>:<ul>
+<li>Nodes: 5 (srvgpu[01-05])</li>
+<li>Time limit: 2 hours</li>
+<li>GPUs: 37</li>
+</ul>
+</li>
+<li><strong>gpu-batch</strong>:<ul>
+<li>Nodes: 5 (srvgpu[01-05])</li>
+<li>Time limit: 2 days</li>
+<li>GPUs: 37</li>
+</ul>
+</li>
+<li><strong>gpu-large</strong>:<ul>
+<li>Nodes: 5 (srvgpu[01-05])</li>
+<li>Time limit: 14 days</li>
+<li>GPUs: 37</li>
+</ul>
+</li>
+</ul>
 
 
 
@@ -699,7 +885,7 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["toc.follow", "toc.integrate"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["toc.follow", "toc.integrate", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
