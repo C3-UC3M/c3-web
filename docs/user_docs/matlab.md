@@ -38,7 +38,7 @@ This document provides the steps to configure MATLAB to submit jobs to a cluster
     userpath
     ```
 
-    Download the Cluster MATLAB support package from [**here**](http://www.mathworks.com).  The contents of the ZIP file should be extracted into the folder returned by the call to `userpath`.
+    Download the Cluster MATLAB support package from [**here**](/c3-web/downloads/UC3M.Desktop.zip).  The contents of the ZIP file should be extracted into the folder returned by the call to `userpath`.
 
     Create a new cluster profile
     ```matlab
