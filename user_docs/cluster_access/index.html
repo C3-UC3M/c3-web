@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#docs" class="md-skip">
+        <a href="#cluster-access" class="md-skip">
           Skip to content
         </a>
       
@@ -509,16 +509,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#cluster-access" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cluster Access
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Cluster Access">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#ssh" class="md-nav__link">
     <span class="md-ellipsis">
       SSH
@@ -526,8 +516,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#rdp" class="md-nav__link">
     <span class="md-ellipsis">
       RDP
@@ -535,18 +525,13 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#transfer-files" class="md-nav__link">
     <span class="md-ellipsis">
       Transfer files
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -834,16 +819,116 @@
 
 
 
-<h1 id="docs">Docs</h1>
-<p>PLACEHOLDER</p>
-<h2 id="cluster-access">Cluster Access</h2>
-<p>PLACEHOLDER</p>
-<h3 id="ssh">SSH</h3>
-<p>PLACEHOLDER</p>
-<h3 id="rdp">RDP</h3>
-<p>PLACEHOLDER</p>
-<h3 id="transfer-files">Transfer files</h3>
-<p>PLACEHOLDER</p>
+<h1 id="cluster-access">Cluster Access</h1>
+<p>In this page you will find information about how to connect to C3. You can do it either via SSH (CLI) or RDP (GUI).</p>
+<p>Once your C3 access has been approved you will receive a welcome email with a temporary password. You will be prompted to change it the first time you log in via SSH.</p>
+<h2 id="ssh">SSH</h2>
+<p>You can connect to C3 via SSH with your username like this:
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>&lt;user_name&gt;@c3.uc3m.es
+</code></pre></div></p>
+<p>We recommend you to generate a key pair to avoid typing your password every time you log in.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Linux/macOS</label><label for="__tabbed_1_2">Windows</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Generate the SSH private/public key pair:
+<div class="highlight"><pre><span></span><code>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w"> </span>-b<span class="w"> </span><span class="m">512</span><span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>whoami<span class="k">)</span><span class="s2">@</span><span class="k">$(</span>hostname<span class="k">)</span><span class="s2">-</span><span class="k">$(</span>date<span class="w"> </span>+<span class="s1">&#39;%d-%m-%Y&#39;</span><span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span>-f<span class="w"> </span>~/.ssh/id_ed25519
+</code></pre></div>
+Now copy the public key:
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>~/.ssh/id_ed25519.pub
+</code></pre></div></p>
+<details class="example">
+<summary>It should look like this:</summary>
+<div class="nocopy highlight"><pre><span></span><code>ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG1IrqJzJwncJte06FkDJjG8wsjcNEXd1/jXOe6g+90M user@hostname-28-10-2025
+</code></pre></div>
+</details>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">ssh-keygen</span> <span class="n">-t</span> <span class="n">ed25519</span> <span class="n">-b</span> <span class="n">512</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Finally log into the cluster and paste your public key in your ~/.ssh/authorized_keys file:
+<div class="highlight"><pre><span></span><code>nano<span class="w"> </span>~/.ssh/authorized_keys
+</code></pre></div>
+Now you should be able to log into C3 without a password.</p>
+<h2 id="rdp">RDP</h2>
+<p>All login nodes provide a graphical environment through RDP. You will need an RDP client to log in in this way.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Linux</label><label for="__tabbed_2_2">Windows</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+<div class="tabbed-block"></div>
+</div>
+</div>
+<details class="warning">
+<summary>Expired Passwords</summary>
+<p>If you are trying to log in via RDP with an expired password, you might encounter issues. Remember that if you log in via SSH with an expired password, you will automatically be prompted to change it.</p>
+</details>
+<h2 id="transfer-files">Transfer files</h2>
+<p>If you need to transfer files from your computer to C3, there are many ways to do it. Here we will go over a few.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Linux/macOS (CLI)</label><label for="__tabbed_3_2">Linux/macOS (GUI)</label><label for="__tabbed_3_3">Windows (WinSCP)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Open a terminal and run this command with your username:
+<div class="highlight"><pre><span></span><code>sftp<span class="w"> </span>&lt;user_name&gt;@c3.uc3m.es
+</code></pre></div></p>
+<p>Now you have an SFTP shell from which you can upload and download files to and from the cluster.
+To upload a single file from your computer to the cluster:
+<div class="highlight"><pre><span></span><code>put &lt;local_file_path&gt; &lt;remote_file_path&gt;
+</code></pre></div></p>
+<details class="example">
+<summary>Example output</summary>
+<div class="no-copy highlight"><pre><span></span><code>sftp&gt; put /home/cosmin/test/test_file1 /home/cpetre/
+Uploading /home/cosmin/test/test_file1 to /home/cpetre/test_file1
+test_file1                                                                        100%    6     1.7KB/s   00:00    
+</code></pre></div>
+</details>
+<p>To upload an entire directory:
+<div class="highlight"><pre><span></span><code>put -r &lt;local_file_path&gt; &lt;remote_file_path&gt;
+</code></pre></div></p>
+<details class="example">
+<summary>Example output</summary>
+<div class="no-copy highlight"><pre><span></span><code>sftp&gt; put -r /home/cosmin/test/test_dir1/ /home/cpetre/
+Uploading /home/cosmin/test/test_dir1/ to /home/cpetre/test_dir1
+Entering /home/cosmin/test/test_dir1/
+test_file2                                                                        100%    7     1.7KB/s   00:00    
+test_file3                                                                        100%    7     2.1KB/s   00:00    
+</code></pre></div>
+</details>
+<p>To download a single file from the cluster to your computer:
+<div class="highlight"><pre><span></span><code>get &lt;remote_file_path&gt; &lt;local_file_path&gt;
+</code></pre></div></p>
+<details class="example">
+<summary>Example output</summary>
+<div class="no-copy highlight"><pre><span></span><code>sftp&gt; get /home/cpetre/test_file4 /home/cosmin/test/
+Fetching /home/cpetre/test_file4 to /home/cosmin/test/test_file4
+test_file4                                                                        100%   14     2.4KB/s   00:00    
+</code></pre></div>
+</details>
+<p>To download an entire directory:
+<div class="highlight"><pre><span></span><code>get -r &lt;remote_file_path&gt; &lt;local_file_path&gt;
+</code></pre></div></p>
+<details class="example">
+<summary>Example output</summary>
+<div class="no-copy highlight"><pre><span></span><code>sftp&gt; get -r /home/cpetre/test_dir2/ /home/cosmin/test/
+Fetching /home/cpetre/test_dir2/ to /home/cosmin/test/test_dir2
+Retrieving /home/cpetre/test_dir2
+test_file5                                                                        100%   16     3.1KB/s   00:00    
+test_file6                                                                        100%   16     3.1KB/s   00:00    
+test_file7                                                                        100%   16     3.1KB/s   00:00    
+</code></pre></div>
+</details>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+</div>
+</div>
+</div>
 
 
 
