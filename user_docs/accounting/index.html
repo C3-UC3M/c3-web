@@ -698,6 +698,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Accounting
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -709,6 +722,67 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use-my_account" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to use my_account
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How to use my_account">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#accounts-and-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accounts and Users
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#date-related-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Date related options
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-accountsusers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiple accounts/users
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -761,9 +835,197 @@
 
 
 <h1 id="accounting">Accounting</h1>
-<p>You can check your accounting information by running this command from any login node.</p>
-<!-- hacer un script para que los usuarios puedan sacar sus horas de uso
-que puedan ver el total, este mes y entre dos fechas cualesquiera -->
+<p>Whenever you log in you will see your accumulated compute hours for the current month (only for your user). If you need to check more details, you can run the <strong><em>my_account</em></strong> command from any login node.</p>
+<details class="example">
+<summary>You will see this after loggin in:</summary>
+<div class="no-copy highlight"><pre><span></span><code>Resource consumption for user cpetre (current month):
+--------------------------------------------------------------------------------
+Cluster/Account/User Utilization 2025-10-01T00:00:00 - 2025-10-28T11:59:59 (2379600 secs)
+Usage reported in TRES Hours
+--------------------------------------------------------------------------------
+Cluster                        Account     Login      TRES Name     Used 
+--------- ------------------------------ --------- -------------- -------- 
+uc3mhpc                cuentadepruebas    cpetre            cpu     3142 
+uc3mhpc                cuentadepruebas    cpetre       gres/gpu        0 
+
+For more information about resource usage please use the my_account command
+</code></pre></div>
+</details>
+<h2 id="how-to-use-my_account">How to use <em>my_account</em></h2>
+<p>Here you will find examples of how to use the <em>my_account</em> command.</p>
+<h3 id="accounts-and-users">Accounts and Users</h3>
+<p>Let us say you want to see the resource comsumption of an entire account, not just of your user, for the current month:
+<div class="highlight"><pre><span></span><code>my_account<span class="w"> </span>-a<span class="w"> </span>&lt;account_name&gt;<span class="w"> </span>-m
+</code></pre></div></p>
+<details class="example">
+<summary>Example Output</summary>
+<div class="no-copy highlight"><pre><span></span><code>[cpetre@srvlogin02 ~]$ my_account -a cuentadepruebas -m
+--------------------------------------------------------------------------------
+Cluster/Account/User Utilization 2025-10-01T00:00:00 - 2025-10-28T12:59:59 (2383200 secs)
+Usage reported in TRES Hours
+--------------------------------------------------------------------------------
+Cluster                        Account     Login      TRES Name     Used 
+--------- ------------------------------ --------- -------------- -------- 
+uc3mhpc                cuentadepruebas                      cpu     3142 
+uc3mhpc                cuentadepruebas                 gres/gpu        0 
+</code></pre></div>
+</details>
+<p>If you need the usage of each user in the Slurm account:
+<div class="highlight"><pre><span></span><code>my_account<span class="w"> </span>-a<span class="w"> </span>&lt;account_name&gt;<span class="w"> </span>-v<span class="w"> </span>-m
+</code></pre></div></p>
+<details class="example">
+<summary>Example Output</summary>
+<div class="no-copy highlight"><pre><span></span><code>[cpetre@srvlogin02 ~]$ my_account -a cuentadepruebas -v -m
+--------------------------------------------------------------------------------
+Cluster/Account/User Utilization 2025-10-01T00:00:00 - 2025-10-28T12:59:59 (2383200 secs)
+Usage reported in TRES Hours
+--------------------------------------------------------------------------------
+Cluster                        Account     Login      TRES Name     Used 
+--------- ------------------------------ --------- -------------- -------- 
+uc3mhpc                cuentadepruebas                      cpu     3142 
+uc3mhpc                cuentadepruebas                 gres/gpu        0 
+uc3mhpc                cuentadepruebas    cpetre            cpu     3142 
+uc3mhpc                cuentadepruebas    cpetre       gres/gpu        0 
+uc3mhpc                cuentadepruebas   pruebas            cpu       44 
+uc3mhpc                cuentadepruebas   pruebas       gres/gpu        0 
+</code></pre></div>
+</details>
+<p>If you need the usage of a specific user within a specific account:
+<div class="highlight"><pre><span></span><code>my_account<span class="w"> </span>-a<span class="w"> </span>&lt;account_name&gt;<span class="w"> </span>-u<span class="w"> </span>&lt;user_name&gt;<span class="w"> </span>-m
+</code></pre></div></p>
+<details class="example">
+<summary>Example Output</summary>
+<div class="no-copy highlight"><pre><span></span><code>[cpetre@srvlogin02 ~]$ my_account -a cuentadepruebas -u pruebas -m
+--------------------------------------------------------------------------------
+Cluster/Account/User Utilization 2025-10-01T00:00:00 - 2025-10-28T13:59:59 (2386800 secs)
+Usage reported in TRES Hours
+--------------------------------------------------------------------------------
+Cluster                        Account     Login      TRES Name        Used 
+--------- ------------------------------ --------- -------------- ----------- 
+uc3mhpc                cuentadepruebas   pruebas            cpu          44 
+uc3mhpc                cuentadepruebas   pruebas       gres/gpu           0 
+</code></pre></div>
+</details>
+<p>If you need to check a specific user's usage:
+<div class="highlight"><pre><span></span><code>my_account<span class="w"> </span>-u<span class="w"> </span>&lt;user_name&gt;<span class="w"> </span>-m
+</code></pre></div></p>
+<details class="example">
+<summary>Example Output</summary>
+<div class="no-copy highlight"><pre><span></span><code>[cpetre@srvlogin02 ~]$ my_account -u pruebas -m
+--------------------------------------------------------------------------------
+Cluster/Account/User Utilization 2025-10-01T00:00:00 - 2025-10-28T13:59:59 (2386800 secs)
+Usage reported in TRES Hours
+--------------------------------------------------------------------------------
+Cluster                        Account     Login      TRES Name        Used 
+--------- ------------------------------ --------- -------------- ----------- 
+uc3mhpc                cuentadepruebas   pruebas            cpu          44 
+uc3mhpc                cuentadepruebas   pruebas       gres/gpu           0 
+</code></pre></div>
+</details>
+<h3 id="date-related-options">Date related options</h3>
+<p>To show the usage during the current month use the <strong><em>-m</em></strong> flag:
+<div class="highlight"><pre><span></span><code>my_account<span class="w"> </span>-a<span class="w"> </span>&lt;account_name&gt;<span class="w"> </span>-m
+</code></pre></div></p>
+<details class="example">
+<summary>Example Output</summary>
+<div class="no-copy highlight"><pre><span></span><code>[cpetre@srvlogin02 ~]$ my_account -a cuentadepruebas -m
+--------------------------------------------------------------------------------
+Cluster/Account/User Utilization 2025-10-01T00:00:00 - 2025-10-28T12:59:59 (2383200 secs)
+Usage reported in TRES Hours
+--------------------------------------------------------------------------------
+Cluster                        Account     Login      TRES Name     Used 
+--------- ------------------------------ --------- -------------- -------- 
+uc3mhpc                cuentadepruebas                      cpu     3142 
+uc3mhpc                cuentadepruebas                 gres/gpu        0 
+</code></pre></div>
+</details>
+<p>To show the all-time usage (since the account was created until now) use the <strong><em>-t</em></strong> flag:
+<div class="highlight"><pre><span></span><code>my_account<span class="w"> </span>-a<span class="w"> </span>&lt;account_name&gt;<span class="w"> </span>-t
+</code></pre></div></p>
+<details class="example">
+<summary>Example Output</summary>
+<div class="no-copy highlight"><pre><span></span><code>[cpetre@srvlogin02 ~]$ my_account -a cuentadepruebas -t
+--------------------------------------------------------------------------------
+Cluster/Account/User Utilization 1970-01-01T00:00:00 - 2025-10-27T23:59:59 (1761609600 secs)
+Usage reported in TRES Hours
+--------------------------------------------------------------------------------
+Cluster                        Account     Login      TRES Name       Used 
+--------- ------------------------------ --------- -------------- ---------- 
+uc3mhpc                cuentadepruebas                      cpu    2364799 
+uc3mhpc                cuentadepruebas                 gres/gpu        953 
+</code></pre></div>
+</details>
+<p>You can also specify a custom date range with the <strong><em>-s</em></strong> and <strong><em>-e</em></strong> options. Note that the date format must be <strong>YYYY-MM-DDTHH:MM:SS</strong>:
+<div class="highlight"><pre><span></span><code>my_account<span class="w"> </span>-a<span class="w"> </span>&lt;account_name&gt;<span class="w"> </span>-s<span class="w"> </span>&lt;YYYY-MM-DDTHH:MM:SS&gt;<span class="w"> </span>-e<span class="w"> </span>&lt;YYYY-MM-DDTHH:MM:SS&gt;
+</code></pre></div></p>
+<details class="example">
+<summary>Example Output</summary>
+<div class="no-copy highlight"><pre><span></span><code>[cpetre@srvlogin02 ~]$ my_account -a cuentadepruebas -s 2025-09-01T00:00:00 -e 2025-10-31T23:59:59
+--------------------------------------------------------------------------------
+Cluster/Account/User Utilization 2025-09-01T00:00:00 - 2025-10-28T12:59:59 (4975200 secs)
+Usage reported in TRES Hours
+--------------------------------------------------------------------------------
+Cluster                        Account     Login      TRES Name     Used 
+--------- ------------------------------ --------- -------------- -------- 
+uc3mhpc                cuentadepruebas                      cpu    19027 
+uc3mhpc                cuentadepruebas                 gres/gpu      109 
+</code></pre></div>
+</details>
+<h3 id="multiple-accountsusers">Multiple accounts/users</h3>
+<p>If you need to display the usage of multiple Slurm accounts and/or users, you can specify a comma-separated list of them:
+<div class="highlight"><pre><span></span><code>my_account<span class="w"> </span>-a<span class="w"> </span>&lt;account_name&gt;<span class="o">[</span>,&lt;account_name&gt;<span class="o">]</span>*<span class="w"> </span>-t
+</code></pre></div></p>
+<details class="example">
+<summary>Example Output</summary>
+<div class="no-copy highlight"><pre><span></span><code>[cpetre@srvlogin02 ~]$ my_account -a cuentadepruebas,acct_tests_1 -t
+--------------------------------------------------------------------------------
+Cluster/Account/User Utilization 1970-01-01T00:00:00 - 2025-10-27T23:59:59 (1761609600 secs)
+Usage reported in TRES Hours
+--------------------------------------------------------------------------------
+Cluster                        Account     Login      TRES Name     Used 
+--------- ------------------------------ --------- -------------- -------- 
+uc3mhpc                   acct_tests_1                      cpu        1 
+uc3mhpc                   acct_tests_1                 gres/gpu        0 
+uc3mhpc                cuentadepruebas                      cpu  2364799 
+uc3mhpc                cuentadepruebas                 gres/gpu      953 
+</code></pre></div>
+</details>
+<div class="highlight"><pre><span></span><code>my_account<span class="w"> </span>-u<span class="w"> </span>&lt;user_name&gt;<span class="o">[</span>,&lt;user_name&gt;<span class="o">]</span>*<span class="w"> </span>-t
+</code></pre></div>
+<details class="example">
+<summary>Example Output</summary>
+<div class="no-copy highlight"><pre><span></span><code>[cpetre@srvlogin02 ~]$ my_account -u cpetre,pruebas -t
+--------------------------------------------------------------------------------
+Cluster/Account/User Utilization 1970-01-01T00:00:00 - 2025-10-27T23:59:59 (1761609600 secs)
+Usage reported in TRES Hours
+--------------------------------------------------------------------------------
+Cluster                        Account     Login      TRES Name     Used 
+--------- ------------------------------ --------- -------------- -------- 
+uc3mhpc                cuentadepruebas    cpetre            cpu     7242 
+uc3mhpc                cuentadepruebas    cpetre       gres/gpu        2 
+uc3mhpc                cuentadepruebas   pruebas            cpu       44 
+uc3mhpc                cuentadepruebas   pruebas       gres/gpu        0 
+</code></pre></div>
+</details>
+<div class="highlight"><pre><span></span><code>my_account<span class="w"> </span>-a<span class="w"> </span>&lt;account_name&gt;<span class="o">[</span>,&lt;account_name&gt;<span class="o">]</span>*<span class="w"> </span>-u<span class="w"> </span>&lt;user_name&gt;<span class="o">[</span>,&lt;user_name&gt;<span class="o">]</span>*<span class="w"> </span>-t
+</code></pre></div>
+<details class="example">
+<summary>Example Output</summary>
+<div class="no-copy highlight"><pre><span></span><code>[cpetre@srvlogin02 ~]$ my_account -a cuentadepruebas,acct_tests_1 -u cpetre,pruebas -t
+--------------------------------------------------------------------------------
+Cluster/Account/User Utilization 1970-01-01T00:00:00 - 2025-10-27T23:59:59 (1761609600 secs)
+Usage reported in TRES Hours
+--------------------------------------------------------------------------------
+Cluster                        Account     Login      TRES Name     Used 
+--------- ------------------------------ --------- -------------- -------- 
+uc3mhpc                   acct_tests_1    cpetre            cpu        1 
+uc3mhpc                   acct_tests_1    cpetre       gres/gpu        0 
+uc3mhpc                cuentadepruebas    cpetre            cpu     7242 
+uc3mhpc                cuentadepruebas    cpetre       gres/gpu        2 
+uc3mhpc                cuentadepruebas   pruebas            cpu       44 
+uc3mhpc                cuentadepruebas   pruebas       gres/gpu        0 
+</code></pre></div>
+</details>
 
 
 
