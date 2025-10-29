@@ -1,7 +1,7 @@
 # Slurm Partitions
 
 
-## General partions (CPU-only)
+## General partitions (CPU-only)
 * **cpu**:
     * Nodes: 90 (srv[01-45,101-145])
     * Time limit: 2 hours

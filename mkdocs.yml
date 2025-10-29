@@ -7,7 +7,6 @@ theme:
     logo: assets/images/C3_logo_white.png
     custom_dir: overrides
     features:
-        # - navigation.footer
         - toc.follow
         - toc.integrate
         - content.code.copy
@@ -20,10 +19,15 @@ watch:
 markdown_extensions:
   - attr_list
   - pymdownx.details
-  - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
   - pymdownx.snippets
+  - pymdownx.superfences
 
 nav:
   - Home: index.md

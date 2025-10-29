@@ -1,7 +1,7 @@
 # Accounting
 Whenever you log in you will see your accumulated compute hours for the current month (only for your user). If you need to check more details, you can run the ***my_account*** command from any login node.
 
-??? example "You will see this after loggin in:"
+??? example "You will see this after logging in:"
     ``` { .text .no-copy }
     Resource consumption for user cpetre (current month):
     --------------------------------------------------------------------------------
@@ -22,7 +22,7 @@ Whenever you log in you will see your accumulated compute hours for the current 
 Here you will find examples of how to use the *my_account* command.
 
 ### Accounts and Users
-Let us say you want to see the resource comsumption of an entire account, not just of your user, for the current month:
+Let us say you want to see the resource consumption of an entire account, not just of your user, for the current month:
 ``` { .bash }
 my_account -a <account_name> -m
 ```

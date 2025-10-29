@@ -8,4 +8,4 @@ The C3's computers include computing and storage capacity that exceeds the resou
 
 **Before using the C3 services** you have to register as a [UC3M CAI](https://www.uc3m.es/corefacilities/home) user. Please follow the instructions [here](https://www.uc3m.es/corefacilities/new-users).
 
-![C3 Photo](assets/images/1371435134390.jpg)
+![C3 Photo](/c3-web/assets/images/1371435134390.jpg)

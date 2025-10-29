@@ -59,7 +59,7 @@ This document provides the steps to configure MATLAB to submit jobs to a cluster
 
 
 ## Configuring Jobs
-Prior to submitting the job, various scheduler flags can be assigned, such as queue, e\-mail, walltime, etc.  \[*Only YYY is required OR None of these are required.*\]
+Prior to submitting the job, various scheduler flags can be assigned, such as queue, e\-mail, walltime, etc.
 
 ```matlab
 % REQUIRED
@@ -336,9 +336,10 @@ Alternatively, to retrieve job results via a graphical user interface, use the J
 ## To Learn More
 To learn more about the MATLAB Parallel Computing Toolbox, check out these resources:
 
--  [Parallel Computing Overview](http://www.mathworks.com/products/parallel-computing/index.html) 
--  [Parallel Computing Documentation](http://www.mathworks.com/help/distcomp/index.html) 
--  [Parallel Computing Coding Examples](https://www.mathworks.com/help/parallel-computing/examples.html) 
--  [Parallel Computing Tutorials](http://www.mathworks.com/products/parallel-computing/tutorials.html) 
--  [Parallel Computing Videos](http://www.mathworks.com/products/parallel-computing/videos.html) 
--  [Parallel Computing Webinars](http://www.mathworks.com/products/parallel-computing/webinars.html) 
+- [Parallel Computing Overview](http://www.mathworks.com/products/parallel-computing/index.html) 
+- [Parallel Computing Documentation](http://www.mathworks.com/help/distcomp/index.html) 
+- [Parallel Computing Coding Examples](https://www.mathworks.com/help/parallel-computing/examples.html) 
+- [Parallel Computing Tutorials](http://www.mathworks.com/products/parallel-computing/tutorials.html) 
+- [Parallel Computing Videos](http://www.mathworks.com/products/parallel-computing/videos.html) 
+- [Parallel Computing Webinars](http://www.mathworks.com/products/parallel-computing/webinars.html) 
+- [Demo Script](/c3-web/downloads/ScalingToTheClusterDemoRemote.mlx)

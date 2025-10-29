@@ -24,7 +24,7 @@ For example, if we have the next Dockerfile:
 ```bash
 #CI base 
 FROM ubuntu:16.04 
-#Doftware dependecies installation
+#Software dependencies installation
 RUN apt-get update && apt-get install build-essential -y && apt-get install nano -y 
 #Copy the app code to the container 
 COPY . /home/yourFolder/ 
@@ -66,7 +66,7 @@ From: ubuntu:16.04
 Thus, a ```.def``` file is a recipe file for building containers and it specifies the following:
 
 * ```Bootstrap / From ```: specifies the container's base image, similar to using 'FROM' in a Dockerfile in Docker. It defines the starting environment for building the container.
-* ```%labels```: specifie the metadata.
+* ```%labels```: specifies the metadata.
 * ```%environment```: defines the sets environment variables.
 * ```%post```: defines the commands run at build time (like RUN in Dockerfile).
 * ```%files```: copy files from host into container.
@@ -195,7 +195,7 @@ But, if you want to share files from the host (as a volume in Docker), you can u
 > ```
 
 
-### Diferences between run, exec and instance commands
+### Differences between run, exec and instance commands
 1. **apptainer run**
 - Runs the container’s default command (defined in %runscript in the ```.def``` file).
 - It’s like docker run IMAGE.
@@ -209,7 +209,7 @@ If %runscript in the ```.def``` has:
 %runscript
     echo "Hello from my container"
 ```
-- _You must use it when you want to define the default container behaviour._
+- _You must use it when you want to define the default container behavior._
 
 
 2. **apptainer exec**
@@ -242,7 +242,7 @@ If %runscript in the ```.def``` has:
 - _You must use instances when you want persistent state (e.g., web server, simulation workers) instead of one-off execution._
 
 
-#### Docker vs Apptainer: commands comparation 
+#### Docker vs Apptainer: commands comparison  
 | Action                              | Docker                                                        | Apptainer                                 |
 | ----------------------------------- | ------------------------------------------------------------- | ----------------------------------------- |
 | Run default command                 | `docker run IMAGE`                                            | `apptainer run image.sif`                 |
