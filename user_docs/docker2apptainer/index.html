@@ -707,19 +707,19 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#diferences-between-run-exec-and-instance-commands" class="md-nav__link">
+  <a href="#differences-between-run-exec-and-instance-commands" class="md-nav__link">
     <span class="md-ellipsis">
-      Diferences between run, exec and instance commands
+      Differences between run, exec and instance commands
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Diferences between run, exec and instance commands">
+    <nav class="md-nav" aria-label="Differences between run, exec and instance commands">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#docker-vs-apptainer-commands-comparation" class="md-nav__link">
+  <a href="#docker-vs-apptainer-commands-comparison" class="md-nav__link">
     <span class="md-ellipsis">
-      Docker vs Apptainer: commands comparation
+      Docker vs Apptainer: commands comparison
     </span>
   </a>
   
@@ -883,47 +883,47 @@ Date: September 2025 -->
 <li>metadata about the container.</li>
 </ul>
 <p>For example, if we have the next Dockerfile:</p>
-<div class="highlight"><pre><span></span><code><span class="c1">#CI base </span>
-FROM<span class="w"> </span>ubuntu:16.04<span class="w"> </span>
-<span class="c1">#Doftware dependecies installation</span>
-RUN<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>build-essential<span class="w"> </span>-y<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>nano<span class="w"> </span>-y<span class="w"> </span>
-<span class="c1">#Copy the app code to the container </span>
-COPY<span class="w"> </span>.<span class="w"> </span>/home/yourFolder/<span class="w"> </span>
-WORKDIR<span class="w"> </span>/home/yourFolder/<span class="w"> </span>
-RUN<span class="w"> </span>make<span class="w"> </span>clean<span class="w"> </span>
-RUN<span class="w"> </span>make
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1">#CI base </span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>FROM<span class="w"> </span>ubuntu:16.04<span class="w"> </span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1">#Software dependencies installation</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>RUN<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>build-essential<span class="w"> </span>-y<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>nano<span class="w"> </span>-y<span class="w"> </span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1">#Copy the app code to the container </span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>COPY<span class="w"> </span>.<span class="w"> </span>/home/yourFolder/<span class="w"> </span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>WORKDIR<span class="w"> </span>/home/yourFolder/<span class="w"> </span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>RUN<span class="w"> </span>make<span class="w"> </span>clean<span class="w"> </span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>RUN<span class="w"> </span>make
+</span></code></pre></div>
 <p><code>.def</code> file equivalent to the Dockerfile would be:</p>
-<div class="highlight"><pre><span></span><code>Bootstrap:<span class="w"> </span>docker
-From:<span class="w"> </span>ubuntu:16.04
-
-%post
-<span class="w">    </span><span class="c1"># Update and install dependencies</span>
-<span class="w">    </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>build-essential<span class="w"> </span>nano<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>rm<span class="w"> </span>-rf<span class="w"> </span>/var/lib/apt/lists/*
-
-<span class="w">    </span><span class="c1"># Go to working directory</span>
-<span class="w">    </span><span class="nb">cd</span><span class="w"> </span>/home/yorFolder
-
-<span class="w">    </span><span class="c1"># Compile the code</span>
-<span class="w">    </span>make<span class="w"> </span>clean
-<span class="w">    </span>make
-
-%files
-<span class="w">    </span>.<span class="w"> </span>/home/yourFolder
-
-%workdir
-<span class="w">    </span>/home/yourFolder
-
-%runscript
-<span class="w">    </span><span class="c1"># Default action when you run `apptainer run image.sif`</span>
-<span class="w">    </span><span class="nb">exec</span><span class="w"> </span>./main<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Bootstrap:<span class="w"> </span>docker
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>From:<span class="w"> </span>ubuntu:16.04
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>%post
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="c1"># Update and install dependencies</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>build-essential<span class="w"> </span>nano<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span>rm<span class="w"> </span>-rf<span class="w"> </span>/var/lib/apt/lists/*
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="c1"># Go to working directory</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="nb">cd</span><span class="w"> </span>/home/yorFolder
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="c1"># Compile the code</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span>make<span class="w"> </span>clean
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span>make
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>%files
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">    </span>.<span class="w"> </span>/home/yourFolder
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>%workdir
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">    </span>/home/yourFolder
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>%runscript
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">    </span><span class="c1"># Default action when you run `apptainer run image.sif`</span>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">    </span><span class="nb">exec</span><span class="w"> </span>./main<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
+</span></code></pre></div>
 <p>Thus, a <code>.def</code> file is a recipe file for building containers and it specifies the following:</p>
 <ul>
 <li><code>Bootstrap / From</code>: specifies the container's base image, similar to using 'FROM' in a Dockerfile in Docker. It defines the starting environment for building the container.</li>
-<li><code>%labels</code>: specifie the metadata.</li>
+<li><code>%labels</code>: specifies the metadata.</li>
 <li><code>%environment</code>: defines the sets environment variables.</li>
 <li><code>%post</code>: defines the commands run at build time (like RUN in Dockerfile).</li>
 <li><code>%files</code>: copy files from host into container.</li>
@@ -985,18 +985,18 @@ From:<span class="w"> </span>ubuntu:16.04
 </table>
 <h2 id="build-an-apptainer-image-sif">Build an apptainer image (.sif)</h2>
 <p>To build a docker image we use the next command:</p>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>image:name<span class="w"> </span>./myfolder
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>image:name<span class="w"> </span>./myfolder
+</span></code></pre></div>
 <p>The equivalent command to build an apptainer image would be:</p>
-<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>build<span class="w"> </span>myImage.sif<span class="w"> </span>myfile.def
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>apptainer<span class="w"> </span>build<span class="w"> </span>myImage.sif<span class="w"> </span>myfile.def
+</span></code></pre></div>
 <p>In this command you must indicate the name of a <code>.sif</code> image that you want to build and the <code>.def</code> file used to build the <code>.sif</code> image. </p>
 <blockquote>
 <p>Note: always run the build from the directory containing your source code and Makefile. Otherwise, %files won’t copy anything, and you’ll see the “cannot stat” error.</p>
 </blockquote>
 <p>If you have a docker image, you can use this image and convert it into a <code>.sif</code> file with the next command:</p>
-<p><div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>build<span class="w"> </span>imageName.sif<span class="w"> </span>docker-daemon://docker:image
-</code></pre></div>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>apptainer<span class="w"> </span>build<span class="w"> </span>imageName.sif<span class="w"> </span>docker-daemon://docker:image
+</span></code></pre></div>
 Where:</p>
 <ul>
 <li><code>docker-daemon://&lt;image&gt;:&lt;tag&gt;</code> tells Apptainer to grab the image from your local Docker daemon (not from DockerHub).</li>
@@ -1004,14 +1004,14 @@ Where:</p>
 </ul>
 <h2 id="use-sif-image-to-build-containers-or-instances">Use .sif image to build containers or instances</h2>
 <p>To run a container using a <code>.sif</code> image, you can use the next command:</p>
-<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>run<span class="w"> </span>myImage.sif
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>apptainer<span class="w"> </span>run<span class="w"> </span>myImage.sif
+</span></code></pre></div>
 <p>If you need to run a command inside of the container, you can use:</p>
-<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>myImage.sif<span class="w"> </span>./command<span class="w"> </span>arg1<span class="w"> </span>arg2
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>myImage.sif<span class="w"> </span>./command<span class="w"> </span>arg1<span class="w"> </span>arg2
+</span></code></pre></div>
 <p>If you need to open a shell inside of the container, you can use:</p>
-<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>shell<span class="w"> </span>myImage.sif
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>apptainer<span class="w"> </span>shell<span class="w"> </span>myImage.sif
+</span></code></pre></div>
 <blockquote>
 <p>Note: Unlike Docker, Apptainer does not support named background containers, so the --name and -d flags -- commonly used in the Docker commands -- don’t exist. Each apptainer exec runs the container fresh. </p>
 <p>Also, Apptainer containers are ephemeral by default — each exec runs a fresh environment, so no --name or long-running container concept like Docker. Thus, Apptainer images are immutable and ephemeral, so you cannot “name” a running instance. 
@@ -1022,65 +1022,65 @@ However, you manage multiple instances either by different bind mounts, differen
 <li><strong>Start an instance</strong> </li>
 </ol>
 <p>An instance is like a long-running container that you can exec commands into multiple times:</p>
-<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>instance<span class="w"> </span>start<span class="w"> </span>myImage.sif<span class="w"> </span>myInstanceName
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>apptainer<span class="w"> </span>instance<span class="w"> </span>start<span class="w"> </span>myImage.sif<span class="w"> </span>myInstanceName
+</span></code></pre></div>
 <p>Where:
 * <code>myImage.sif</code>  is the SIF image.
 * <code>myInstanceName</code> is the instance name (like a static container name in Docker).</p>
 <p>Once generated the Apptainer instance, you can check running instances:
-<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>instance<span class="w"> </span>list
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>apptainer<span class="w"> </span>instance<span class="w"> </span>list
+</span></code></pre></div></p>
 <ul>
 <li>
 <p>Also, you can create multiple instances of the same image, giving each a unique instance name:
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apptainer<span class="w"> </span>instance<span class="w"> </span>start<span class="w"> </span>myImage.sif<span class="w"> </span>myInstanceName0
-sudo<span class="w"> </span>apptainer<span class="w"> </span>instance<span class="w"> </span>start<span class="w"> </span>myImage.sif<span class="w"> </span>myInstanceName1
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sudo<span class="w"> </span>apptainer<span class="w"> </span>instance<span class="w"> </span>start<span class="w"> </span>myImage.sif<span class="w"> </span>myInstanceName0
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>sudo<span class="w"> </span>apptainer<span class="w"> </span>instance<span class="w"> </span>start<span class="w"> </span>myImage.sif<span class="w"> </span>myInstanceName1
+</span></code></pre></div></p>
 </li>
 <li>
 <p><strong>Execute code inside the instance</strong></p>
 </li>
 </ul>
 <p>Once generated the Apptainer instance, you can run your program inside it. For example:</p>
-<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>instance://myInstanceName<span class="w"> </span>./command<span class="w"> </span>arg1<span class="w"> </span>arg2<span class="w"> </span>&gt;<span class="w"> </span>./myFolder/myfile.txt
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>instance://myInstanceName<span class="w"> </span>./command<span class="w"> </span>arg1<span class="w"> </span>arg2<span class="w"> </span>&gt;<span class="w"> </span>./myFolder/myfile.txt
+</span></code></pre></div>
 <p>Where:
 * <code>instance://myInstanceName</code> tells Apptainer to run the command inside the already running instance.
 * All relative paths (./myFolder/myfile.txt) are relative to the container’s filesystem.</p>
 <ol>
 <li><strong>Stop the instance when done</strong></li>
 </ol>
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apptainer<span class="w"> </span>instance<span class="w"> </span>stop<span class="w"> </span>myInstanceName
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>sudo<span class="w"> </span>apptainer<span class="w"> </span>instance<span class="w"> </span>stop<span class="w"> </span>myInstanceName
+</span></code></pre></div>
 <blockquote>
 <p>Note: There is no need to bind-mount files if everything your program needs is already present inside the <code>.sif</code> image.
 But, if you want to share files from the host (as a volume in Docker), you can use --bind:</p>
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>--bind<span class="w"> </span>/host/myfolder:/home/myFolder/sink<span class="w"> </span>instance://myInstanceName<span class="w"> </span>./main<span class="w"> </span>...
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>sudo<span class="w"> </span>apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>--bind<span class="w"> </span>/host/myfolder:/home/myFolder/sink<span class="w"> </span>instance://myInstanceName<span class="w"> </span>./main<span class="w"> </span>...
+</span></code></pre></div>
 </blockquote>
-<h3 id="diferences-between-run-exec-and-instance-commands">Diferences between run, exec and instance commands</h3>
+<h3 id="differences-between-run-exec-and-instance-commands">Differences between run, exec and instance commands</h3>
 <ol>
 <li><strong>apptainer run</strong></li>
 <li>Runs the container’s default command (defined in %runscript in the <code>.def</code> file).</li>
 <li>It’s like docker run IMAGE.<ul>
 <li>Example:
-<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>run<span class="w"> </span>myImageName.sif
-</code></pre></div></li>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>apptainer<span class="w"> </span>run<span class="w"> </span>myImageName.sif
+</span></code></pre></div></li>
 </ul>
 </li>
 </ol>
 <p>If %runscript in the <code>.def</code> has:
-<div class="highlight"><pre><span></span><code>%runscript
-<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello from my container&quot;</span>
-</code></pre></div>
-- <em>You must use it when you want to define the default container behaviour.</em></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>%runscript
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello from my container&quot;</span>
+</span></code></pre></div>
+- <em>You must use it when you want to define the default container behavior.</em></p>
 <ol>
 <li><strong>apptainer exec</strong></li>
 <li>Runs a specific command inside the container.</li>
 <li>It’s like docker exec CONTAINER command.<ul>
 <li>Example:
-<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>myImageName.sif<span class="w"> </span>python3<span class="w"> </span>script.py
-</code></pre></div></li>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>myImageName.sif<span class="w"> </span>python3<span class="w"> </span>script.py
+</span></code></pre></div></li>
 </ul>
 </li>
 <li>
@@ -1094,25 +1094,25 @@ But, if you want to share files from the host (as a volume in Docker), you can u
 <ul>
 <li>
 <p>Start an instance:
-<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>instance<span class="w"> </span>start<span class="w"> </span>myImageName.sif<span class="w"> </span>myInstance
-</code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>apptainer<span class="w"> </span>instance<span class="w"> </span>start<span class="w"> </span>myImageName.sif<span class="w"> </span>myInstance
+</span></code></pre></div>
 <em>This launches a background container named myInstance.</em></p>
 </li>
 <li>
 <p>Run commands inside that instance:
-<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>instance://myinstance<span class="w"> </span>python3<span class="w"> </span>script.py
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>apptainer<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>instance://myinstance<span class="w"> </span>python3<span class="w"> </span>script.py
+</span></code></pre></div></p>
 </li>
 <li>
 <p>Stop it:
-<div class="highlight"><pre><span></span><code>apptainer<span class="w"> </span>instance<span class="w"> </span>stop<span class="w"> </span>myInstance
-</code></pre></div></p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>apptainer<span class="w"> </span>instance<span class="w"> </span>stop<span class="w"> </span>myInstance
+</span></code></pre></div></p>
 </li>
 <li><em>You must use instances when you want persistent state (e.g., web server, simulation workers) instead of one-off execution.</em></li>
 </ul>
 </li>
 </ol>
-<h4 id="docker-vs-apptainer-commands-comparation">Docker vs Apptainer: commands comparation</h4>
+<h4 id="docker-vs-apptainer-commands-comparison">Docker vs Apptainer: commands comparison</h4>
 <table>
 <thead>
 <tr>
