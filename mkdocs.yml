@@ -33,7 +33,7 @@ nav:
   - Home: index.md
   - Resources:
     - System Description: resources/system.md
-    - Lustre Distributed Filesystem: resources/lustre.md
+    - Data Storage: resources/storage.md
     - Slurm: resources/slurm.md
     - Installed Software: resources/installed_sw.md
   - Usage:
