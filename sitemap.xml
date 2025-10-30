@@ -2,66 +2,66 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://c3-uc3m.github.io/c3-web/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://c3-uc3m.github.io/c3-web/about/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://c3-uc3m.github.io/c3-web/courses/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://c3-uc3m.github.io/c3-web/resources/installed_sw/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://c3-uc3m.github.io/c3-web/resources/lustre/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://c3-uc3m.github.io/c3-web/resources/slurm/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://c3-uc3m.github.io/c3-web/resources/system/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://c3-uc3m.github.io/c3-web/user_docs/accounting/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://c3-uc3m.github.io/c3-web/user_docs/apptainer/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://c3-uc3m.github.io/c3-web/user_docs/cluster_access/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://c3-uc3m.github.io/c3-web/user_docs/docker2apptainer/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://c3-uc3m.github.io/c3-web/user_docs/install_custom_sw_spack/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://c3-uc3m.github.io/c3-web/user_docs/installed_sw/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://c3-uc3m.github.io/c3-web/user_docs/jupyter/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://c3-uc3m.github.io/c3-web/user_docs/matlab/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
     <url>
          <loc>https://c3-uc3m.github.io/c3-web/user_docs/slurm/</loc>
-         <lastmod>2025-10-29</lastmod>
+         <lastmod>2025-10-30</lastmod>
     </url>
 </urlset>

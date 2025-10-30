@@ -884,7 +884,9 @@ Now you should be able to log into C3 without a password.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Linux/macOS</label><label for="__tabbed_3_2">Windows (PowerShell)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="language-console no-copy highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>
+<div class="language-console no-copy highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="gp">local_username@local_hostname:~$ </span>sftp<span class="w"> </span>c3_username@c3.uc3m.es
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="go">Connected to c3.uc3m.es.</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="go">sftp&gt; </span>
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -1005,7 +1007,8 @@ Now you should be able to log into C3 without a password.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Linux/macOS</label><label for="__tabbed_8_2">Windows (PowerShell)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="language-console no-copy highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>
+<div class="language-console no-copy highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="gp">local_username@local_hostname:~$ </span>scp<span class="w"> </span>/home/local_username/test/test_file1<span class="w">  </span>c3_username@c3.uc3m.es:/home/c3_username/test
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="go">test_file1                                                                        100%    8     2.5KB/s   00:00    </span>
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -1024,7 +1027,9 @@ Now you should be able to log into C3 without a password.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Linux/macOS</label><label for="__tabbed_9_2">Windows (PowerShell)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="language-console no-copy highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>
+<div class="language-console no-copy highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="gp">local_username@local_hostname:~$ </span>scp<span class="w"> </span>-r<span class="w"> </span>/home/local_username/test/test_dir1/<span class="w">  </span>c3_username@c3.uc3m.es:/home/c3_username/test
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="go">test_file2                                                                        100%    8     2.1KB/s   00:00    </span>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="go">test_file3                                                                        100%    8     2.7KB/s   00:00    </span>
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -1044,7 +1049,8 @@ Now you should be able to log into C3 without a password.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Linux/macOS</label><label for="__tabbed_10_2">Windows (PowerShell)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="language-console no-copy highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>
+<div class="language-console no-copy highlight"><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="gp">local_username@local_hostname:~$ </span>scp<span class="w"> </span>c3_username@c3.uc3m.es:/home/c3_username/test/test_file4<span class="w"> </span>/home/local_username/test
+</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="go">test_file4                                                                        100%   16     3.0KB/s   00:00    </span>
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -1063,7 +1069,10 @@ Now you should be able to log into C3 without a password.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Linux/macOS</label><label for="__tabbed_11_2">Windows (PowerShell)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="language-console no-copy highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>
+<div class="language-console no-copy highlight"><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="gp">local_username@local_hostname:~$ </span>scp<span class="w"> </span>-r<span class="w"> </span>c3_username@c3.uc3m.es:/home/c3_username/test/test_dir2<span class="w"> </span>/home/local_username/test
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="go">test_file5                                                                        100%   16     2.9KB/s   00:00    </span>
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="go">test_file6                                                                        100%   16     2.9KB/s   00:00    </span>
+</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="go">test_file7                                                                        100%   16     3.0KB/s   00:00    </span>
 </span></code></pre></div>
 </div>
 <div class="tabbed-block">
