@@ -70,6 +70,9 @@ If you need to transfer files from your computer to C3, there are many ways to d
     ??? example "Now you have an SFTP shell from which you can upload and download files to and from the cluster"
         === "Linux/macOS"
             ``` { .console .no-copy }
+            local_username@local_hostname:~$ sftp c3_username@c3.uc3m.es
+            Connected to c3.uc3m.es.
+            sftp> 
             ```
         === "Windows (PowerShell)"
             ``` { .pwsh-session .no-copy }
@@ -171,6 +174,8 @@ If you need to transfer files from your computer to C3, there are many ways to d
     ??? example "Example output"
         === "Linux/macOS"
             ``` { .console .no-copy }
+            local_username@local_hostname:~$ scp /home/local_username/test/test_file1  c3_username@c3.uc3m.es:/home/c3_username/test
+            test_file1                                                                        100%    8     2.5KB/s   00:00    
             ```
         === "Windows (PowerShell)"
             ``` { .pwsh-session .no-copy }
@@ -185,6 +190,9 @@ If you need to transfer files from your computer to C3, there are many ways to d
     ??? example "Example output"
         === "Linux/macOS"
             ``` { .console .no-copy }
+            local_username@local_hostname:~$ scp -r /home/local_username/test/test_dir1/  c3_username@c3.uc3m.es:/home/c3_username/test
+            test_file2                                                                        100%    8     2.1KB/s   00:00    
+            test_file3                                                                        100%    8     2.7KB/s   00:00    
             ```
         === "Windows (PowerShell)"
             ``` { .pwsh-session .no-copy }
@@ -200,6 +208,8 @@ If you need to transfer files from your computer to C3, there are many ways to d
     ??? example "Example output"
         === "Linux/macOS"
             ``` { .console .no-copy }
+            local_username@local_hostname:~$ scp c3_username@c3.uc3m.es:/home/c3_username/test/test_file4 /home/local_username/test
+            test_file4                                                                        100%   16     3.0KB/s   00:00    
             ```
         === "Windows (PowerShell)"
             ``` { .pwsh-session .no-copy }
@@ -214,6 +224,10 @@ If you need to transfer files from your computer to C3, there are many ways to d
     ??? example "Example output"
         === "Linux/macOS"
             ``` { .console .no-copy }
+            local_username@local_hostname:~$ scp -r c3_username@c3.uc3m.es:/home/c3_username/test/test_dir2 /home/local_username/test
+            test_file5                                                                        100%   16     2.9KB/s   00:00    
+            test_file6                                                                        100%   16     2.9KB/s   00:00    
+            test_file7                                                                        100%   16     3.0KB/s   00:00    
             ```
         === "Windows (PowerShell)"
             ``` { .pwsh-session .no-copy }

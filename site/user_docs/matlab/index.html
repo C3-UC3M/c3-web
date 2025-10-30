@@ -877,203 +877,203 @@
 <p>Follow the prompts to create a new cluster profile.  Jobs will run across multiple nodes on the cluster rather than on the host machine.</p>
 <h3 id="alternate">Alternate</h3>
 <p>After logging into the cluster, start MATLAB. Call <code>configCluster</code> to create a new cluster profile.</p>
-<div class="highlight"><pre><span></span><code><span class="n">configCluster</span>
-</code></pre></div>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">configCluster</span>
+</span></code></pre></div>
 <p>Jobs will run across multiple nodes on the cluster rather than on the host machine.</p>
 </details>
 <details class="info" open="open">
 <summary>Running <strong>MATLAB on the Desktop</strong></summary>
 <p>This setup is intended for job submission when MATLAB is installed on your machine and jobs are run remotely on the cluster. You can download MATLAB <a href="https://www.mathworks.com/downloads/"><strong>here</strong></a>. This setup needs to be done once per cluster, per version of MATLAB installed on your machine.</p>
 <p>Start MATLAB and run <code>userpath</code></p>
-<div class="highlight"><pre><span></span><code><span class="nb">userpath</span>
-</code></pre></div>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">userpath</span>
+</span></code></pre></div>
 <p>Download the Cluster MATLAB support package from <a href="/c3-web/downloads/UC3M.Desktop.zip"><strong>here</strong></a>. The contents of the ZIP file should be extracted into the folder returned by the call to <code>userpath</code>.</p>
 <p>Create a new cluster profile
-<div class="highlight"><pre><span></span><code><span class="n">configCluster</span>
-</code></pre></div></p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">configCluster</span>
+</span></code></pre></div></p>
 <p>Submission to the cluster requires SSH credentials. You will be prompted for username and password or identity file (private key). The username and location of the private key will be stored in MATLAB for future sessions.</p>
 <p>Jobs will now run on the cluster rather than on the local machine.</p>
 <p><strong>NOTE</strong>: To run jobs on the local machine instead of the cluster, use the Process profile.</p>
-<div class="highlight"><pre><span></span><code><span class="c">% Get a handle to the local resources</span>
-<span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">parcluster</span><span class="p">(</span><span class="s">&#39;Processes&#39;</span><span class="p">);</span>
-</code></pre></div>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c">% Get a handle to the local resources</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">parcluster</span><span class="p">(</span><span class="s">&#39;Processes&#39;</span><span class="p">);</span>
+</span></code></pre></div>
 </details>
 <h2 id="configuring-jobs">Configuring Jobs</h2>
-<p>Prior to submitting the job, various scheduler flags can be assigned, such as queue, e-mail, walltime, etc.  [<em>Only YYY is required OR None of these are required.</em>]</p>
-<div class="highlight"><pre><span></span><code><span class="c">% REQUIRED</span>
-
-<span class="o">&lt;</span><span class="n">a</span><span class="w"> </span><span class="n">id</span><span class="p">=</span><span class="s">&quot;M_M_M_M_54b8&quot;</span><span class="o">&gt;&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
-<span class="c">% Specify an account</span>
-<span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">AccountName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;account-name&#39;</span><span class="p">;</span>
-
-<span class="c">% OPTIONAL</span>
-
-<span class="c">% Specify a constraint</span>
-<span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">Constraint</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;feature-name&#39;</span><span class="p">;</span>
-
-<span class="c">% Request email notification of job status</span>
-<span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">EmailAddress</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;user-id@uc3m.es&#39;</span><span class="p">;</span>
-
-<span class="c">% Specify number of GPUs (default: 0)</span>
-<span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">GPUsPerNode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-
-<span class="c">% Specify a particular GPU card</span>
-<span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">GPUCard</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;gpu-card&#39;</span><span class="p">;</span>
-
-<span class="c">% Specify memory to use, per core (default: 4GB)</span>
-<span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">MemPerCPU</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;6GB&#39;</span><span class="p">;</span>
-
-<span class="c">% Specify the partition</span>
-<span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">Partition</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;partition-name&#39;</span><span class="p">;</span>
-
-<span class="c">% Specify cores per node (default: 0)</span>
-<span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">ProcsPerNode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
-
-<span class="c">% Set node exclusivity (default: false)</span>
-<span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">RequireExclusiveNode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
-
-<span class="c">% Specify a reservation</span>
-<span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">Reservation</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;reservation-name&#39;</span><span class="p">;</span>
-
-<span class="c">% Specify the wall time (e.g., 1 day, 5 hours, 30 minutes)</span>
-<span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">WallTime</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;1-05:30&#39;</span><span class="p">;</span>
-</code></pre></div>
+<p>Prior to submitting the job, various scheduler flags can be assigned, such as queue, e-mail, walltime, etc.</p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c">% REQUIRED</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="o">&lt;</span><span class="n">a</span><span class="w"> </span><span class="n">id</span><span class="p">=</span><span class="s">&quot;M_M_M_M_54b8&quot;</span><span class="o">&gt;&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c">% Specify an account</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">AccountName</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;account-name&#39;</span><span class="p">;</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c">% OPTIONAL</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c">% Specify a constraint</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">Constraint</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;feature-name&#39;</span><span class="p">;</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="c">% Request email notification of job status</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">EmailAddress</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;user-id@uc3m.es&#39;</span><span class="p">;</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="c">% Specify number of GPUs (default: 0)</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">GPUsPerNode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="c">% Specify a particular GPU card</span>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">GPUCard</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;gpu-card&#39;</span><span class="p">;</span>
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="c">% Specify memory to use, per core (default: 4GB)</span>
+</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">MemPerCPU</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;6GB&#39;</span><span class="p">;</span>
+</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>
+</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="c">% Specify the partition</span>
+</span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">Partition</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;partition-name&#39;</span><span class="p">;</span>
+</span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>
+</span><span id="__span-4-27"><a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="c">% Specify cores per node (default: 0)</span>
+</span><span id="__span-4-28"><a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">ProcsPerNode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+</span><span id="__span-4-29"><a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a>
+</span><span id="__span-4-30"><a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="c">% Set node exclusivity (default: false)</span>
+</span><span id="__span-4-31"><a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">RequireExclusiveNode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+</span><span id="__span-4-32"><a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a>
+</span><span id="__span-4-33"><a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a><span class="c">% Specify a reservation</span>
+</span><span id="__span-4-34"><a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">Reservation</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;reservation-name&#39;</span><span class="p">;</span>
+</span><span id="__span-4-35"><a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a>
+</span><span id="__span-4-36"><a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a><span class="c">% Specify the wall time (e.g., 1 day, 5 hours, 30 minutes)</span>
+</span><span id="__span-4-37"><a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">WallTime</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;1-05:30&#39;</span><span class="p">;</span>
+</span></code></pre></div>
 <p>To persist changes made to <code>AdditionalProperties</code> between MATLAB sessions, save the profile</p>
-<div class="highlight"><pre><span></span><code><span class="n">c</span><span class="p">.</span><span class="n">saveProfile</span>
-</code></pre></div>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">c</span><span class="p">.</span><span class="n">saveProfile</span>
+</span></code></pre></div>
 <p>To see the values of the current configuration options, display <code>AdditionalProperties</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span>
-</code></pre></div>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span>
+</span></code></pre></div>
 <p>Unset a value when no longer needed.</p>
-<div class="highlight"><pre><span></span><code><span class="c">% Turn off email notifications</span>
-<span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">EmailAddress</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="p">;</span>
-
-<span class="c">% Don&#39;t request an entire node</span>
-<span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">RequireExclusiveNode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
-</code></pre></div>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c">% Turn off email notifications</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">EmailAddress</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;&#39;</span><span class="p">;</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c">% Don&#39;t request an entire node</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">RequireExclusiveNode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+</span></code></pre></div>
 <h2 id="interactive-jobs-running-matlab-on-the-hpc-cluster"><strong>Interactive Jobs -</strong> Running <strong>MATLAB on the HPC Cluster</strong></h2>
 <p>To run an interactive pool job on the cluster, continue to use <code>parpool</code> as before.</p>
-<div class="highlight"><pre><span></span><code><span class="c">% Get a handle to the cluster</span>
-<span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">parcluster</span><span class="p">;</span>
-
-<span class="c">% Open a pool of 64 workers on the cluster</span>
-<span class="n">pool</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">parpool</span><span class="p">(</span><span class="mi">64</span><span class="p">);</span>
-</code></pre></div>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c">% Get a handle to the cluster</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">parcluster</span><span class="p">;</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c">% Open a pool of 64 workers on the cluster</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="n">pool</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">parpool</span><span class="p">(</span><span class="mi">64</span><span class="p">);</span>
+</span></code></pre></div>
 <p>Rather than running a local pool on the host machine, the pool can now run across multiple nodes on the cluster.</p>
-<div class="highlight"><pre><span></span><code><span class="c">% Run a parfor over 1000 iterations</span>
-<span class="k">parfor</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">1000</span>
-<span class="w">    </span><span class="n">a</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">rand</span><span class="p">;</span>
-<span class="k">end</span>
-</code></pre></div>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c">% Run a parfor over 1000 iterations</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="k">parfor</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">1000</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="n">a</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">rand</span><span class="p">;</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="k">end</span>
+</span></code></pre></div>
 <p>Delete the pool when it’s no longer needed.</p>
-<div class="highlight"><pre><span></span><code><span class="c">% Delete the pool</span>
-<span class="n">pool</span><span class="p">.</span><span class="n">delete</span>
-</code></pre></div>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c">% Delete the pool</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">pool</span><span class="p">.</span><span class="n">delete</span>
+</span></code></pre></div>
 <h2 id="independent-batch-job-matlab-on-the-hpc-cluster-or-desktop"><strong>Independent Batch Job -</strong> MATLAB on the HPC Cluster or Desktop</h2>
 <p>Use the <code>batch</code> command to submit asynchronous jobs to the cluster. The <code>batch</code> command will return a job object which is used to access the output of the submitted job. See the MATLAB documentation for more help on <a href="https://www.mathworks.com/help/parallel-computing/batch.html"><code>batch</code></a>.</p>
-<div class="highlight"><pre><span></span><code><span class="c">% Get a handle to the cluster</span>
-<span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">parcluster</span><span class="p">;</span>
-
-<span class="c">% Submit job to query where MATLAB is running on the cluster</span>
-<span class="n">job</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">batch</span><span class="p">(@</span><span class="nb">pwd</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="s">&#39;CurrentFolder&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="p">);</span>
-
-<span class="c">% Query job for state</span>
-<span class="n">job</span><span class="p">.</span><span class="n">State</span>
-
-<span class="c">% If job is finished, fetch the results</span>
-<span class="n">job</span><span class="p">.</span><span class="n">fetchOutputs</span><span class="p">{</span><span class="mi">1</span><span class="p">}</span>
-
-<span class="c">% Delete the job after results are no longer needed</span>
-<span class="n">job</span><span class="p">.</span><span class="n">delete</span>
-</code></pre></div>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c">% Get a handle to the cluster</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">parcluster</span><span class="p">;</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c">% Submit job to query where MATLAB is running on the cluster</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="n">job</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">batch</span><span class="p">(@</span><span class="nb">pwd</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">{},</span><span class="w"> </span><span class="s">&#39;CurrentFolder&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;.&#39;</span><span class="p">);</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="c">% Query job for state</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="n">job</span><span class="p">.</span><span class="n">State</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="c">% If job is finished, fetch the results</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="n">job</span><span class="p">.</span><span class="n">fetchOutputs</span><span class="p">{</span><span class="mi">1</span><span class="p">}</span>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="c">% Delete the job after results are no longer needed</span>
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="n">job</span><span class="p">.</span><span class="n">delete</span>
+</span></code></pre></div>
 <p>To retrieve a list of running or completed jobs, call <code>parcluster</code> to return the cluster object. The cluster object stores an array of jobs that are listed as <code>queued</code>, <code>running</code>, <code>finished</code>, or <code>failed</code>. Retrieve and view the list of jobs as shown below.</p>
-<div class="highlight"><pre><span></span><code><span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">parcluster</span><span class="p">;</span>
-<span class="n">jobs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">Jobs</span>
-
-<span class="c">% Get a handle to the second job in the list</span>
-<span class="n">job2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">Jobs</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre></div>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">parcluster</span><span class="p">;</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">jobs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">Jobs</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c">% Get a handle to the second job in the list</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="n">job2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">Jobs</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</span></code></pre></div>
 <p>Once the job has been selected, fetch the results as previously done.</p>
 <p><code>fetchOutputs</code> is used to retrieve function output arguments; if calling <code>batch</code> with a script, use <code>load</code> instead. Data that has been written to disk on the cluster needs to be retrieved directly from the file system (e.g., via sftp).</p>
-<div class="highlight"><pre><span></span><code><span class="c">% Fetch all results from the second job in the list</span>
-<span class="n">job2</span><span class="p">.</span><span class="n">fetchOutputs</span><span class="p">{:}</span>
-
-<span class="c">% Alternate: Load results if job was a script instead of a function</span>
-<span class="n">job2</span><span class="p">.</span><span class="n">load</span>
-</code></pre></div>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c">% Fetch all results from the second job in the list</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">job2</span><span class="p">.</span><span class="n">fetchOutputs</span><span class="p">{:}</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c">% Alternate: Load results if job was a script instead of a function</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="n">job2</span><span class="p">.</span><span class="n">load</span>
+</span></code></pre></div>
 <h2 id="parallel-batch-job-matlab-on-the-hpc-cluster-or-desktop"><strong>Parallel Batch Job -</strong> MATLAB on the HPC Cluster or Desktop</h2>
 <p><code>The</code> <code>batch</code> command can also support parallel workflows. Let’s use the following example for a parallel job, which you should save separately as <code>parallel_example.m</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="k">function</span><span class="w"> </span><span class="nf">[sim_t, A] = parallel_example</span><span class="p">(</span>iter<span class="p">)</span>
-
-<span class="k">if</span><span class="w"> </span><span class="nb">nargin</span><span class="o">==</span><span class="mi">0</span>
-<span class="w">    </span><span class="n">iter</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span>
-<span class="k">end</span>
-
-<span class="nb">disp</span><span class="p">(</span><span class="s">&#39;Start sim&#39;</span><span class="p">)</span>
-
-<span class="n">t0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">tic</span><span class="p">;</span>
-<span class="k">parfor</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">iter</span>
-<span class="w">    </span><span class="n">A</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">idx</span><span class="p">;</span>
-<span class="w">    </span><span class="nb">pause</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="w">    </span><span class="n">idx</span>
-<span class="k">end</span>
-<span class="n">sim_t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">toc</span><span class="p">(</span><span class="n">t0</span><span class="p">);</span>
-
-<span class="nb">disp</span><span class="p">(</span><span class="s">&#39;Sim completed&#39;</span><span class="p">)</span>
-
-<span class="nb">save</span><span class="w"> </span><span class="n">RESULTS</span><span class="w"> </span><span class="n">A</span>
-
-<span class="k">end</span>
-</code></pre></div>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">function</span><span class="w"> </span><span class="nf">[sim_t, A] = parallel_example</span><span class="p">(</span>iter<span class="p">)</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="k">if</span><span class="w"> </span><span class="nb">nargin</span><span class="o">==</span><span class="mi">0</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">    </span><span class="n">iter</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">8</span><span class="p">;</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="k">end</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="nb">disp</span><span class="p">(</span><span class="s">&#39;Start sim&#39;</span><span class="p">)</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="n">t0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">tic</span><span class="p">;</span>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="k">parfor</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">iter</span>
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="w">    </span><span class="n">A</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">idx</span><span class="p">;</span>
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="w">    </span><span class="nb">pause</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="w">    </span><span class="n">idx</span>
+</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="k">end</span>
+</span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="n">sim_t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">toc</span><span class="p">(</span><span class="n">t0</span><span class="p">);</span>
+</span><span id="__span-14-16"><a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a>
+</span><span id="__span-14-17"><a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a><span class="nb">disp</span><span class="p">(</span><span class="s">&#39;Sim completed&#39;</span><span class="p">)</span>
+</span><span id="__span-14-18"><a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a>
+</span><span id="__span-14-19"><a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a><span class="nb">save</span><span class="w"> </span><span class="n">RESULTS</span><span class="w"> </span><span class="n">A</span>
+</span><span id="__span-14-20"><a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a>
+</span><span id="__span-14-21"><a id="__codelineno-14-21" name="__codelineno-14-21" href="#__codelineno-14-21"></a><span class="k">end</span>
+</span></code></pre></div>
 <p>This time when using the <code>batch</code> command, also specify a Pool argument.</p>
-<div class="highlight"><pre><span></span><code><span class="c">% Get a handle to the cluster</span>
-<span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">parcluster</span><span class="p">;</span>
-
-<span class="c">% Submit a batch pool job using 4 workers for 16 simulations</span>
-<span class="n">job</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">batch</span><span class="p">(@</span><span class="n">parallel_example</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="mi">16</span><span class="p">},</span><span class="w"> </span><span class="s">&#39;CurrentFolder&#39;</span><span class="p">,</span><span class="s">&#39;.&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Pool&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span>
-
-<span class="c">% View current job status</span>
-<span class="n">job</span><span class="p">.</span><span class="n">State</span>
-
-<span class="c">% Fetch the results after a finished state is retrieved</span>
-<span class="n">job</span><span class="p">.</span><span class="n">fetchOutputs</span><span class="p">{</span><span class="mi">1</span><span class="p">}</span>
-<span class="nb">ans</span><span class="w"> </span><span class="p">=</span>
-<span class="w">    </span><span class="mf">8.8872</span>
-</code></pre></div>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c">% Get a handle to the cluster</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">parcluster</span><span class="p">;</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="c">% Submit a batch pool job using 4 workers for 16 simulations</span>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="n">job</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">batch</span><span class="p">(@</span><span class="n">parallel_example</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="mi">16</span><span class="p">},</span><span class="w"> </span><span class="s">&#39;CurrentFolder&#39;</span><span class="p">,</span><span class="s">&#39;.&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Pool&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="c">% View current job status</span>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="n">job</span><span class="p">.</span><span class="n">State</span>
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="c">% Fetch the results after a finished state is retrieved</span>
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="n">job</span><span class="p">.</span><span class="n">fetchOutputs</span><span class="p">{</span><span class="mi">1</span><span class="p">}</span>
+</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="nb">ans</span><span class="w"> </span><span class="p">=</span>
+</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="w">    </span><span class="mf">8.8872</span>
+</span></code></pre></div>
 <p>The job ran in 8.89 seconds using four workers. Note that these jobs will always request <code>N+1</code> CPU cores, since one worker is required to manage the batch job and pool of workers. For example, a job that needs eight workers will request nine CPU cores.</p>
 <p>Run the same simulation again but increase the Pool size. This time, to retrieve the results later, keep track of the job ID.</p>
 <p><strong>NOTE</strong>: For some applications, there will be a diminishing return when allocating too many workers, as the overhead may exceed computation time.</p>
-<div class="highlight"><pre><span></span><code><span class="c">% Get a handle to the cluster</span>
-<span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">parcluster</span><span class="p">;</span>
-
-<span class="c">% Submit a batch pool job using 8 workers for 16 simulations</span>
-<span class="n">job</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">batch</span><span class="p">(@</span><span class="n">parallel_example</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="mi">16</span><span class="p">},</span><span class="w"> </span><span class="s">&#39;CurrentFolder&#39;</span><span class="p">,</span><span class="s">&#39;.&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Pool&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">);</span>
-
-<span class="c">% Get the job ID</span>
-<span class="n">id</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">job</span><span class="p">.</span><span class="n">ID</span>
-<span class="n">id</span><span class="w"> </span><span class="p">=</span>
-<span class="w">    </span><span class="mi">4</span>
-
-<span class="c">% Clear job from workspace (as though MATLAB exited)</span>
-<span class="nb">clear</span><span class="w"> </span><span class="n">job</span>
-</code></pre></div>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c">% Get a handle to the cluster</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">parcluster</span><span class="p">;</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="c">% Submit a batch pool job using 8 workers for 16 simulations</span>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="n">job</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">batch</span><span class="p">(@</span><span class="n">parallel_example</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="mi">16</span><span class="p">},</span><span class="w"> </span><span class="s">&#39;CurrentFolder&#39;</span><span class="p">,</span><span class="s">&#39;.&#39;</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;Pool&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">);</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="c">% Get the job ID</span>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="n">id</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">job</span><span class="p">.</span><span class="n">ID</span>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="n">id</span><span class="w"> </span><span class="p">=</span>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="w">    </span><span class="mi">4</span>
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="c">% Clear job from workspace (as though MATLAB exited)</span>
+</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="nb">clear</span><span class="w"> </span><span class="n">job</span>
+</span></code></pre></div>
 <p>With a handle to the cluster, the <code>findJob</code> method searches for the job with the specified job ID.</p>
-<div class="highlight"><pre><span></span><code><span class="c">% Get a handle to the cluster</span>
-<span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">parcluster</span><span class="p">;</span>
-
-<span class="c">% Find the old job</span>
-<span class="n">job</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">findJob</span><span class="p">(</span><span class="s">&#39;ID&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span>
-
-<span class="c">% Retrieve the state of the job</span>
-<span class="n">job</span><span class="p">.</span><span class="n">State</span>
-<span class="nb">ans</span><span class="w"> </span><span class="p">=</span>
-<span class="w">    </span><span class="n">finished</span>
-
-<span class="c">% Fetch the results</span>
-<span class="n">job</span><span class="p">.</span><span class="n">fetchOutputs</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span>
-<span class="nb">ans</span><span class="w"> </span><span class="p">=</span>
-<span class="w">    </span><span class="mf">4.7270</span>
-</code></pre></div>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c">% Get a handle to the cluster</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">parcluster</span><span class="p">;</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="c">% Find the old job</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="n">job</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">findJob</span><span class="p">(</span><span class="s">&#39;ID&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="c">% Retrieve the state of the job</span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="n">job</span><span class="p">.</span><span class="n">State</span>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="nb">ans</span><span class="w"> </span><span class="p">=</span>
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="w">    </span><span class="n">finished</span>
+</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>
+</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="c">% Fetch the results</span>
+</span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="n">job</span><span class="p">.</span><span class="n">fetchOutputs</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span>
+</span><span id="__span-17-14"><a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="nb">ans</span><span class="w"> </span><span class="p">=</span>
+</span><span id="__span-17-15"><a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a><span class="w">    </span><span class="mf">4.7270</span>
+</span></code></pre></div>
 <p>The job now runs in 4.73 seconds using eight workers. Run code with different number of workers to determine the ideal number to use.</p>
 <p>Alternatively, to retrieve job results via a graphical user interface, use the Job Monitor (<code>Parallel &gt; Monitor Jobs</code>).</p>
 <p style="text-align:left">
@@ -1088,16 +1088,16 @@
 <summary>Debugging</summary>
 <p>If a serial job produces an error, call the <code>getDebugLog</code> method to view the error log file.</p>
 <p>When submitting an independent job, specify the task.
-<div class="highlight"><pre><span></span><code><span class="n">c</span><span class="p">.</span><span class="n">getDebugLog</span><span class="p">(</span><span class="n">job</span><span class="p">.</span><span class="n">Tasks</span><span class="p">)</span>
-</code></pre></div></p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">c</span><span class="p">.</span><span class="n">getDebugLog</span><span class="p">(</span><span class="n">job</span><span class="p">.</span><span class="n">Tasks</span><span class="p">)</span>
+</span></code></pre></div></p>
 <p>For Pool jobs, only specify the job object.
-<div class="highlight"><pre><span></span><code><span class="n">c</span><span class="p">.</span><span class="n">getDebugLog</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
-</code></pre></div></p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">c</span><span class="p">.</span><span class="n">getDebugLog</span><span class="p">(</span><span class="n">job</span><span class="p">)</span>
+</span></code></pre></div></p>
 <p>When troubleshooting a job, the cluster admin may request the scheduler ID of the job. This can be derived by calling <code>getTaskSchedulerIDs</code> (call <code>schedID(job)</code> before R2019b).
-<div class="highlight"><pre><span></span><code><span class="n">job</span><span class="p">.</span><span class="n">getTaskSchedulerIDs</span><span class="p">()</span>
-<span class="nb">ans</span><span class="w"> </span><span class="p">=</span>
-<span class="w">    </span><span class="mi">25539</span>
-</code></pre></div></p>
+<div class="language-matlab highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">job</span><span class="p">.</span><span class="n">getTaskSchedulerIDs</span><span class="p">()</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="nb">ans</span><span class="w"> </span><span class="p">=</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">    </span><span class="mi">25539</span>
+</span></code></pre></div></p>
 </details>
 <details class="tip">
 <summary>Helper Functions</summary>
@@ -1152,6 +1152,7 @@
 <li><a href="http://www.mathworks.com/products/parallel-computing/tutorials.html">Parallel Computing Tutorials</a> </li>
 <li><a href="http://www.mathworks.com/products/parallel-computing/videos.html">Parallel Computing Videos</a> </li>
 <li><a href="http://www.mathworks.com/products/parallel-computing/webinars.html">Parallel Computing Webinars</a> </li>
+<li><a href="/c3-web/downloads/ScalingToTheClusterDemoRemote.mlx">Demo Script</a></li>
 </ul>
 
 
