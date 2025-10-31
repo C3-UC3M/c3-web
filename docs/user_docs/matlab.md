@@ -1,4 +1,4 @@
-# <span style="color:rgb(213,80,0)">Parallel Computing with MATLAB on the UC3M\-HPC Cluster</span>
+# <span style="color:rgb(213,80,0)">Parallel Computing with MATLAB on the C3 Cluster</span>
 This document provides the steps to configure MATLAB to submit jobs to a cluster, retrieve results, and debug errors.
 
 ## Initial Configuration
@@ -64,7 +64,6 @@ Prior to submitting the job, various scheduler flags can be assigned, such as qu
 ```matlab
 % REQUIRED
 
-<a id="M_M_M_M_54b8"></a>
 % Specify an account
 c.AdditionalProperties.AccountName = 'account-name';
 
@@ -88,7 +87,7 @@ c.AdditionalProperties.MemPerCPU = '6GB';
 % Specify the partition
 c.AdditionalProperties.Partition = 'partition-name';
 
-% Specify cores per node (default: 0)
+% Specify cores per node
 c.AdditionalProperties.ProcsPerNode = 4;
 
 % Set node exclusivity (default: false)
@@ -125,7 +124,7 @@ c.AdditionalProperties.RequireExclusiveNode = false;
 
 
 
-## **Interactive Jobs \-** Running **MATLAB on the HPC Cluster**
+## **Interactive Jobs \-** Running MATLAB on the HPC Cluster
 To run an interactive pool job on the cluster, continue to use `parpool` as before.
 
 ```matlab
@@ -313,7 +312,7 @@ Alternatively, to retrieve job results via a graphical user interface, use the J
     c.getDebugLog(job)
     ```
 
-    When troubleshooting a job, the cluster admin may request the scheduler ID of the job. This can be derived by calling `getTaskSchedulerIDs` (call `schedID(job)` before R2019b).
+    When troubleshooting a job, the cluster admin may request the scheduler ID of the job. This can be derived by calling `getTaskSchedulerIDs`.
     ```matlab
     job.getTaskSchedulerIDs()
     ans =
