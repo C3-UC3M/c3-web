@@ -1,4 +1,4 @@
-# <span style="color:rgb(213,80,0)">Parallel Computing with MATLAB on the C3 Cluster</span>
+# <span style="color:rgb(213,80,0)">Parallel Computing with MATLAB on the C3 HPC Cluster</span>
 This document provides the steps to configure MATLAB to submit jobs to a cluster, retrieve results, and debug errors.
 
 ## Initial Configuration
@@ -59,9 +59,12 @@ This document provides the steps to configure MATLAB to submit jobs to a cluster
 
 
 ## Configuring Jobs
-Prior to submitting the job, various scheduler flags can be assigned, such as queue, e\-mail, walltime, etc.
+Prior to submitting the job, various scheduler flags can be assigned, such as queue, e\-mail, walltime, etc.  \[*Only AccountName is required.*\]
 
 ```matlab
+% Get a handle to the cluster
+c = parcluster;
+
 % REQUIRED
 
 % Specify an account

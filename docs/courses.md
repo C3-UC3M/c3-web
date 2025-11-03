@@ -21,3 +21,4 @@ A collection of recommended HPC courses.
 
 ## [Practical: High-Performance Computing System Administration](https://hps.vi4io.org/teaching/autumn_term_2022/hpcsa/)
 
+## [MATLAB Self-Paced Online Courses](https://matlabacademy.mathworks.com/?page=1&sort=featured)

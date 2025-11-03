@@ -1,4 +1,4 @@
-# JupyterHub
+# JupyterLab
 This is a simple guide to launch a JupyterLab instance from a GPU node
 
 ``` { .bash }
@@ -19,6 +19,7 @@ srun -A <slurm_account> -p gpu -N 1 --gpus=1 --pty bash
 
 ``` { .bash }
 # Launch Jupyter
+module load anaconda
 conda activate lab
 jupyter lab --no-browser --ip=$(host $(hostname) | awk '/10.119.12/ {print $4}')
 ```

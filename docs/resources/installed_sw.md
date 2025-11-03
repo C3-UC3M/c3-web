@@ -39,8 +39,8 @@ Here you will find a list of available software.
 | HDF5                        | 1.14.5     | Spack (hdf5@1.14.5)          |
 | ArrayFire                   | 3.8.1      | Spack (arrayfire@3.8.1)      |
 | Apptainer                   | 1.4.1      | Local                        |
-| vim                         | nan        | Local                        |
-| emacs                       | nan        | Local (login nodes only)     |
+| vim                         | N/A        | Local                        |
+| emacs                       | N/A        | Local (login nodes only)     |
 | FFTW                        | 3.3.10     | Lmod (fftw/3.3.10)           |
 | AMD-FFTW                    | 5.0        | Spack (amdfftw@5.0)          |
 | NetCDF                      | 4.9.0      | Lmod (netcdf/4.9.0)          |
@@ -53,7 +53,7 @@ Here you will find a list of available software.
 | AOCL-libFLAME               | 5.0.       | Spack (amdlibflame@5.0)      |
 | FlexiBLAS                   | 3.4.2      | Spack (flexiblas@3.4.2)      |
 | Apache Arrow                | 18.0.0     | Spack (arrow@18.0.0)         |
-| git                         | nan        | Local                        |
+| git                         | N/A        | Local                        |
 | git                         | 2.47.0     | Spack (git@2.47.0)           |
 | autoconf                    | 2.72       | Spack(autoconf@2.72)         |
 | automake                    | 1.16.5     | Spack(automake@1.16.5)       |

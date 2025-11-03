@@ -555,9 +555,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#modules" class="md-nav__link">
+  <a href="#modules-lmod" class="md-nav__link">
     <span class="md-ellipsis">
-      Modules
+      Modules (Lmod)
     </span>
   </a>
   
@@ -569,6 +569,30 @@
       Spack
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Spack">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic commands
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced commands
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -820,13 +844,134 @@
 
 
 <h1 id="installed-software">Installed Software</h1>
-<p>PLACEHOLDER</p>
-<h2 id="modules">Modules</h2>
-<p>PLACEHOLDER</p>
+<p>Software packages on C3 are available as <strong>Lmod modules</strong> and/or <strong>Spack packages</strong>. Here we will cover how to use the provided software environment.</p>
+<h2 id="modules-lmod">Modules (Lmod)</h2>
+<p>To list available modules:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>module<span class="w"> </span>avail
+</span></code></pre></div></p>
+<details class="info">
+<summary>Default module version</summary>
+<p>If there are multiple versions of the same module, one of them will be the default version, marked with a <strong>(D)</strong>. If you load a module without specifying a version the default will be chosen.</p>
+</details>
+<p>To check which modules are currently loaded:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>module<span class="w"> </span>list
+</span></code></pre></div></p>
+<p>To load a module:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>module<span class="w"> </span>load<span class="w"> </span>&lt;module_name&gt;
+</span></code></pre></div></p>
+<p>To load a specific version:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>module<span class="w"> </span>load<span class="w"> </span>&lt;module_name&gt;/&lt;version&gt;
+</span></code></pre></div></p>
+<details class="example">
+<summary>Example</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>module<span class="w"> </span>load<span class="w"> </span>cuda/11.0
+</span></code></pre></div>
+</details>
+<p>To unload a module:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>module<span class="w"> </span>unload<span class="w"> </span>&lt;module_name&gt;
+</span></code></pre></div></p>
+<p>To swap one module for another:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>module<span class="w"> </span>swap<span class="w"> </span>&lt;module_name&gt;/&lt;version&gt;<span class="w"> </span>&lt;module_name&gt;/&lt;version&gt;
+</span></code></pre></div></p>
+<details class="example">
+<summary>Example</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>module<span class="w"> </span>switch<span class="w"> </span>cuda/12.8<span class="w"> </span>cuda/11.0
+</span></code></pre></div>
+</details>
+<p>To unload all modules:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>module<span class="w"> </span>purge
+</span></code></pre></div></p>
+<p>To get information about a module:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>module<span class="w"> </span>spider<span class="w"> </span>&lt;module_name&gt;
+</span></code></pre></div></p>
+<details class="example">
+<summary>Example</summary>
+<div class="language-console no-copy highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="gp">[user@srvlogin03 ~]$ </span>module<span class="w"> </span>spider<span class="w"> </span>cuda
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="go">--------------------------------------------------------------------------------------------------------------------------------------------------------</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="go">cuda:</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="go">--------------------------------------------------------------------------------------------------------------------------------------------------------</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="go">    Versions:</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="go">        cuda/11.0</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="go">        cuda/12.8</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="go">    Other possible modules matches:</span>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="go">        nvhpc-hpcx-2.20-cuda12  nvhpc-hpcx-cuda12</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="go">--------------------------------------------------------------------------------------------------------------------------------------------------------</span>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="go">To find other possible module matches execute:</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="gp">    $ </span>module<span class="w"> </span>-r<span class="w"> </span>spider<span class="w"> </span><span class="s1">&#39;.*cuda.*&#39;</span>
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>
+</span><span id="__span-10-17"><a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="go">--------------------------------------------------------------------------------------------------------------------------------------------------------</span>
+</span><span id="__span-10-18"><a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="go">For detailed information about a specific &quot;cuda&quot; package (including how to load the modules) use the module&#39;s full name.</span>
+</span><span id="__span-10-19"><a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="go">Note that names that have a trailing (E) are extensions provided by other modules.</span>
+</span><span id="__span-10-20"><a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="go">For example:</span>
+</span><span id="__span-10-21"><a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a>
+</span><span id="__span-10-22"><a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a><span class="gp">    $ </span>module<span class="w"> </span>spider<span class="w"> </span>cuda/12.8
+</span><span id="__span-10-23"><a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a><span class="go">--------------------------------------------------------------------------------------------------------------------------------------------------------</span>
+</span></code></pre></div>
+</details>
+<p>For more information please check the <a href="https://lmod.readthedocs.io/en/latest/">official Lmod documentation</a>.</p>
 <h2 id="spack">Spack</h2>
-<p>PLACEHOLDER</p>
+<p>Many software packages on the cluster are available through Spack. To access them you must activate the cluster Spack instance, aka <strong>global Spack</strong>:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nv">SPACK_GLOBAL_ROOT</span><span class="o">=</span>/opt/ohpc/pub/spack
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nb">source</span><span class="w"> </span><span class="si">${</span><span class="nv">SPACK_GLOBAL_ROOT</span><span class="si">}</span>/share/spack/setup-env.sh
+</span></code></pre></div>
+You can put those two lines in your <em>~/.bashrc</em> to have global Spack automatically activated every time you log in.</p>
+<p>Now we will go through some commonly used Spack commands. You can check the <a href="https://spack-tutorial.readthedocs.io/en/latest/tutorial_basics.html">official Spack documentation</a> for more details.</p>
+<h3 id="basic-commands">Basic commands</h3>
+<p>List available packages:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>spack<span class="w"> </span>find
+</span></code></pre></div></p>
+<p>Load a package:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>spack<span class="w"> </span>load<span class="w"> </span>&lt;package&gt;
+</span></code></pre></div></p>
+<p>Check which packages you have loaded:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>spack<span class="w"> </span>find<span class="w"> </span>--loaded
+</span></code></pre></div></p>
+<p>Unload a package:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>spack<span class="w"> </span>unload<span class="w"> </span>&lt;package&gt;
+</span></code></pre></div></p>
+<h3 id="advanced-commands">Advanced commands</h3>
+<p>List available packages with more details (variants, i.e. compilation options):
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>spack<span class="w"> </span>find<span class="w"> </span>-v
+</span></code></pre></div></p>
+<p>Check package information (source, versions, variants):
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>spack<span class="w"> </span>info<span class="w"> </span>&lt;package&gt;
+</span></code></pre></div></p>
+<p>List packages that were compiled with a specific compiler:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>spack<span class="w"> </span>find<span class="w"> </span>%&lt;compiler&gt;@&lt;version&gt;
+</span></code></pre></div></p>
+<details class="example">
+<summary>Example</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>spack<span class="w"> </span>find<span class="w"> </span>%gcc@12.2.0
+</span></code></pre></div>
+</details>
+<p>List available packages with their installation path:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>spack<span class="w"> </span>find<span class="w"> </span>-p
+</span></code></pre></div></p>
+<p>There could be multiple instances of the same package, with different versions and/or variants. Each package has a unique hash to identify it. List packages with hash:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>spack<span class="w"> </span>find<span class="w"> </span>-l
+</span></code></pre></div></p>
+<p>Load a specific package instance using the hash:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>spack<span class="w"> </span>load<span class="w"> </span>&lt;package&gt;/&lt;hash&gt;
+</span></code></pre></div></p>
+<p>Let us say you need a specific version of mpich that uses UCX. First list the available packages:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>spack<span class="w"> </span>find<span class="w"> </span>-vl<span class="w"> </span>mpich
+</span></code></pre></div></p>
+<details class="example">
+<summary>Available MPICH packages</summary>
+<div class="language-console no-copy highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="go">-- linux-rocky8-zen3 / aocc@5.0.0 -------------------------------</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="go">ulhdpg3 mpich@4.2.2~argobots~cuda+fortran~hcoll+hwloc+hydra~level_zero+libxml2+pci~rocm+romio~slurm+vci+verbs+wrapperrpath~xpmem build_system=autotools datatype-engine=auto device=ch4 netmod=ucx pmi=default</span>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="go">r4faawj mpich@4.2.2~argobots~cuda+fortran+hwloc+hydra~level_zero+libxml2+pci~rocm+romio~slurm+vci+verbs+wrapperrpath~xpmem build_system=autotools datatype-engine=auto device=ch4 netmod=ofi pmi=default</span>
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="go">==&gt; 2 installed packages</span>
+</span></code></pre></div>
+</details>
+<p>Now load the UCX one:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>spack<span class="w"> </span>load<span class="w"> </span>mpich/ulhdpg3
+</span></code></pre></div></p>
 <h2 id="custom-software">Custom Software</h2>
-<p>If you need additional software, you can try to install it through Spack by following <a href="../install_custom_sw_spack/">this guide</a>.</p>
+<p>If you need additional software, you can try to install it through Spack following <a href="../install_custom_sw_spack/">this guide</a>.</p>
 <p>If you cannot install it on your own, please contact us at <a href="mailto:c3-uc3m@uc3m.es">c3-uc3m@uc3m.es</a></p>
 
 

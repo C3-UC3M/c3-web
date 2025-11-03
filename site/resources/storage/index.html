@@ -765,7 +765,7 @@
 <ul>
 <li><strong>HOME</strong>: NFS volume mounted on all login and compute nodes at <em>/home</em></li>
 <li><strong>Lustre</strong>: parallel file system comprised of 16 OSTs distributed across 2 storage nodes. It is mounted on all login and compute nodes at <em>/lustre</em></li>
-<li><strong>Scratch</strong>: local NVMe scratch storage available on all compute nodes. You can access it at <em>/scratch</em>, <em>/tmp</em> and <em>/var/tmp</em> after launching a Slurm job</li>
+<li><strong>Scratch</strong>: temporary local NVMe scratch storage available on all compute nodes. You can access it at <em>/scratch</em>, <em>/tmp</em> and <em>/var/tmp</em> after launching a Slurm job. Please note that everything stored here will be automatically deleted after your Slurm job ends</li>
 </ul>
 
 

@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#jupyterhub" class="md-skip">
+        <a href="#jupyterlab" class="md-skip">
           Skip to content
         </a>
       
@@ -760,7 +760,7 @@
 
 
 
-<h1 id="jupyterhub">JupyterHub</h1>
+<h1 id="jupyterlab">JupyterLab</h1>
 <p>This is a simple guide to launch a JupyterLab instance from a GPU node</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Create a conda environment</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>module<span class="w"> </span>load<span class="w"> </span>anaconda
@@ -775,8 +775,9 @@
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>srun<span class="w"> </span>-A<span class="w"> </span>&lt;slurm_account&gt;<span class="w"> </span>-p<span class="w"> </span>gpu<span class="w"> </span>-N<span class="w"> </span><span class="m">1</span><span class="w"> </span>--gpus<span class="o">=</span><span class="m">1</span><span class="w"> </span>--pty<span class="w"> </span>bash
 </span></code></pre></div>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Launch Jupyter</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>conda<span class="w"> </span>activate<span class="w"> </span>lab
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>jupyter<span class="w"> </span>lab<span class="w"> </span>--no-browser<span class="w"> </span>--ip<span class="o">=</span><span class="k">$(</span>host<span class="w"> </span><span class="k">$(</span>hostname<span class="k">)</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;/10.119.12/ {print $4}&#39;</span><span class="k">)</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>module<span class="w"> </span>load<span class="w"> </span>anaconda
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>conda<span class="w"> </span>activate<span class="w"> </span>lab
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>jupyter<span class="w"> </span>lab<span class="w"> </span>--no-browser<span class="w"> </span>--ip<span class="o">=</span><span class="k">$(</span>host<span class="w"> </span><span class="k">$(</span>hostname<span class="k">)</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;/10.119.12/ {print $4}&#39;</span><span class="k">)</span>
 </span></code></pre></div>
 
 

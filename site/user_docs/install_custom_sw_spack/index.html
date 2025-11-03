@@ -675,6 +675,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Install Custom Software with Spack
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -686,6 +699,85 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#access-global-spack-packages-from-your-local-spack" class="md-nav__link">
+    <span class="md-ellipsis">
+      Access Global Spack packages from your Local Spack
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#before-installing-select-compilers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Before installing: select compilers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing packages
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing packages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#look-up-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Look up packages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic installation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced installation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -761,7 +853,128 @@
 
 
 <h1 id="install-your-own-sw-with-spack">Install your own SW with Spack</h1>
-<p>PLACEHOLDER</p>
+<p>You can install your own software with Spack. First install Spack in your HOME directory. We will refer to this Spack instance as <strong>local Spack</strong> to distinguish it from the cluster-provided Spack or <em>global Spack</em>.
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>--depth<span class="o">=</span><span class="m">2</span><span class="w"> </span>--branch<span class="o">=</span>releases/v1.0<span class="w"> </span>https://github.com/spack/spack.git<span class="w"> </span>~/spack
+</span></code></pre></div></p>
+<p>Activate your <strong>local Spack</strong> instance:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">SPACK_LOCAL_ROOT</span><span class="o">=</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/spack
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">source</span><span class="w"> </span><span class="si">${</span><span class="nv">SPACK_LOCAL_ROOT</span><span class="si">}</span>/share/spack/setup-env.sh
+</span></code></pre></div>
+You can put those two lines in your <em>~/.bashrc</em> instead of the <em>SPACK_GLOBAL_ROOT</em> ones to have your <strong>local Spack</strong> automatically activated every time you log in.</p>
+<p>You will see that there is nothing installed initially:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>spack<span class="w"> </span>find
+</span></code></pre></div></p>
+<h2 id="access-global-spack-packages-from-your-local-spack">Access Global Spack packages from your Local Spack</h2>
+<p>If you want to use packages from the <em>global Spack</em> instance alongside those installed by you, run this command. It will create a YAML file that configures your <strong>local Spack</strong> to see the global Spack packages as well:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt; EOF &gt; ${HOME}/spack/etc/spack/defaults/upstreams.yaml</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="s">upstreams:</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="s">    spack-instance-1:</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="s">        install_tree: /opt/ohpc/pub/spack/opt/spack</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="s">EOF</span>
+</span></code></pre></div></p>
+<p>Now you should see all the global packages:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>spack<span class="w"> </span>find
+</span></code></pre></div></p>
+<h2 id="before-installing-select-compilers">Before installing: select compilers</h2>
+<p>Before you start installing packages you should check which compilers are available to Spack. To list them:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>spack<span class="w"> </span>compilers
+</span></code></pre></div></p>
+<p>We recommend adding the AOCC compiler (clang-based, AMD-optimized). It is available from the <em>global Spack</em> instance. Load it and add it:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>spack<span class="w"> </span>load<span class="w"> </span>aocc@5.0.0
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>spack<span class="w"> </span>compiler<span class="w"> </span>find
+</span></code></pre></div></p>
+<p>Now it should show up:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>spack<span class="w"> </span>compilers
+</span></code></pre></div></p>
+<h2 id="installing-packages">Installing packages</h2>
+<p>Now we can start installing packages.</p>
+<h3 id="look-up-packages">Look up packages</h3>
+<p>List all installable packages:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>spack<span class="w"> </span>list
+</span></code></pre></div></p>
+<p>You can also search for a package:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>spack<span class="w"> </span>list<span class="w"> </span>&lt;package<span class="w"> </span>name&gt;
+</span></code></pre></div></p>
+<details class="example">
+<summary>Example</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>spack<span class="w"> </span>list<span class="w"> </span>mpi
+</span></code></pre></div>
+</details>
+<p>Once you find the package you want to install check its information (source, versions, compilation variants):
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>spack<span class="w"> </span>info<span class="w"> </span>&lt;package&gt;
+</span></code></pre></div></p>
+<h3 id="basic-installation">Basic installation</h3>
+<p>Install a package:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>spack<span class="w"> </span>install<span class="w"> </span>&lt;package&gt;
+</span></code></pre></div></p>
+<details class="example">
+<summary>Example</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>spack<span class="w"> </span>install<span class="w"> </span>mpich
+</span></code></pre></div>
+</details>
+<p>If you want a specific version:
+Install a package:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>spack<span class="w"> </span>install<span class="w"> </span>&lt;package&gt;@&lt;version&gt;
+</span></code></pre></div></p>
+<details class="example">
+<summary>Example</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>spack<span class="w"> </span>install<span class="w"> </span>mpich@4.2.3
+</span></code></pre></div>
+</details>
+<p>You can also tell Spack which compiler to use. We recommend using AOCC to produce AMD-optimized code:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>spack<span class="w"> </span>install<span class="w"> </span>&lt;package&gt;@&lt;version&gt;<span class="w"> </span>%&lt;compiler&gt;
+</span></code></pre></div></p>
+<details class="example">
+<summary>Example</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>spack<span class="w"> </span>install<span class="w"> </span>mpich@4.2.3<span class="w"> </span>%aocc
+</span></code></pre></div>
+</details>
+<p>Since there are multiple GCC versions available, you might want to specify a compiler version:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>spack<span class="w"> </span>install<span class="w"> </span>&lt;package&gt;@&lt;version&gt;<span class="w"> </span>%&lt;compiler&gt;@&lt;version&gt;
+</span></code></pre></div></p>
+<details class="example">
+<summary>Example</summary>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>spack<span class="w"> </span>install<span class="w"> </span>mpich@4.2.3<span class="w"> </span>%gcc@12.2.0
+</span></code></pre></div>
+</details>
+<h3 id="advanced-installation">Advanced installation</h3>
+<p>Now we will specify some compilation options using Spack <em>variants</em>. With <code>spack info</code> you can see all the available variants of a package. Some can be turned on and off (<em>true</em> or <em>false</em>), others have named options.</p>
+<p>Following the mpich example, let us check some of its variants:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>spack<span class="w"> </span>info<span class="w"> </span>mpich
+</span></code></pre></div>
+<div class="language-text no-copy highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>Variants:
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>    argobots [false]                false, true
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>        Enable Argobots support
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>    build_system [autotools]        autotools
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>        Build systems supported by the package
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>    cuda [false]                    false, true
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>        Build with CUDA
+</span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>    device [ch4]                    ch3, ch3:sock, ch4
+</span><span id="__span-21-9"><a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>        Abstract Device Interface (ADI)
+</span><span id="__span-21-10"><a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>        implementation. The ch4 device is in experimental state for versions
+</span><span id="__span-21-11"><a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a>        before 3.4.
+</span></code></pre></div>
+Each variant has a default value; for example <em>cuda</em> is disabled by default and <em>device</em> is configured as <em>ch4</em>.</p>
+<p>Install a package with specific variants:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>spack<span class="w"> </span>install<span class="w"> </span>&lt;package&gt;@&lt;version&gt;<span class="w"> </span>+&lt;variant<span class="w"> </span><span class="nb">set</span><span class="w"> </span>to<span class="w"> </span>true&gt;<span class="w"> </span>~&lt;variant<span class="w"> </span><span class="nb">set</span><span class="w"> </span>to<span class="w"> </span>false&gt;<span class="w"> </span>&lt;variant&gt;<span class="o">=</span>&lt;value&gt;<span class="w"> </span>%&lt;compiler&gt;@&lt;version&gt;
+</span></code></pre></div></p>
+<details class="example">
+<summary>Example</summary>
+<p>Let us say we want to install <strong>mpich</strong> with <em>argobots</em> on, <em>cuda</em> off and <em>device</em> as "ch3":
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>spack<span class="w"> </span>install<span class="w"> </span>mpich@4.2.3<span class="w"> </span>+argobots<span class="w"> </span>~cuda<span class="w"> </span><span class="nv">device</span><span class="o">=</span>ch3<span class="w"> </span>%aocc@5.0.0
+</span></code></pre></div></p>
+</details>
+<p>You can also specify version and variants for dependencies:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>spack<span class="w"> </span>install<span class="w"> </span>&lt;package&gt;@&lt;version&gt;<span class="w"> </span>&lt;variant&gt;<span class="o">=</span>&lt;value&gt;<span class="w"> </span>^&lt;dependency&gt;@&lt;dependency<span class="w"> </span>version&gt;&lt;dependency<span class="w"> </span>variants&gt;<span class="w"> </span>%&lt;compiler&gt;@&lt;version&gt;
+</span></code></pre></div></p>
+<details class="example">
+<summary>Example</summary>
+<p>Let us say we want to install <strong>mpich</strong> with <em>argobots</em> on, <em>cuda</em> off and <em>device</em> as "ch3":
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>spack<span class="w"> </span>install<span class="w"> </span>mpich@4.2.3<span class="w"> </span><span class="nv">netmod</span><span class="o">=</span>ucx<span class="w"> </span>^ucx@1.18.0<span class="w"> </span>%aocc@5.0.0
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>spack<span class="w"> </span>install<span class="w"> </span>mpich@4.2.3<span class="w"> </span><span class="nv">netmod</span><span class="o">=</span>ucx<span class="w"> </span>^ucx@1.18.0+cma~dm<span class="w"> </span>%aocc@5.0.0
+</span></code></pre></div></p>
+</details>
+<p>For more details please check the <a href="https://spack-tutorial.readthedocs.io/en/latest/tutorial_basics.html">official Spack documentation</a>.</p>
 
 
 
