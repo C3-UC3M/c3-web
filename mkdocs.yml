@@ -40,7 +40,7 @@ nav:
     - Cluster Access: user_docs/cluster_access.md
     - Slurm: user_docs/slurm.md
     - How to use Installed Software: user_docs/installed_sw.md
-    - JupyterHub: user_docs/jupyter.md
+    - JupyterLab: user_docs/jupyter.md
     - Apptainer:
       - User Guide: user_docs/apptainer.md
       - Docker to Apptainer: user_docs/docker2apptainer.md
