@@ -3,6 +3,16 @@ In this page you will find information about how to connect to C3. You can do it
 
 Once your C3 access has been approved you will receive a welcome email with a temporary password. You will be prompted to change it the first time you log in via SSH.
 
+## Password Policy
+All user passwords must follow this policy:
+
+* Must be at least 40 characters long.
+* Must include upper and lower-case characters, digits and special characters.
+* Must be renewed every 90 days.
+* You cannot reuse passwords.
+
+
+
 ## SSH
 This is the main way to connect to C3. Open a terminal window and connect to C3 via SSH with your username like this:
 ``` { .bash }
