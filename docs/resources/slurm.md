@@ -17,12 +17,12 @@
 * **gpu**:
     * Nodes: 5 (srvgpu[01-05])
     * Time limit: 2 hours
-    * GPUs: 37
+    * GPUs: 42
 * **gpu-batch**:
     * Nodes: 5 (srvgpu[01-05])
     * Time limit: 2 days
-    * GPUs: 37
+    * GPUs: 42
 * **gpu-large**:
     * Nodes: 5 (srvgpu[01-05])
     * Time limit: 14 days
-    * GPUs: 37
+    * GPUs: 42
