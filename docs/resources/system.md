@@ -14,6 +14,6 @@ The C3 supercomputing cluster has the following technical specifications:
 
 * High availability storage system featuring:
     * Lustre FS, with 546TB of capacity and high redundancy.
-    * NFS with DRAM access, and 48TB of capacity.
+    * NFS with RDMA access, and 48TB of capacity.
 
 * 100Gbps HDR Infiniband network for computation and data storage.
