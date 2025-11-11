@@ -40,6 +40,7 @@ Here you will find a list of available software.
 | ArrayFire                   | 3.8.1      | Spack (arrayfire@3.8.1)      |
 | Apptainer                   | 1.4.1      | Local                        |
 | vim                         | N/A        | Local                        |
+| tmux                        | N/A        | Local                        |
 | emacs                       | N/A        | Local (login nodes only)     |
 | FFTW                        | 3.3.10     | Lmod (fftw/3.3.10)           |
 | AMD-FFTW                    | 5.0        | Spack (amdfftw@5.0)          |
