@@ -1,5 +1,5 @@
 # Cluster Access
-In this page you will find information about how to connect to C3. You can do it either via SSH (CLI) or RDP (GUI).
+In this page you will find information about how to connect to C3. You can do it either via SSH (CLI) or RDP (GUI), but **you must connected to eduroam or the UC3M VPN** first.
 
 Once your C3 access has been approved you will receive a welcome email with a temporary password. You will be prompted to change it the first time you log in via SSH.
 
