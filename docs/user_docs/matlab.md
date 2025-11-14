@@ -128,31 +128,32 @@ c.AdditionalProperties.RequireExclusiveNode = false;
 
 
 ## **Interactive Jobs \-** Running MATLAB on the HPC Cluster
-To run an interactive pool job on the cluster, continue to use `parpool` as before.
+??? warning "Currently not working"
+    To run an interactive pool job on the cluster, continue to use `parpool` as before.
 
-```matlab
-% Get a handle to the cluster
-c = parcluster;
+    ```matlab
+    % Get a handle to the cluster
+    c = parcluster;
 
-% Open a pool of 64 workers on the cluster
-pool = c.parpool(64);
-```
+    % Open a pool of 64 workers on the cluster
+    pool = c.parpool(64);
+    ```
 
- Rather than running a local pool on the host machine, the pool can now run across multiple nodes on the cluster.
+    Rather than running a local pool on the host machine, the pool can now run across multiple nodes on the cluster.
 
-```matlab
-% Run a parfor over 1000 iterations
-parfor idx = 1:1000
-    a(idx) = rand;
-end
-```
+    ```matlab
+    % Run a parfor over 1000 iterations
+    parfor idx = 1:1000
+        a(idx) = rand;
+    end
+    ```
 
- Delete the pool when it’s no longer needed.
+    Delete the pool when it’s no longer needed.
 
-```matlab
-% Delete the pool
-pool.delete
-```
+    ```matlab
+    % Delete the pool
+    pool.delete
+    ```
 
 
 
@@ -284,7 +285,7 @@ ans =
     finished
 
 % Fetch the results
-job.fetchOutputs{1};
+job.fetchOutputs{1}
 ans =
     4.7270
 ```
