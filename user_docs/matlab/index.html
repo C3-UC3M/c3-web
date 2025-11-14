@@ -976,6 +976,8 @@
 </span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="n">c</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">RequireExclusiveNode</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 </span></code></pre></div>
 <h2 id="interactive-jobs-running-matlab-on-the-hpc-cluster"><strong>Interactive Jobs -</strong> Running MATLAB on the HPC Cluster</h2>
+<details class="warning">
+<summary>Currently not working</summary>
 <p>To run an interactive pool job on the cluster, continue to use <code>parpool</code> as before.</p>
 <div class="language-matlab highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c">% Get a handle to the cluster</span>
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">parcluster</span><span class="p">;</span>
@@ -993,6 +995,7 @@
 <div class="language-matlab highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c">% Delete the pool</span>
 </span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">pool</span><span class="p">.</span><span class="n">delete</span>
 </span></code></pre></div>
+</details>
 <h2 id="independent-batch-job-matlab-on-the-hpc-cluster-or-desktop"><strong>Independent Batch Job -</strong> MATLAB on the HPC Cluster or Desktop</h2>
 <p>Use the <code>batch</code> command to submit asynchronous jobs to the cluster. The <code>batch</code> command will return a job object which is used to access the output of the submitted job. See the MATLAB documentation for more help on <a href="https://www.mathworks.com/help/parallel-computing/batch.html"><code>batch</code></a>.</p>
 <div class="language-matlab highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c">% Get a handle to the cluster</span>
@@ -1094,7 +1097,7 @@
 </span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="w">    </span><span class="n">finished</span>
 </span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>
 </span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="c">% Fetch the results</span>
-</span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="n">job</span><span class="p">.</span><span class="n">fetchOutputs</span><span class="p">{</span><span class="mi">1</span><span class="p">};</span>
+</span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="n">job</span><span class="p">.</span><span class="n">fetchOutputs</span><span class="p">{</span><span class="mi">1</span><span class="p">}</span>
 </span><span id="__span-17-14"><a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="nb">ans</span><span class="w"> </span><span class="p">=</span>
 </span><span id="__span-17-15"><a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a><span class="w">    </span><span class="mf">4.7270</span>
 </span></code></pre></div>
