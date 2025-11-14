@@ -957,6 +957,10 @@ In this example, <strong>cuentadep+ is not a valid Slurm account!</strong> If yo
 <p>Now you can launch jobs like this:
 <div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>srun -A $SLURM_BILLING_ACCOUNT --pty bash
 </span></code></pre></div></p>
+<details class="warning" open="open">
+<summary>Billing for Exclusive Jobs</summary>
+<p>If you submit jobs with the <code>--exclusive</code> flag, you will be <strong>billed for all node resources</strong> (all CPU cores and all GPUs), even if you specify a limited number of cores/GPUs.</p>
+</details>
 <h2 id="launch-jobs">Launch Jobs</h2>
 <p>There are several ways to launch jobs in Slurm. Here we cover the two main approaches.</p>
 <h3 id="interactive-jobs">Interactive Jobs</h3>
