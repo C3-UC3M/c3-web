@@ -63,6 +63,8 @@ Now you can launch jobs like this:
 srun -A $SLURM_BILLING_ACCOUNT --pty bash
 ```
 
+???+ warning "Billing for Exclusive Jobs"
+    If you submit jobs with the `--exclusive` flag, you will be **billed for all node resources** (all CPU cores and all GPUs), even if you specify a limited number of cores/GPUs.
 
 
 ## Launch Jobs
