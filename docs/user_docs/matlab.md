@@ -1,5 +1,10 @@
 # <span style="color:rgb(213,80,0)">Parallel Computing with MATLAB on the C3 HPC Cluster</span>
-This document provides the steps to configure MATLAB to submit jobs to a cluster, retrieve results, and debug errors.
+This document provides the steps to configure MATLAB to submit jobs to the C3 cluster, retrieve results, and debug errors.
+
+???+ info "**Compatible MATLAB versions**"
+    **R2025a**
+
+    **R2025b**
 
 ## Initial Configuration
 ??? info "Running **MATLAB on the HPC Cluster**"
@@ -109,13 +114,13 @@ To persist changes made to `AdditionalProperties` between MATLAB sessions, save 
 c.saveProfile
 ```
 
- To see the values of the current configuration options, display `AdditionalProperties`.
+To see the values of the current configuration options, display `AdditionalProperties`.
 
 ```matlab
 c.AdditionalProperties
 ```
 
- Unset a value when no longer needed.
+Unset a value when no longer needed.
 
 ```matlab
 % Turn off email notifications
