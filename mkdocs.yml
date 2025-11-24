@@ -11,6 +11,10 @@ theme:
         - toc.integrate
         - content.code.copy
 
+plugins:
+  - search
+  - blog
+
 watch:
   - mkdocs.yml
   - docs/
@@ -47,8 +51,8 @@ nav:
     - MATLAB: user_docs/matlab.md
     - Install Custom Software with Spack: user_docs/install_custom_sw_spack.md
     - Accounting: user_docs/accounting.md
-  - News: 
-    - blog/index.md
+  # - News: 
+    # - blog/index.md
   - HPC Courses: courses.md
 
 extra_css:
