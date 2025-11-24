@@ -2,8 +2,8 @@
 draft: false 
 date: 2025-11-03 
 categories:
-  - Hello
   - Welcome
+pin: true
 ---
 
 # 🎉 Welcome to C3 site! 🌍

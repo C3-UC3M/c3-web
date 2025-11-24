@@ -6,12 +6,6 @@ The C3 provides computing power, storage, and technical support to its users to 
 
 The C3's computers include computing and storage capacity that exceeds the resources available in standard systems, making them particularly suitable for numerical simulations, biocomputing, and artificial intelligence, given their volume of resources, both in CPUs and in reliable storage capacity.
 
-**Before using the C3 services** you have to register as a [UC3M CAI](https://www.uc3m.es/corefacilities/home) user. Please follow the instructions [here](https://www.uc3m.es/corefacilities/new-users).
-
-Once you have registered as a CAI user you can request access to C3 by filling out [this form](https://aplicaciones.uc3m.es/formulario/c3_solicitud).
-
-If you need more or less resources than you initially estimated or if you want to change which researchers have access to your project, please fill out [this modification form](https://aplicaciones.uc3m.es/formulario/c3_modificacion_solicitud). Make sure to include the complete list of the resources that you need, all the users that should have access, and the form ID number of the initial form you submitted.
-
-You can also find these forms on the [C3 CAI website](https://www.uc3m.es/corefacilities/C3).
+**Before using the C3 services** you have to request access following [**these instructions**](cai.md).
 
 ![C3 Photo](/c3-web/assets/images/1371435134390.jpg)

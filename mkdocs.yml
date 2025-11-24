@@ -13,7 +13,11 @@ theme:
 
 plugins:
   - search
-  - blog
+  - blog:
+      archive_date_format: MMMM yyyy
+      categories_allowed:
+        - Welcome
+        - Visit
 
 watch:
   - mkdocs.yml
@@ -35,6 +39,7 @@ markdown_extensions:
 
 nav:
   - Home: index.md
+  - Request Access: cai.md
   - Resources:
     - System Description: resources/system.md
     - Data Storage: resources/storage.md
@@ -51,8 +56,8 @@ nav:
     - MATLAB: user_docs/matlab.md
     - Install Custom Software with Spack: user_docs/install_custom_sw_spack.md
     - Accounting: user_docs/accounting.md
-  # - News: 
-    # - blog/index.md
+  - News:
+    - Blog: blog/index.md
   - HPC Courses: courses.md
 
 extra_css:
