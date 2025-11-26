@@ -58,6 +58,7 @@ nav:
     - Accounting: user_docs/accounting.md
   - News:
     - Blog: blog/index.md
+  - Use cases: use_cases.md
   - HPC Courses: courses.md
 
 extra_css:
