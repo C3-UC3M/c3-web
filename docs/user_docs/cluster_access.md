@@ -16,7 +16,7 @@ All user passwords must follow this policy:
 ## Login Nodes
 C3 is equipped with 2 login nodes.
 
-The preferred way is to access the cluster is through `c3.uc3m.es`, but you can also connect directly to `login[02-03].c3.uc3m.es`.
+The **preferred way to access the cluster is through `c3.uc3m.es`**, but you can also connect directly to `login[02-03].c3.uc3m.es` if available.
 
 
 
