@@ -1,5 +1,5 @@
 # Cluster Access
-In this page you will find information about how to connect to C3. You can do it either via SSH (CLI) or RDP (GUI), but **you must connected to eduroam or the UC3M VPN** first.
+In this page you will find information about how to connect to C3. You can do it either via SSH (CLI) or RDP (GUI), but **you must be connected to eduroam or the UC3M VPN** first.
 
 Once your C3 access has been approved you will receive a welcome email with a temporary password. **Make sure you log in through SSH the first time**, as you will be prompted to change your password. You cannot log in via RDP with the temporary password.
 
@@ -10,6 +10,13 @@ All user passwords must follow this policy:
 * Must include upper and lower-case characters, digits and special characters.
 * Must be renewed every 90 days.
 * You cannot reuse passwords.
+
+
+
+## Login Nodes
+C3 is equipped with 2 login nodes.
+
+The preferred way is to access the cluster is through `c3.uc3m.es`, but you can also connect directly to `login[02-03].c3.uc3m.es`.
 
 
 
