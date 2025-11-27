@@ -540,6 +540,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#login-nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Login Nodes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ssh" class="md-nav__link">
     <span class="md-ellipsis">
       SSH
@@ -1110,7 +1119,7 @@
 
 
 <h1 id="cluster-access">Cluster Access</h1>
-<p>In this page you will find information about how to connect to C3. You can do it either via SSH (CLI) or RDP (GUI), but <strong>you must connected to eduroam or the UC3M VPN</strong> first.</p>
+<p>In this page you will find information about how to connect to C3. You can do it either via SSH (CLI) or RDP (GUI), but <strong>you must be connected to eduroam or the UC3M VPN</strong> first.</p>
 <p>Once your C3 access has been approved you will receive a welcome email with a temporary password. <strong>Make sure you log in through SSH the first time</strong>, as you will be prompted to change your password. You cannot log in via RDP with the temporary password.</p>
 <h2 id="password-policy">Password Policy</h2>
 <p>All user passwords must follow this policy:</p>
@@ -1120,6 +1129,9 @@
 <li>Must be renewed every 90 days.</li>
 <li>You cannot reuse passwords.</li>
 </ul>
+<h2 id="login-nodes">Login Nodes</h2>
+<p>C3 is equipped with 2 login nodes.</p>
+<p>The preferred way is to access the cluster is through <code>c3.uc3m.es</code>, but you can also connect directly to <code>login[02-03].c3.uc3m.es</code>.</p>
 <h2 id="ssh">SSH</h2>
 <p>This is the main way to connect to C3. Open a terminal window and connect to C3 via SSH with your username like this:
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ssh<span class="w"> </span>&lt;user_name&gt;@c3.uc3m.es
