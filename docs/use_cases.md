@@ -1,4 +1,3 @@
 # Use Cases
 
-## EpiGraph
-[Video](https://youtu.be/nvsTMLhq9z8)
+## EpiGraph: an agent-based simulator ([Video](https://youtu.be/nvsTMLhq9z8))
