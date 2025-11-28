@@ -133,8 +133,39 @@
   opacity: 1;
 }
 
-.inline-block {
-  display: inline-block;
+
+/* 1. Contenedor de la Cuadrícula (Grid Container) */
+.grid-container {
+    display: grid;
+    /* Define 3 columnas de igual ancho */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 45px; /* Espacio entre las columnas */
+    margin: 45px 0;
+}
+
+/* 2. Estilo de cada Tarjeta de Miembro */
+.video-block {
+    text-align: center;
+    /* Ajustes visuales para la tarjeta */
+}
+
+/* 3. Estilo para la Imagen Circular */
+.video-block img.circle {
+    /* Define un tamaño fijo y asegura que sea cuadrada */
+    width: 150px;
+    height: 150px;
+    object-fit: cover; /* Recorta la imagen para que quepa */
+    border-radius: 50%; /* ¡Esto la hace circular! */
+    margin: 0 auto 10px auto;
+    display: block;
+}
+
+/* 4. Adaptación a móviles (Responsive Design) */
+@media (max-width: 900px) {
+    /* En pantallas más pequeñas, cambia a 1 columna */
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media screen and (max-width: 700px) {
