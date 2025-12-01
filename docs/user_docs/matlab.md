@@ -132,36 +132,6 @@ c.AdditionalProperties.RequireExclusiveNode = false;
 
 
 
-## **Interactive Jobs \-** Running MATLAB on the HPC Cluster
-??? warning "Currently not working"
-    To run an interactive pool job on the cluster, continue to use `parpool` as before.
-
-    ```matlab
-    % Get a handle to the cluster
-    c = parcluster;
-
-    % Open a pool of 64 workers on the cluster
-    pool = c.parpool(64);
-    ```
-
-    Rather than running a local pool on the host machine, the pool can now run across multiple nodes on the cluster.
-
-    ```matlab
-    % Run a parfor over 1000 iterations
-    parfor idx = 1:1000
-        a(idx) = rand;
-    end
-    ```
-
-    Delete the pool when it’s no longer needed.
-
-    ```matlab
-    % Delete the pool
-    pool.delete
-    ```
-
-
-
 ## **Independent Batch Job \-** MATLAB on the HPC Cluster or Desktop
 Use the `batch` command to submit asynchronous jobs to the cluster. The `batch` command will return a job object which is used to access the output of the submitted job. See the MATLAB documentation for more help on [`batch`](https://www.mathworks.com/help/parallel-computing/batch.html).
 

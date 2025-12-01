@@ -33,14 +33,3 @@
         </div>
     </div>
 </div>
-
-
-
-<!-- <div class="video-wrapper">
-  <iframe src="https://www.youtube-nocookie.com/embed/nvsTMLhq9z8"
-          title="EpiGraph"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-  </iframe>
-</div> -->
