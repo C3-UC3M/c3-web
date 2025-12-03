@@ -49,6 +49,7 @@ nav:
     - Cluster Access: user_docs/cluster_access.md
     - Slurm: user_docs/slurm.md
     - How to use Installed Software: user_docs/installed_sw.md
+    - Storage and Quotas: user_docs/storage.md
     - Accounting: user_docs/accounting.md
     - JupyterLab: user_docs/jupyter.md
     - Apptainer:
