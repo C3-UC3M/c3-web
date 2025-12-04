@@ -1,8 +1,8 @@
 ---
-draft: false 
-date: 2025-11-24 
+draft: false
+date: 2025-11-24
 categories:
-  - Visit
+  - Events
 ---
 
 # Students visit C3

@@ -1,6 +1,6 @@
 ---
-draft: false 
-date: 2025-11-03 
+draft: false
+date: 2025-11-03
 categories:
   - Welcome
 pin: true
