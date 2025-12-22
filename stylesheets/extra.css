@@ -160,6 +160,31 @@
     display: block;
 }
 
+.pdf-container {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+}
+
+.pdf-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.pdf-presentation {
+  position: relative;
+  width: 100%;
+  height: 85vh;
+  background: #000;
+}
+
+.pdf-presentation iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
 /* 4. Adaptación a móviles (Responsive Design) */
 @media (max-width: 900px) {
     /* En pantallas más pequeñas, cambia a 1 columna */
