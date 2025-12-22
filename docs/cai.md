@@ -1,6 +1,8 @@
 # Request Access
 
 ## How to request access to C3
+The following steps must be performed only by the Principal Investigator of your research project. Please contact your PI if you need access to C3.
+
 1. Register as a [CAI user](https://www.uc3m.es/corefacilities/new-users). **Important for UC3M users**: you must specify the project code for invoicing.
 
 2. Fill out [this form](https://aplicaciones.uc3m.es/formulario/c3_solicitud).

@@ -5,9 +5,10 @@ function loadVideo(element, videoId) {
   element.replaceWith(wrapper);
 }
 
-function loadPresentation(element, presentationPath) {
-  const wrapper = document.createElement('div');
-  wrapper.className = 'pdf-presentation';
-  wrapper.innerHTML = `<iframe src="/c3-web/assets/pdfjs/web/viewer.html?file=${presentationPath}#page=1&zoom=page-fit" allowfullscreen</iframe>`;
-  element.replaceWith(wrapper);
+
+function openPresentation(presentationPath) {
+  const viewerUrl =
+    `/c3-web/assets/pdfjs/web/viewer.html?file=${encodeURIComponent(presentationPath)}#presentationMode=true`;
+
+  window.open(viewerUrl, "_blank", "noopener,noreferrer");
 }
