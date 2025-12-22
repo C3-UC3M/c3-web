@@ -8,4 +8,9 @@ The C3's computers include computing and storage capacity that exceeds the resou
 
 **Before using the C3 services** you have to request access following [**these instructions**](cai.md).
 
-![C3 Photo](/c3-web/assets/images/1371435134390.jpg)
+<div onclick="loadPresentation(this, '/c3-web/assets/slides/C3_presentation.pdf')">
+    <img loading="lazy" src="/c3-web/assets/images/1371435134390.jpg" alt="C3 Photo">
+    <div class="play-button">
+        <div class="play-icon"></div>
+    </div>
+</div>
