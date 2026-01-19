@@ -354,3 +354,14 @@ To learn more about the MATLAB Parallel Computing Toolbox, check out these resou
 - [Parallel Computing Webinars](http://www.mathworks.com/products/parallel-computing/webinars.html) 
 - [Demo Script](/c3-web/downloads/ScalingToTheClusterDemoRemote.mlx)
 - [MATLAB and Simulink Access for UC3M](https://www.mathworks.com/academia/tah-portal/uc3m-31146377.html)
+- High Performance Computing with MATLAB (slides)
+<button class="presentation-launcher"
+    onclick="openPresentation('/c3-web/assets/slides/C3_HPC_con_MATLAB.pdf')"
+    aria-label="Start presentation: Presentation slides"
+    title="Open slides">
+    <img loading="lazy" src="/c3-web/assets/images/thumbnails/C3_HPC_con_MATLAB-thumb.jpg" alt="Preview image for presentation slides">
+    <span class="play-button" aria-hidden="true">
+        <span class="play-icon"></span>
+    </span>
+</button>
+
