@@ -18,6 +18,7 @@ plugins:
       categories_allowed:
         - Welcome
         - Events
+        - Interviews
 
 watch:
   - mkdocs.yml
