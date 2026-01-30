@@ -5,6 +5,7 @@ theme:
     name: material
     language: en
     logo: assets/images/C3_logo_white.png
+    favicon: assets/images/C3_logo_color.png
     custom_dir: overrides
     features:
         - toc.follow
