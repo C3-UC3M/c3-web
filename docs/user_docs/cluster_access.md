@@ -31,18 +31,18 @@ We recommend you to generate a key pair on your local machine to avoid having to
 === "Linux/macOS"
     ``` { .bash }
     # Generate the SSH private/public key pair
-    ssh-keygen -t ed25519 -C "$(whoami)@$(hostname)-$(date +'%d-%m-%Y')" -f ~/.ssh/id_ed25519
+    ssh-keygen -t ed25519 -C "$(whoami)@$(hostname)-$(date +'%d-%m-%Y')"
 
-    # Now copy the public key
+    # Now copy the public key (change the file path if necessary)
     cat ~/.ssh/id_ed25519.pub
     ```
 
 === "Windows (PowerShell)"
     ``` { .powershell }
     # Generate the SSH private/public key pair
-    ssh-keygen -t ed25519 -C "$env:USERNAME@$env:COMPUTERNAME-$(Get-Date -Format 'dd-MM-yyyy')" -f "$env:USERPROFILE\.ssh\id_ed25519"
+    ssh-keygen -t ed25519 -C "$env:USERNAME@$env:COMPUTERNAME-$(Get-Date -Format 'dd-MM-yyyy')"
 
-    # Now copy the public key
+    # Now copy the public key (change the file path if necessary)
     type "$env:USERPROFILE\.ssh\id_ed25519.pub"
     ```
 
