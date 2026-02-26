@@ -8,7 +8,7 @@ All user passwords must follow this policy:
 
 * Must be at least 40 characters long.
 * Must include upper and lower-case characters, digits and special characters.
-* Must be renewed every 90 days.
+* Must be renewed every 180 days.
 * You cannot reuse passwords.
 
 
