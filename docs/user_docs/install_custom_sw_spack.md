@@ -1,7 +1,7 @@
 # Install your own SW with Spack
 You can install your own software with Spack. First install Spack in your HOME directory. We will refer to this Spack instance as **local Spack** to distinguish it from the cluster-provided Spack or *global Spack*.
 ``` { .bash }
-git clone --depth=2 --branch=releases/v1.0 https://github.com/spack/spack.git ~/spack
+git clone --depth=2 https://github.com/spack/spack.git ~/spack
 ```
 
 Activate your **local Spack** instance:
