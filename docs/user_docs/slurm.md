@@ -12,26 +12,26 @@ SLURM (Simple Linux Utility for Resource Management) is a cluster management and
 
 
 ## Accounting
-In order to launch jobs with Slurm (*sbatch*, *salloc*, *srun*) you must specify a billing account aka Slurm account with the **-A** or **--account** options. You can check which Slurm account your project is associated to like this:
+When you launch jobs with Slurm (*sbatch*, *salloc*, *srun*) they will be charged to your default billing account aka Slurm account. You can check which Slurm account your project is associated to like this:
 ```
-sacctmgr show user $USER withassoc format=User,Account%30
+sacctmgr show user $USER withassoc format=User,Account%30,DefaultAccount%30
 ```
 
 ??? example "Example output"
     ``` { .bash .no-copy }
-    [pruebas@srvlogin02 ~]$ sacctmgr show user $USER withassoc format=User,Account%30
-        User                        Account  
-    ---------- ------------------------------  
-      pruebas                cuentadepruebas
+    [user@c3.uc3m.es ~]# sacctmgr show user $USER withassoc format=User,Account%30,DefaultAccount%30
+        User                        Account                       Def Acct 
+    ---------- ------------------------------ ------------------------------ 
+    user                   cuentadepruebas                cuentadepruebas 
     ```
 
 ### Common pitfalls
 If the name of the Slurm account is too long it could be displayed with a + sign at the end, like this:
 ``` { .yaml .no-copy }
-[pruebas@srvlogin02 ~]$ sacctmgr show user $USER withassoc format=User,Account
-     User    Account  
----------- ----------  
-  pruebas cuentadep+
+[user@c3.uc3m.es ~]$ sacctmgr show user $USER withassoc format=User,Account,DefaultAccount
+      User    Account   Def Acct 
+---------- ---------- ---------- 
+   user    cuentadep+ cuentadep+ 
 ```
 In this example, **cuentadep+ is not a valid Slurm account!** If you try to launch jobs with cuentadep+ you will get an error. The correct account is cuentadepruebas (the full name).
 
@@ -48,7 +48,7 @@ sacctmgr show user $USER withassoc format=User,Account%<number of characters>
     srun -A project_apples --pty bash
     ```
 
-    **When you launch jobs please make sure to assign them to the correct Slurm account.**
+    **When you launch jobs please make sure to assign them to the correct Slurm account with the **-A** or **--account** options.**
 
 
 ### Ease of use

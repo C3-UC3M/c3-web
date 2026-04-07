@@ -154,4 +154,4 @@ spack install <package>@<version> <variant>=<value> ^<dependency>@<dependency ve
     spack install mpich@4.2.3 netmod=ucx ^ucx@1.18.0+cma~dm %aocc@5.0.0
     ```
 
-For more details please check the [official Spack documentation](https://spack-tutorial.readthedocs.io/en/latest/tutorial_basics.html).
+For more details please check the [official Spack documentation](https://spack.readthedocs.io/en/latest/index.html).

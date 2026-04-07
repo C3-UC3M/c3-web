@@ -1251,23 +1251,23 @@
 <li><strong>sacct</strong>: Shows job history</li>
 </ul>
 <h2 id="accounting">Accounting</h2>
-<p>In order to launch jobs with Slurm (<em>sbatch</em>, <em>salloc</em>, <em>srun</em>) you must specify a billing account aka Slurm account with the <strong>-A</strong> or <strong>--account</strong> options. You can check which Slurm account your project is associated to like this:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sacctmgr show user $USER withassoc format=User,Account%30
+<p>When you launch jobs with Slurm (<em>sbatch</em>, <em>salloc</em>, <em>srun</em>) they will be charged to your default billing account aka Slurm account. You can check which Slurm account your project is associated to like this:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sacctmgr show user $USER withassoc format=User,Account%30,DefaultAccount%30
 </span></code></pre></div></p>
 <details class="example">
 <summary>Example output</summary>
-<div class="language-bash no-copy highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="o">[</span>pruebas@srvlogin02<span class="w"> </span>~<span class="o">]</span>$<span class="w"> </span>sacctmgr<span class="w"> </span>show<span class="w"> </span>user<span class="w"> </span><span class="nv">$USER</span><span class="w"> </span>withassoc<span class="w"> </span><span class="nv">format</span><span class="o">=</span>User,Account%30
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span>User<span class="w">                        </span>Account<span class="w">  </span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>----------<span class="w"> </span>------------------------------<span class="w">  </span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span>pruebas<span class="w">                </span>cuentadepruebas
+<div class="language-bash no-copy highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="o">[</span>user@c3.uc3m.es<span class="w"> </span>~<span class="o">]</span><span class="c1"># sacctmgr show user $USER withassoc format=User,Account%30,DefaultAccount%30</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span>User<span class="w">                        </span>Account<span class="w">                       </span>Def<span class="w"> </span>Acct<span class="w"> </span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>----------<span class="w"> </span>------------------------------<span class="w"> </span>------------------------------<span class="w"> </span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>user<span class="w">                   </span>cuentadepruebas<span class="w">                </span>cuentadepruebas<span class="w"> </span>
 </span></code></pre></div>
 </details>
 <h3 id="common-pitfalls">Common pitfalls</h3>
 <p>If the name of the Slurm account is too long it could be displayed with a + sign at the end, like this:
-<div class="language-yaml no-copy highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p p-Indicator">[</span><span class="nv">pruebas@srvlogin02 ~</span><span class="p p-Indicator">]</span><span class="l l-Scalar l-Scalar-Plain">$ sacctmgr show user $USER withassoc format=User,Account</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">     </span><span class="l l-Scalar l-Scalar-Plain">User    Account</span><span class="w">  </span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="l l-Scalar l-Scalar-Plain">---------- ----------</span><span class="w">  </span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">pruebas cuentadep+</span>
+<div class="language-yaml no-copy highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p p-Indicator">[</span><span class="nv">user@c3.uc3m.es ~</span><span class="p p-Indicator">]</span><span class="l l-Scalar l-Scalar-Plain">$ sacctmgr show user $USER withassoc format=User,Account,DefaultAccount</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">      </span><span class="l l-Scalar l-Scalar-Plain">User    Account   Def Acct</span><span class="w"> </span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="l l-Scalar l-Scalar-Plain">---------- ---------- ----------</span><span class="w"> </span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">   </span><span class="l l-Scalar l-Scalar-Plain">user    cuentadep+ cuentadep+</span><span class="w"> </span>
 </span></code></pre></div>
 In this example, <strong>cuentadep+ is not a valid Slurm account!</strong> If you try to launch jobs with cuentadep+ you will get an error. The correct account is cuentadepruebas (the full name).</p>
 <p>To ensure that you get the full account name, specify a longer length for the account, e.g. 40 characters (<strong>Account%40</strong>) until you don’t see a + sign at the end:
@@ -1279,7 +1279,7 @@ In this example, <strong>cuentadep+ is not a valid Slurm account!</strong> If yo
 <p>If you are part of more than one project you will have one user login with access to multiple Slurm accounts. Let us take Bob for an example: he is a researcher working on 2 different projects, Project-Apples and Project-Oranges. Bob has a single user login (<strong>bob</strong>) with access to 2 Slurm accounts: <strong>project_apples</strong> and <strong>project_oranges</strong>. When Bob works on Project-Apples he should use the corresponding project_apples Slurm account, like this:
 <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>srun -A project_apples --pty bash
 </span></code></pre></div></p>
-<p><strong>When you launch jobs please make sure to assign them to the correct Slurm account.</strong></p>
+<p><strong>When you launch jobs please make sure to assign them to the correct Slurm account with the </strong>-A<strong> or </strong>--account<strong> options.</strong></p>
 </details>
 <h3 id="ease-of-use">Ease of use</h3>
 <p>If you only have one Slurm account we recommend that you add these lines at the end of your <strong>~/.bashrc</strong>. Every time you log in this will export an environment variable that contains your account name, so that you can reference it easily. Just replace <em>cuentadepruebas</em> with your full Slurm account name.
