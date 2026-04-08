@@ -13,7 +13,7 @@ The C3's computers include computing and storage capacity that exceeds the resou
     onclick="openPresentation('/c3-web/assets/slides/C3_presentation.pdf')"
     aria-label="Start presentation: Presentation slides"
     title="Open slides">
-    <img loading="lazy" src="/c3-web/assets/images/1371435134390.jpg" alt="Preview image for presentation slides">
+    <img loading="lazy" src="/c3-web/assets/images/CPD.jpg" alt="Preview image for presentation slides">
     <span class="play-button" aria-hidden="true">
         <span class="play-icon"></span>
     </span>
