@@ -155,3 +155,66 @@ spack install <package>@<version> <variant>=<value> ^<dependency>@<dependency ve
     ```
 
 For more details please check the [official Spack documentation](https://spack.readthedocs.io/en/latest/index.html).
+
+### Proxy workarounds
+When you install a package with Spack it usually needs to download some files, but sometimes the UC3M proxy will block these downloads, and you will get an error. For instance, if you tried to install *git*:
+``` { .bash }
+spack install git %aocc
+```
+
+You would see an error like this:
+``` { .text .no-copy }
+==> Error: FetchError: All fetchers failed for resource-git-manpages-xvnirzmom7c4nenkzihpyi6twm6wpz5t
+        https://mirror.spack.io/_source-cache/archive/49/4954390466c125e82dce4a978dd1dadda13a916564d908cfdbd319f2e174a8ae.tar.gz: DetailedHTTPError: GET https://mirror.spack.io/_source-cache/archive/49/4954390466c125e82dce4a978dd1dadda13a916564d908cfdbd319f2e174a8ae.tar.gz returned 404: Not Found
+    https://www.kernel.org/pub/software/scm/git/git-manpages-2.53.0.tar.gz: DetailedURLError: GET https://www.kernel.org/pub/software/scm/git/git-manpages-2.53.0.tar.gz errored with: Tunnel connection failed: 403 Filtered
+```
+Spack is looking for a tarball at *https://mirror.spack.io/_source-cache/archive/49/4954390466c125e82dce4a978dd1dadda13a916564d908cfdbd319f2e174a8ae.tar.gz*, but it doesn't exist, so it tries to get it from the source (*https://www.kernel.org/pub/software/scm/git/git-manpages-2.53.0.tar.gz*), which gets blocked by the proxy.
+
+Now, to work around this we can download the missing file ourselves, copy it to C3 and then put it somewhere Spack can see it.
+
+1. Set up a local mirror on the cluster. We will inject any missing dependencies here:
+``` { .bash }
+# assuming you have Spack installed in your HOME directory
+mkdir ~/spack/mirror
+spack mirror add local_spack_mirror file://$HOME/spack/mirror/
+```
+
+2. Download missing dependencies offline (from your computer) and copy them to C3
+``` { .bash }
+wget https://www.kernel.org/pub/software/scm/git/git-manpages-2.53.0.tar.gz
+scp git-manpages-2.53.0.tar.gz <user>@c3.uc3m.es:~
+```
+
+3. Let's put it in the local mirror and rename it according to the hash that Spack looks for in the error message
+``` { .bash }
+mkdir -p ~/spack/mirror/_source-cache/archive/49
+mv ~/git-manpages-2.53.0.tar.gz ~/spack/mirror/_source-cache/archive/49/4954390466c125e82dce4a978dd1dadda13a916564d908cfdbd319f2e174a8ae.tar.gz
+```
+
+4. Now install it
+``` { .bash }
+spack install git %aocc
+```
+
+??? info
+    Now every time you install something with Spack you get a warning about your local mirror:
+    ``` { .text .no-copy }
+    ==> Warning: The following issues were ignored while updating the indices of binary caches
+    Multiple errors during fetching:
+            Error 1: BuildcacheIndexNotExists: Index not found in cache file:///home/user/spack/mirror/v3/manifests/index/index.manifest.json
+            Error 2: BuildcacheIndexNotExists: Index not found in cache file:///home/user/spack/mirror/build_cache/index.json
+    ```
+
+    To suppress this warning let's tell Spack that this mirror is just for source code, not a buildcache. Edit this file:
+    ``` { .bash }
+    nano ~/.spack/mirrors.yaml
+    ```
+
+    Its contents should look like this (replace "user" with your username):
+    ``` { .text }
+    mirrors:
+    local_spack_mirror:
+        url: file:///home/user/spack/mirror/
+        source: true
+        binary: false
+    ```
