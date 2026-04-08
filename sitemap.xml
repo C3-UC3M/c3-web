@@ -101,15 +101,11 @@
          <lastmod>2026-04-08</lastmod>
     </url>
     <url>
-         <loc>https://c3-uc3m.github.io/c3-web/blog/archive/2025/</loc>
-         <lastmod>2026-04-08</lastmod>
-    </url>
-    <url>
          <loc>https://c3-uc3m.github.io/c3-web/blog/archive/2026/</loc>
          <lastmod>2026-04-08</lastmod>
     </url>
     <url>
-         <loc>https://c3-uc3m.github.io/c3-web/blog/category/welcome/</loc>
+         <loc>https://c3-uc3m.github.io/c3-web/blog/archive/2025/</loc>
          <lastmod>2026-04-08</lastmod>
     </url>
     <url>
@@ -118,6 +114,10 @@
     </url>
     <url>
          <loc>https://c3-uc3m.github.io/c3-web/blog/category/events/</loc>
+         <lastmod>2026-04-08</lastmod>
+    </url>
+    <url>
+         <loc>https://c3-uc3m.github.io/c3-web/blog/category/welcome/</loc>
          <lastmod>2026-04-08</lastmod>
     </url>
 </urlset>
