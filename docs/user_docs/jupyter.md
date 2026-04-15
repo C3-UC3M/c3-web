@@ -1,18 +1,7 @@
 # JupyterLab
 This is a simple guide to launch a JupyterLab instance from a GPU node.
 
-To execute JupyterLab instances on a GPU node you have to first create a Python virtual environment following these instructions. You can use Conda or one of the Python versions available in LMOD. **Note: you only have to do this once.**
-=== "Conda"
-    ``` { .bash }
-    # Create a conda environment
-    module load anaconda
-    conda create --name lab python=3.12
-    conda activate lab
-
-    # Install dependencies
-    conda install -y conda-forge::tensorflow-gpu conda-forge::cuda conda-forge::cudnn
-    pip install jupyterlab ipykernel
-    ```
+To execute JupyterLab instances on a GPU node you have to first create a Python virtual environment following these instructions. You can use Conda or one of the Python versions available in LMOD. **Note: you only have to create it once.**
 === "Python modules"
     ``` { .bash }
     # Create a virtual environment
@@ -37,30 +26,41 @@ To execute JupyterLab instances on a GPU node you have to first create a Python 
         Where:
         D:  Default Module
         ```
+=== "Conda"
+    ``` { .bash }
+    # Create a conda environment
+    module load anaconda
+    conda create --name lab python=3.12
+    conda activate lab
+
+    # Install dependencies
+    conda install -y conda-forge::tensorflow-gpu conda-forge::cuda conda-forge::cudnn
+    pip install jupyterlab ipykernel
+    ```
 
 To launch your JupyterLab instance first allocate a GPU job:
 ``` { .bash }
 # Launch a Slurm job on a GPU node
-srun -A <slurm_account> -p gpu -N 1 --gpus=1 --pty bash
+srun -p gpu -N 1 --gpus=1 --pty bash
 ```
 
 Now launch your JupyterLab instance:
-=== "Conda"
-    ``` { .bash }
-    # load conda environment
-    module load anaconda
-    conda activate lab
-    ```
 === "Python modules"
     ``` { .bash }
     # load virtual environment
     # if your venv is stored somewhere else change this path accordingly
     source ~/lab/bin/activate
     ```
+=== "Conda"
+    ``` { .bash }
+    # load conda environment
+    module load anaconda
+    conda activate lab
+    ```
 
 ``` { .bash }
 # Launch Jupyter
-jupyter lab --no-browser --ip=$(host $(hostname) | awk '/10.119.12/ {print $4}')
+jupyter lab --no-browser --y --ip=$(host $(hostname) | awk '/10.119.12/ {print $4}')
 ```
 
 You should see something like this.
@@ -77,5 +77,5 @@ Now you can access your Jupyter instance from a web browser by following the fir
     Whenever you launch Jupyter without specifying a port it will try to use port 8888 by default. However, if 8888 is already in use it will use something else. 
     Since we only allow **ports 8888 through 8897** on the GPU nodes, you might have to specify it manually, otherwise you won't be able to connect to your Jupyter instance easily:
     ``` { .bash }
-    jupyter lab --no-browser --ip=$(host $(hostname) | awk '/10.119.12/ {print $4}') --port=<port>
+    jupyter lab --no-browser --y --ip=$(host $(hostname) | awk '/10.119.12/ {print $4}') --port=<port>
     ```

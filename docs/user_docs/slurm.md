@@ -13,12 +13,12 @@ SLURM (Simple Linux Utility for Resource Management) is a cluster management and
 
 ## Accounting
 When you launch jobs with Slurm (*sbatch*, *salloc*, *srun*) they will be charged to your default billing account aka Slurm account. You can check which Slurm account your project is associated to like this:
-```
+``` { .bash }
 sacctmgr show user $USER withassoc format=User,Account%30,DefaultAccount%30
 ```
 
 ??? example "Example output"
-    ``` { .bash .no-copy }
+    ``` { .console .no-copy }
     [user@c3.uc3m.es ~]# sacctmgr show user $USER withassoc format=User,Account%30,DefaultAccount%30
         User                        Account                       Def Acct 
     ---------- ------------------------------ ------------------------------ 
@@ -27,7 +27,7 @@ sacctmgr show user $USER withassoc format=User,Account%30,DefaultAccount%30
 
 ### Common pitfalls
 If the name of the Slurm account is too long it could be displayed with a + sign at the end, like this:
-``` { .yaml .no-copy }
+``` { .console .no-copy }
 [user@c3.uc3m.es ~]$ sacctmgr show user $USER withassoc format=User,Account,DefaultAccount
       User    Account   Def Acct 
 ---------- ---------- ---------- 
@@ -36,7 +36,7 @@ If the name of the Slurm account is too long it could be displayed with a + sign
 In this example, **cuentadep+ is not a valid Slurm account!** If you try to launch jobs with cuentadep+ you will get an error. The correct account is cuentadepruebas (the full name).
 
 To ensure that you get the full account name, specify a longer length for the account, e.g. 40 characters (**Account%40**) until you don’t see a + sign at the end:
-```
+``` { .bash }
 sacctmgr show user $USER withassoc format=User,Account%40
 sacctmgr show user $USER withassoc format=User,Account%<number of characters>
 ```
@@ -44,7 +44,7 @@ sacctmgr show user $USER withassoc format=User,Account%<number of characters>
 
 ??? warning "Multiple Slurm Accounts"
     If you are part of more than one project you will have one user login with access to multiple Slurm accounts. Let us take Bob for an example: he is a researcher working on 2 different projects, Project-Apples and Project-Oranges. Bob has a single user login (**bob**) with access to 2 Slurm accounts: **project_apples** and **project_oranges**. When Bob works on Project-Apples he should use the corresponding project_apples Slurm account, like this:
-    ```
+    ``` { .bash }
     srun -A project_apples --pty bash
     ```
 
@@ -52,15 +52,10 @@ sacctmgr show user $USER withassoc format=User,Account%<number of characters>
 
 
 ### Ease of use
-If you only have one Slurm account we recommend that you add these lines at the end of your **~/.bashrc**. Every time you log in this will export an environment variable that contains your account name, so that you can reference it easily. Just replace *cuentadepruebas* with your full Slurm account name.
-```
+If you only have one Slurm account we recommend that you add these lines at the end of your **~/.bashrc**. Every time you log in this will export an environment variable that contains your account name, so that you can reference it easily. Just replace *<slurm_account\>* with your full Slurm account name.
+``` { .bash }
 # set up Slurm Account
-export SLURM_BILLING_ACCOUNT=cuentadepruebas
-```
-
-Now you can launch jobs like this:
-```
-srun -A $SLURM_BILLING_ACCOUNT --pty bash
+export SLURM_BILLING_ACCOUNT=<slurm_account>
 ```
 
 ???+ warning "Billing for Exclusive Jobs"
@@ -74,13 +69,13 @@ There are several ways to launch jobs in Slurm. Here we cover the two main appro
 Interactive mode is useful for tests, development or if you just need to work directly on a compute node.
 
 Example 1. Simple interactive session: Requests default resources and opens a bash shell in the allocated compute node
-```
-srun -A <slurm account> --pty bash
+``` { .bash }
+srun --pty bash
 ```
 
-Example 2. Specify resources: This requests 1 node, 4 processes (cores), 1 hour runtime and 4GB of RAM
-```
-srun --account <slurm account> --pty --nodes=1 --ntasks=4 --time=01:00:00 --mem=4G bash
+Example 2. Specify resources: This requests 1 node, 4 processes (cores), 1 hour runtime and 32GB of RAM
+``` { .bash }
+srun --pty --nodes=1 --ntasks=4 --time=01:00:00 --mem=32G bash
 ```
 For more advanced customization please check the [official Slurm documentation for srun](https://slurm.schedmd.com/srun.html).
 
@@ -88,17 +83,16 @@ For more advanced customization please check the [official Slurm documentation f
 ### Batch Jobs
 Ideal for production workloads or long jobs. We have a script that contains all job instructions.
 
-Example sbatch script (my_job.sbatch). Replace <slurm account\> with your Slurm account
-```
+Example sbatch script (*my_job.sbatch*).
+``` { .bash }
 #!/bin/bash
 
 #SBATCH --job-name=my_job
-#SBATCH --account=<slurm account>
 #SBATCH --output=output_%j.out
 #SBATCH --error=error_%j.err
 #SBATCH --ntasks=4
 #SBATCH --time=02:00:00
-#SBATCH --mem=8G
+#SBATCH --mem=32G
 
 # load modules (optional)
 module load python/3.10
@@ -114,27 +108,27 @@ For more advanced customization please check the [official Slurm documentation f
 ## Monitor Jobs
 
 Display all running/queued jobs
-```
+``` { .bash }
 squeue
 ```
 
 Display only your jobs
-```
+``` { .bash }
 squeue -u $USER
 ```
 
 Check job details
-```
+``` { .bash }
 scontrol show job <job_id>
 ```
 
 Cancel job
-```
+``` { .bash }
 scancel <job_id>
 ```
 
 List job history
-```
+``` { .bash }
 sacct -u $USER
 ```
 

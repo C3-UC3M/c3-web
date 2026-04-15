@@ -19,13 +19,13 @@ You can check your project's storage quotas and usage by logging in. You will se
 ``` { .console .no-copy }
 Available storage:
     /home:   Used: 78.69 GB, Quota: 100.00 GB
-    /lustre: Used: 0.00 GB, Quota: 0.00 GB
+    /lustre: Used: 5.00 GB, Quota: 1024.00 GB
 ```
 Note that it displays the total for all users of your project. To check your individual user's disk usage please employ the *du* command. 
 
 You can also check your Lustre storage quota from the command line:
 ``` { .bash }
-lfs quota -h -p $(lfs project -d /lustre/<rate>/<project>/ | awk '/lustre/ {print $1}') /lustre
+lfs quota -h -p $(lfs project -d <your_lustre_directory> | awk '/lustre/ {print $1}') /lustre
 ```
 ??? example "Example output"
     ``` { .console .no-copy }
