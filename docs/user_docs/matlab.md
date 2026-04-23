@@ -14,11 +14,11 @@ This document provides the steps to configure MATLAB to submit jobs to the C3 cl
 
 
     <p style="text-align:left">
-    <img src="/c3-web/assets/images/matlab/image_0.png" width="413" alt="image_0.png">
+    <img src="/assets/images/matlab/image_0.png" width="413" alt="image_0.png">
     </p>
 
     <p style="text-align:left">
-    <img src="/c3-web/assets/images/matlab/image_1.png" width="483" alt="image_1.png">
+    <img src="/assets/images/matlab/image_1.png" width="483" alt="image_1.png">
     </p>
 
     Follow the prompts to create a new cluster profile.  Jobs will run across multiple nodes on the cluster rather than on the host machine.
@@ -43,7 +43,7 @@ This document provides the steps to configure MATLAB to submit jobs to the C3 cl
     userpath
     ```
 
-    Download the Cluster MATLAB support package from [**here**](/c3-web/downloads/UC3M.Desktop.zip). The contents of the ZIP file should be extracted into the folder returned by the call to `userpath`.
+    Download the Cluster MATLAB support package from [**here**](/downloads/UC3M.Desktop.zip). The contents of the ZIP file should be extracted into the folder returned by the call to `userpath`.
 
     Create a new cluster profile
     ```matlab
@@ -302,11 +302,11 @@ The job now runs in 4.73 seconds using eight workers. Run code with different nu
 Alternatively, to retrieve job results via a graphical user interface, use the Job Monitor (`Parallel > Monitor Jobs`).
 
 <p style="text-align:left">
-   <img src="/c3-web/assets/images/matlab/image_2.png" width="413" alt="image_2.png">
+   <img src="/assets/images/matlab/image_2.png" width="413" alt="image_2.png">
 </p>
 
 <p style="text-align:left">
-   <img src="/c3-web/assets/images/matlab/image_3.png" width="637" alt="image_3.png">
+   <img src="/assets/images/matlab/image_3.png" width="637" alt="image_3.png">
 </p>
 
 
@@ -352,14 +352,14 @@ To learn more about the MATLAB Parallel Computing Toolbox, check out these resou
 - [Parallel Computing Tutorials](http://www.mathworks.com/products/parallel-computing/tutorials.html) 
 - [Parallel Computing Videos](http://www.mathworks.com/products/parallel-computing/videos.html) 
 - [Parallel Computing Webinars](http://www.mathworks.com/products/parallel-computing/webinars.html) 
-- [Demo Script](/c3-web/downloads/ScalingToTheClusterDemoRemote.mlx)
+- [Demo Script](/downloads/ScalingToTheClusterDemoRemote.mlx)
 - [MATLAB and Simulink Access for UC3M](https://www.mathworks.com/academia/tah-portal/uc3m-31146377.html)
 - High Performance Computing with MATLAB (slides)
 <button class="presentation-launcher"
-    onclick="openPresentation('/c3-web/assets/slides/C3_HPC_con_MATLAB.pdf')"
+    onclick="openPresentation('/assets/slides/C3_HPC_con_MATLAB.pdf')"
     aria-label="Start presentation: Presentation slides"
     title="Open slides">
-    <img loading="lazy" src="/c3-web/assets/images/thumbnails/C3_HPC_con_MATLAB-thumb.jpg" alt="Preview image for presentation slides">
+    <img loading="lazy" src="/assets/images/thumbnails/C3_HPC_con_MATLAB-thumb.jpg" alt="Preview image for presentation slides">
     <span class="play-button" aria-hidden="true">
         <span class="play-icon"></span>
     </span>

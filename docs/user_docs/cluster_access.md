@@ -68,7 +68,7 @@ All login nodes provide a graphical environment. You will need an RDP client to 
 
 Install and launch your RDP client. We will use Thincast Client for this example. Just fill out the hostname and username fields, save your settings and connect.
 
-![Thincast RDP Client](/c3-web/assets/images/misc/rdp_client1.png)
+![Thincast RDP Client](/assets/images/misc/rdp_client1.png)
 
 You can adjust your display settings in the *Display* tab if you need to.
 
@@ -257,14 +257,14 @@ If you need to transfer files from your computer to C3, there are many ways to d
 
 === "WinSCP (Windows GUI)"
     If you prefer to use a GUI you can try WinSCP. Once you install it on your local Windows machine launch it and you will see a login window like this. Fill out the **Host name** and **User name** fields.
-    ![WinSCP Login Window](/c3-web/assets/images/misc/winscp_setup1.png)
+    ![WinSCP Login Window](/assets/images/misc/winscp_setup1.png)
 
     If you wish to log in with SSH keys instead of your password, click on the **Advanced...** button. Now go to *SSH/Authentication* and under *Authentication parameters* select your **Private key file**.
-    ![WinSCP Advanced Settings Window 1](/c3-web/assets/images/misc/winscp_setup2.png)
+    ![WinSCP Advanced Settings Window 1](/assets/images/misc/winscp_setup2.png)
 
     You will need a PuTTY formatted key file. If you select your normal private key file you will be asked to convert it. This will create a new key file in PuTTY format and select it.
-    ![WinSCP PuTTY Format Window](/c3-web/assets/images/misc/winscp_setup3.png)
+    ![WinSCP PuTTY Format Window](/assets/images/misc/winscp_setup3.png)
 
-    ![WinSCP Advanced Settings Window 2](/c3-web/assets/images/misc/winscp_setup4.png)
+    ![WinSCP Advanced Settings Window 2](/assets/images/misc/winscp_setup4.png)
 
     Next click **OK** and save your settings by clicking the **Save** button. Now you can log in and start transferring files.

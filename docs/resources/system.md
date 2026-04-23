@@ -22,10 +22,10 @@ The C3 supercomputing cluster has the following technical specifications:
 
 ## Liqid (slides)
 <button class="presentation-launcher"
-    onclick="openPresentation('/c3-web/assets/slides/Liqid-UC3M_presentacion.pdf')"
+    onclick="openPresentation('/assets/slides/Liqid-UC3M_presentacion.pdf')"
     aria-label="Start presentation: Presentation slides"
     title="Open slides">
-    <img loading="lazy" src="/c3-web/assets/images/thumbnails/Liqid-UC3M_presentacion-thumb.jpg" alt="Preview image for presentation slides">
+    <img loading="lazy" src="/assets/images/thumbnails/Liqid-UC3M_presentacion-thumb.jpg" alt="Preview image for presentation slides">
     <span class="play-button" aria-hidden="true">
         <span class="play-icon"></span>
     </span>

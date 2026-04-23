@@ -8,7 +8,7 @@ function loadVideo(element, videoId) {
 
 function openPresentation(presentationPath) {
   const viewerUrl =
-    `/c3-web/assets/pdfjs/web/viewer.html?file=${encodeURIComponent(presentationPath)}#presentationMode=true`;
+    `/assets/pdfjs/web/viewer.html?file=${encodeURIComponent(presentationPath)}#presentationMode=true`;
 
   window.open(viewerUrl, "_blank", "noopener,noreferrer");
 }

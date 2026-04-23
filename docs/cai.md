@@ -7,11 +7,11 @@ The following steps must be performed either by the Principal Investigator of yo
 
 2. Register on the [CAI platform](https://ppms.eu/uc3m/login/?pf=4) following these instructions:
 
-    1. [Internal users (UC3M)](/c3-web/downloads/documents/ALTA_USUARIOS_INTERNOS_PPMS_UC3M.pdf)
-    2. [External users (OPIs and Universities)](/c3-web/downloads/documents/ALTA_USUARIOS_EXTERNOS_PPMS_OPIs_y_UNIVERSIDADES.pdf)
-    3. [External users (companies)](/c3-web/downloads/documents/ALTA_USUARIOS_EXTERNOS_PPMS_EMPRESAS.pdf)
+    1. [Internal users (UC3M)](/downloads/documents/ALTA_USUARIOS_INTERNOS_PPMS_UC3M.pdf)
+    2. [External users (OPIs and Universities)](/downloads/documents/ALTA_USUARIOS_EXTERNOS_PPMS_OPIs_y_UNIVERSIDADES.pdf)
+    3. [External users (companies)](/downloads/documents/ALTA_USUARIOS_EXTERNOS_PPMS_EMPRESAS.pdf)
 
-3. Place an order following these instructions: [**ES**](/c3-web/downloads/documents/Cómo_utilizar_PPMS.pdf) | [**EN**](/c3-web/downloads/documents/How_to_use_PPMS.pdf)
+3. Place an order following these instructions: [**ES**](/downloads/documents/Cómo_utilizar_PPMS.pdf) | [**EN**](/downloads/documents/How_to_use_PPMS.pdf)
 
 4. If everything is correct your order will be accepted and you will receive credentials to access the cluster.
 
