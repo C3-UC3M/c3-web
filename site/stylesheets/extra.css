@@ -168,6 +168,7 @@
   background: none;
   cursor: pointer;
   display: inline-block;
+  width: 100%; /* Make button fill its grid cell */
 }
 
 /* Visible focus ring (WCAG compliant) */
@@ -177,8 +178,11 @@
 }
 
 .presentation-launcher img {
+  width: 100%; /* Ensure image fills the button */
+  height: auto;
+  aspect-ratio: 16 / 9; /* Matches the video for a seamless swap */
+  object-fit: cover;    /* Prevents stretching if the JPG isn't exactly 16:9 */
   display: block;
-  max-width: 100%;
 }
 
 .presentation-launcher:hover .play-button,
@@ -186,6 +190,23 @@
   transform: scale(1.1);
 }
 
+/* Ensure the wrapper maintains the 16:9 shape of a standard video */
+.video-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9; /* Standard YouTube ratio */
+  background: #000;    /* Black background while loading */
+}
+
+/* Force the iframe to stretch to the wrapper's dimensions */
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
 
 /* 4. Adaptación a móviles (Responsive Design) */
 @media (max-width: 900px) {

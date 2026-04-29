@@ -8,11 +8,11 @@ The C3's computers include computing and storage capacity that exceeds the resou
 
 **Before using the C3 services** you have to request access following [**these instructions**](cai.md).
 
-## C3 Overview (slides)
+## [C3 Overview (slideshow)](/assets/pdfjs/web/viewer.html?file=/assets/slides/C3_presentation.pdf#presentationMode=true)
 <button class="presentation-launcher"
-    onclick="openPresentation('/assets/slides/C3_presentation.pdf')"
-    aria-label="Start presentation: Presentation slides"
-    title="Open slides">
+    onclick="loadVideo(this, '6xnLeD1N-JU')"
+    aria-label="Start presentation: Play video"
+    title="Play video">
     <img loading="lazy" src="/assets/images/CPD.jpg" alt="Preview image for presentation slides">
     <span class="play-button" aria-hidden="true">
         <span class="play-icon"></span>
