@@ -45,7 +45,7 @@ nav:
   - Resources:
     - System Description: resources/system.md
     - Data Storage: resources/storage.md
-    - Slurm: resources/slurm.md
+    # - Slurm: resources/slurm.md
     - Installed Software: resources/installed_sw.md
   - Usage:
     - Cluster Access: user_docs/cluster_access.md
