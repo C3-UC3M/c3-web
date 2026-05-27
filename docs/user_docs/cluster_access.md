@@ -69,8 +69,8 @@ All login nodes provide a graphical environment. Currently we have two: XFCE via
 
     1. Fill out the **hostname** (`c3.uc3m.es` or `login[02-03].c3.uc3m.es`) and your **username**.
     2. Make sure you select **XFCE** at the bottom.
-    3. If you have an SSH key set up for authentication, we recommend checking the **Try auto login (via SSH Agent or default SSH key)** box. This way you won't have to type in your password every time you log in.
-    4. If you don't use your default SSH key to connect to C3, or you aren't running an SSH Agent you have to select it in **Use RSA/DSA key for ssh connection**.
+    3. If you have an SSH key set up for authentication, we recommend checking the <span style="color: #ffe600;">Try auto login (via SSH Agent or default SSH key)</span> box. This way you won't have to type in your password every time you log in.
+    4. If you don't use your default SSH key to connect to C3, or you aren't running an SSH Agent you may have to select it in <span style="color: #004de6;">Use RSA/DSA key for ssh connection</span>.
 
     ![X2Go Client](/assets/images/misc/x2go_client_1.png)
 
