@@ -20,7 +20,7 @@ The **preferred way to access the cluster is through `c3.uc3m.es`**, but you can
 
 
 
-## SSH
+## Command Line Access (SSH)
 This is the main way to connect to C3. Open a terminal window and connect to C3 via SSH with your username like this:
 ``` { .bash }
 ssh <user_name>@c3.uc3m.es
@@ -59,21 +59,39 @@ Now you should be able to log into C3 without a password.
 
 
 
-## RDP
-All login nodes provide a graphical environment. You will need an RDP client to log in in this way. You can use whichever you prefer, but here are some recommendations:
+## Remote Desktop (GUI)
+All login nodes provide a graphical environment. Currently we have two: XFCE via X2Go and GNOME via RDP. We will be removing RDP soon, so we recommend that you use XFCE with X2Go instead of GNOME.
 
-* [Thincast Client](https://thincast.com/en/products/client): cross-platform
-* [Remmina](https://remmina.org/): Linux only
-* Remote Desktop Connection (mstsc.exe): Windows only, usually comes preinstalled
+???+ info "X2Go"
+    You will need an X2Go client to connect to the XFCE graphical environment. You can download it [here](https://wiki.x2go.org/doku.php/download:start).
 
-Install and launch your RDP client. We will use Thincast Client for this example. Just fill out the hostname and username fields, save your settings and connect.
+    Install and launch it. Then create a new session like this:
 
-![Thincast RDP Client](/assets/images/misc/rdp_client1.png)
+    1. Fill out the **hostname** (`c3.uc3m.es` or `login[02-03].c3.uc3m.es`) and your **username**.
+    2. Make sure you select **XFCE** at the bottom.
+    3. If you have an SSH key set up for authentication, we recommend checking the **Try auto login (via SSH Agent or default SSH key)** box. This way you won't have to type in your password every time you log in.
+    4. If you don't use your default SSH key to connect to C3, or you aren't running an SSH Agent you have to select it in **Use RSA/DSA key for ssh connection**.
 
-You can adjust your display settings in the *Display* tab if you need to.
+    ![X2Go Client](/assets/images/misc/x2go_client_1.png)
+
+    For additional settings you should check the official documentation [here](https://wiki.x2go.org/doku.php/doc:start).
+
+
+??? info "RDP"
+    We will be phasing out RDP in favor of X2Go, so we recommend that you use the former as a remote desktop. However, if you prefer RDP for now, you will need an RDP client. You can use whichever you prefer, but here are some recommendations:
+
+    * [Thincast Client](https://thincast.com/en/products/client): cross-platform
+    * [Remmina](https://remmina.org/): Linux only
+    * Remote Desktop Connection (mstsc.exe): Windows only, usually comes preinstalled
+
+    Install and launch your RDP client. We will use Thincast Client for this example. Just fill out the hostname and username fields, save your settings and connect.
+
+    ![Thincast RDP Client](/assets/images/misc/rdp_client1.png)
+
+    You can adjust your display settings in the *Display* tab if you need to.
 
 ??? warning "Expired Passwords"
-    If you are trying to log in via RDP with an expired password, you might encounter issues. Remember that if you log in via SSH with an expired password, you will automatically be prompted to reset it.
+    If you are trying to log into the Graphical Environment with an expired password, you might encounter issues. Remember that if you log in via SSH with an expired password, you will automatically be prompted to reset it.
 
 
 
