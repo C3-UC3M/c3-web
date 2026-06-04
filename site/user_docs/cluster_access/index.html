@@ -1218,10 +1218,7 @@ You can also use something like <em>PuTTY</em> to connect to C3 instead of runni
 </span></code></pre></div>
 Now you should be able to log into C3 without a password.</p>
 <h2 id="remote-desktop-gui">Remote Desktop (GUI)</h2>
-<p>All login nodes provide a graphical environment. Currently we have two: XFCE via X2Go and GNOME via RDP. We will be removing RDP soon, so we recommend that you use XFCE with X2Go instead of GNOME.</p>
-<details class="info" open="open">
-<summary>X2Go</summary>
-<p>You will need an X2Go client to connect to the XFCE graphical environment. You can download it <a href="https://wiki.x2go.org/doku.php/download:start">here</a>.</p>
+<p>All login nodes provide a graphical environment (XFCE). You will need an X2Go client to connect to it. You can download it <a href="https://wiki.x2go.org/doku.php/download:start">here</a>.</p>
 <p>Install and launch it. Then create a new session like this:</p>
 <ol>
 <li>Fill out the <strong>hostname</strong> (<code>c3.uc3m.es</code> or <code>login[02-03].c3.uc3m.es</code>) and your <strong>username</strong>.</li>
@@ -1231,19 +1228,6 @@ Now you should be able to log into C3 without a password.</p>
 </ol>
 <p><img alt="X2Go Client" src="/assets/images/misc/x2go_client_1.png" /></p>
 <p>For additional settings you should check the official documentation <a href="https://wiki.x2go.org/doku.php/doc:start">here</a>.</p>
-</details>
-<details class="info">
-<summary>RDP</summary>
-<p>We will be phasing out RDP in favor of X2Go, so we recommend that you use the former as a remote desktop. However, if you prefer RDP for now, you will need an RDP client. You can use whichever you prefer, but here are some recommendations:</p>
-<ul>
-<li><a href="https://thincast.com/en/products/client">Thincast Client</a>: cross-platform</li>
-<li><a href="https://remmina.org/">Remmina</a>: Linux only</li>
-<li>Remote Desktop Connection (mstsc.exe): Windows only, usually comes preinstalled</li>
-</ul>
-<p>Install and launch your RDP client. We will use Thincast Client for this example. Just fill out the hostname and username fields, save your settings and connect.</p>
-<p><img alt="Thincast RDP Client" src="/assets/images/misc/rdp_client1.png" /></p>
-<p>You can adjust your display settings in the <em>Display</em> tab if you need to.</p>
-</details>
 <details class="warning">
 <summary>Expired Passwords</summary>
 <p>If you are trying to log into the Graphical Environment with an expired password, you might encounter issues. Remember that if you log in via SSH with an expired password, you will automatically be prompted to reset it.</p>
