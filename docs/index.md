@@ -9,6 +9,8 @@ The C3's computers include computing and storage capacity that exceeds the resou
 **Before using the C3 services** you have to request access following [**these instructions**](cai.md).
 
 ???+ info "Official Citations and Acknowledgements"
+    To acknowledge the use of the supercomputer please include the following statement in your publication:
+    
     *The authors thankfully acknowledge the C3 computer resources, technical expertise, and assistance provided by "CENTRO PARA EL ANÁLISIS Y MODELADO DE SISTEMAS COMPLEJOS EN INGENIERÍA Y BIOMEDICINA", a center Financed by the Programa Estatal para Impulsar la Investigación Científico-Técnica y su Transferencia (ref. EQC2021-007184-P) and by the European Union NextGenerationEU/PRTR program.*
 
 
