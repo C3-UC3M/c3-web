@@ -7,9 +7,11 @@ The following steps must be performed either by the Principal Investigator of yo
 
 2. Fill out [this form](https://aplicaciones.uc3m.es/formulario/c3_solicitud).
 
-3. Once your request has been processed you will receive a quote by email. Reply to said email to accept or reject it.
+3. Once your request has been processed you will be notified by email. A quote will be generated for your order on the [CAI platform](https://cai.uc3m.es/).
 
-4. Once you have accepted the quote you will receive credentials to access the cluster.
+4. Log onto the platform to view and accept it. UC3M users should log in with their corporate credentials. External users will receive their CAI credentials by email.
+
+5. Shortly after you have accepted the quote you will receive credentials to access the cluster.
 
 If you need more resources, please specify it in the form or [contact us](mailto:c3-uc3m@uc3m.es) directly.
 
@@ -17,7 +19,7 @@ If you need more resources, please specify it in the form or [contact us](mailto
     Whether you wish to renew your project or you just need more compute hours, please fill out a new form.
 
 ??? info "Adding new users to a project"
-    If you need to add new users to your existing project, please [contact us](mailto:c3-uc3m@uc3m.es).
+    If you need to add new users to your existing project, please [contact us](mailto:c3-uc3m@uc3m.es). You don't need to fill out a new form.
 
 
 ## **Prices**:
